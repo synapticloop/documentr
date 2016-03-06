@@ -37,11 +37,13 @@ repositories {
 // now for all of the dependencies
 dependencies {
 	runtime 'synapticloop:simpleusage:v1.0.0'
+	runtime 'synapticloop:simplelogger:v1.0.7'
 	runtime 'synapticloop:templar:v1.1.3'
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
 
 	compile 'synapticloop:simpleusage:v1.0.0'
+	compile 'synapticloop:simplelogger:v1.0.7'
 	compile 'synapticloop:templar:v1.1.3'
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.json:json:20160212'

@@ -6,17 +6,29 @@
 		{ "type":"inbuilt", "value":"badge-travis-ci" },
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
+
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
+
 		{ "type":"template", "value":"usage.md.templar" },
+
+		{ "type":"markup", "value":"\n```\n" },
+		{ "type":"file", "value":"documentr.json" },
+		{ "type":"markup", "value":"\n```\n" },
+
 		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
+
 		{ "type":"inbuilt", "value":"gradle-build" },
 		{ "type":"inbuilt", "value":"gradle-test" },
+
 		{ "type":"inbuilt", "value":"logging-slf4j" },
+
 		{ "type":"inbuilt", "value":"dependency-management" },
+
 		{ "type":"inbuilt", "value":"license-mit" },
+
 		{ "type":"inbuilt", "value":"attribution" }
 	]
 }

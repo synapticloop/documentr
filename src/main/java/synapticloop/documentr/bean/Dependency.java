@@ -1,8 +1,8 @@
 package synapticloop.documentr.bean;
 
-public class OptionsBean {
+public class Dependency {
 
-	public OptionsBean() {
+	public Dependency() {
 		// TODO Auto-generated constructor stub
 	}
 

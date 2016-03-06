@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import synapticloop.documentr.parser.GradleParser;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
@@ -18,22 +19,13 @@ public class Main {
 	private static final String VALUE = "value";
 	private static final String TYPE = "type";
 
-	private static TemplarContext getPopulatedContext(JSONObject jsonObject) {
-		TemplarContext templarContext = new TemplarContext();
-
+	private static void overrideContext(TemplarContext templarContext, JSONObject jsonObject) {
 		JSONObject contextObject = jsonObject.getJSONObject("context");
 		Iterator<String> keys = contextObject.keys();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
 			templarContext.add(key, contextObject.get(key));
 		}
-
-		templarContext.add("description", "description");
-		//		templarContext.add("group", "group");
-		//		templarContext.add("project", "project");
-		//		templarContext.add("version", "version");
-
-		return(templarContext);
 	}
 
 	public static void main(String[] args) {
@@ -45,7 +37,7 @@ public class Main {
 		if("--help".equals(option)) {
 			SimpleUsage.usageAndExit(null);
 		}
-
+		System.out.println(args[0]);
 		//at this point we have a directory - make sure we can find a documentr.json file 
 		File file = new File(option + "/documentr.json");
 
@@ -82,7 +74,15 @@ public class Main {
 
 				System.out.println(stringBuilder.toString());
 
-				TemplarContext templarContext = getPopulatedContext(jsonObject);
+				TemplarContext templarContext = new TemplarContext();
+
+				// now we need to see whether we have a build.gradle
+				File gradleBuildFile = new File(file.getParent() + "/build.gradle");
+
+				new GradleParser(templarContext, gradleBuildFile);
+
+				// now override
+				overrideContext(templarContext, jsonObject);
 
 				Parser parser = new Parser(stringBuilder.toString());
 				FileUtils.writeStringToFile(new File(file.getParent() + "/README.md"), parser.render(templarContext));

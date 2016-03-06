@@ -1,86 +1,48 @@
-MISSING variable `project` in the context
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr)[![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg) ](https://bintray.com/synapticloop/maven/documentr/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases)
+# documentr
 
-MISSING variable `group` in the context
 
-# FATAL: `badge-travis-ci.templar`
 
-Missing variables, the template cannot be rendered
+> documentation generator
 
-You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+
 
 ```
-"context": {
-	"key": "value"
+{
+	"context": {
+		"dependencyLocation": "bintray"
+	},
+	"templates": [
+		{ "type":"inbuilt", "value":"badge-travis-ci" },
+		{ "type":"inbuilt", "value":"badge-bintray" },
+		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
+
+		{ "type":"inbuilt", "value":"project-name" },
+		{ "type":"inbuilt", "value":"project-description" },
+
+		{ "type":"template", "value":"usage.md.templar" },
+
+		{ "type":"markup", "value":"\n```\n" },
+		{ "type":"file", "value":"documentr.json" },
+		{ "type":"markup", "value":"\n```\n" },
+
+		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
+		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
+		{ "type":"markup", "value":"\n```\n" },
+
+		{ "type":"inbuilt", "value":"gradle-build" },
+		{ "type":"inbuilt", "value":"gradle-test" },
+
+		{ "type":"inbuilt", "value":"logging-slf4j" },
+
+		{ "type":"inbuilt", "value":"dependency-management" },
+
+		{ "type":"inbuilt", "value":"license-mit" },
+
+		{ "type":"inbuilt", "value":"attribution" }
+	]
 }
 ```
-
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
-
---
-
-MISSING variable `project` in the context
-
-MISSING variable `group` in the context
-
-# FATAL: `badge-bintray.templar`
-
-Missing variables, the template cannot be rendered
-
-You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
-
-```
-"context": {
-	"key": "value"
-}
-```
-
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
-
---
-
-MISSING variable `project` in the context
-
-MISSING variable `group` in the context
-
-# FATAL: `badge-shield-io-github-release.templar`
-
-Missing variables, the template cannot be rendered
-
-You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
-
-```
-"context": {
-	"key": "value"
-}
-```
-
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
-
---
-
-MISSING variable `project` in the context
-
-# FATAL: `project-name.templar`
-
-Missing variables, the template cannot be rendered
-
-You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
-
-```
-"context": {
-	"key": "value"
-}
-```
-
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
-
---
-
-
-
-> description
-
-
 #Java command line usage
 
 ```
@@ -141,34 +103,111 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
-MISSING variable `project` in the context
+# Dependency Management
 
-MISSING variable `group` in the context
+> Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
 
-MISSING variable `version` in the context
+Include the dependency
 
-# FATAL: `dependency-management.templar`
+## maven
 
-Missing variables, the template cannot be rendered
-
-You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+this comes from the jcenter bintray, to set up your repository:
 
 ```
-"context": {
-	"key": "value"
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>bintray</name>
+          <url>http://jcenter.bintray.com</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>bintray-plugins</name>
+          <url>http://jcenter.bintray.com</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>bintray</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>bintray</activeProfile>
+  </activeProfiles>
+</settings>
+```
+
+And now for the dependency
+
+```
+<dependency>
+	<groupId>synapticloop</groupId>
+	<artifactId>documentr</artifactId>
+	<version>v0.0.1</version>
+	<type>jar</type>
+</dependency>
+```
+
+
+## gradle
+
+Repository
+
+```
+repositories {
+	maven {
+		url  "http://jcenter.bintray.com" 
+	}
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
+or just
 
---
+```
+repositories {
+	jcenter()
+}
+```
+
+and then include the dependency:
+
+```
+dependencies {
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v0.0.1', ext: 'jar')
+
+	compile(group: 'synapticloop', name: 'documentr', version: 'v0.0.1', ext: 'jar')
+}
+```
+
+or, more simply for versions of gradle greater than 2.4
+
+```
+dependencies {
+	runtime 'synapticloop:documentr:v0.0.1'
+
+	compile 'synapticloop:documentr:v0.0.1'
+}
+```
+
+
+You may either download the files from [https://bintray.com/synapticloop/maven/documentr/](https://bintray.com/synapticloop/maven/documentr/) or from [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
 
 # License
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 
+Copyright (c) synapticloop
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -192,7 +231,7 @@ SOFTWARE.
 
 --
 
-> `Hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->` [`documentr`](https://github.com/synapticloop/documentr/)
+> `Hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
 
