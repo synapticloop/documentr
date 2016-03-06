@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr)[![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg) ](https://bintray.com/synapticloop/maven/documentr/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases)
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr)[![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases)
 
 # documentr
 
@@ -223,7 +223,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.1</version>
+	<version>v1.1.2</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -253,9 +253,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.2', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.2', ext: 'jar')
 }
 ```
 
@@ -263,9 +263,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.1'
+	runtime 'synapticloop:documentr:v1.1.2'
 
-	compile 'synapticloop:documentr:v1.1.1'
+	compile 'synapticloop:documentr:v1.1.2'
 }
 ```
 
