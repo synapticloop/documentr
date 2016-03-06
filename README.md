@@ -1,5 +1,80 @@
-[![Build Status](https://travis-ci.org/group/project.svg?branch=master)](https://travis-ci.org/group/project)[![Download](https://api.bintray.com/packages/group/maven/project/images/download.svg) ](https://bintray.com/group/maven/project/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/group/project.svg)](https://github.com/group/project/releases)
-# project
+MISSING variable `project` in the context
+
+MISSING variable `group` in the context
+
+# FATAL: `badge-travis-ci.templar`
+
+Missing variables, the template cannot be rendered
+
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+
+```
+"context": {
+	"key": "value"
+}
+```
+
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+
+--
+
+MISSING variable `project` in the context
+
+MISSING variable `group` in the context
+
+# FATAL: `badge-bintray.templar`
+
+Missing variables, the template cannot be rendered
+
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+
+```
+"context": {
+	"key": "value"
+}
+```
+
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+
+--
+
+MISSING variable `project` in the context
+
+MISSING variable `group` in the context
+
+# FATAL: `badge-shield-io-github-release.templar`
+
+Missing variables, the template cannot be rendered
+
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+
+```
+"context": {
+	"key": "value"
+}
+```
+
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+
+--
+
+MISSING variable `project` in the context
+
+# FATAL: `project-name.templar`
+
+Missing variables, the template cannot be rendered
+
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
+
+```
+"context": {
+	"key": "value"
+}
+```
+
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+
+--
 
 
 
@@ -66,104 +141,27 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
-# Dependency Management
+MISSING variable `project` in the context
 
-> Note that the latest version can be found [https://bintray.com/group/maven/project/view](https://bintray.com/group/maven/project/view)
+MISSING variable `group` in the context
 
-Include the dependency
+MISSING variable `version` in the context
 
-## maven
+# FATAL: `dependency-management.templar`
 
-this comes from the jcenter bintray, to set up your repository:
+Missing variables, the template cannot be rendered
 
-```
-<?xml version="1.0" encoding="UTF-8" ?>
-<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <profiles>
-    <profile>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>bintray</name>
-          <url>http://jcenter.bintray.com</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>bintray-plugins</name>
-          <url>http://jcenter.bintray.com</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <id>bintray</id>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>bintray</activeProfile>
-  </activeProfiles>
-</settings>
-```
-
-And now for the dependency
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:
 
 ```
-    <dependency>
-      <groupId>group</groupId>
-      <artifactId>project</artifactId>
-      <version>version</version>
-      <type>jar</type>
-    </dependency>
-```
-
-
-## gradle
-
-Repository
-
-```
-repositories {
-	maven {
-		url  "http://jcenter.bintray.com" 
-	}
+"context": {
+	"key": "value"
 }
 ```
 
-or just
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
 
-```
-repositories {
-	jcenter()
-}
-```
-
-and then include the dependency:
-
-```
-dependencies {
-	runtime(group: 'group', name: 'project', version: 'version', ext: 'jar')
-
-	compile(group: 'group', name: 'project', version: 'version', ext: 'jar')
-}
-```
-
-or, more simply for versions of gradle greater than 2.4
-
-```
-dependencies {
-	runtime 'group:project:version'
-
-	compile 'group:project:version'
-}
-```
-
-
-You may either download the files from [https://bintray.com/group/maven/project/](https://bintray.com/group/maven/project/) or from [https://github.com/group/project/releases](https://github.com/group/project/releases)
+--
 
 # License
 

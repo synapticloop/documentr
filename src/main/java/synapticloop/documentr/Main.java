@@ -38,9 +38,9 @@ public class Main {
 		}
 
 		templarContext.add("description", "description");
-		templarContext.add("group", "group");
-		templarContext.add("project", "project");
-		templarContext.add("version", "version");
+//		templarContext.add("group", "group");
+//		templarContext.add("project", "project");
+//		templarContext.add("version", "version");
 
 		return(templarContext);
 	}

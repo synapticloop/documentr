@@ -1,0 +1,17 @@
+
+# FATAL: `{template}`{\n}{\n}
+
+Missing variables, the template cannot be rendered{\n}{\n}
+
+You __MUST__ include the above listed variables in the `context` section of the `documentr.json` file:{\n}{\n}
+
+```{\n}
+"context": {{{\n}
+{\t}"key": "value"{\n}
+}{\n}
+```{\n}{\n}
+
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and 
+certain variables will be automatically bound in the context.{\n}{\n}
+--{\n}{\n}
+

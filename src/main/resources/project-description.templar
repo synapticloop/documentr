@@ -1,5 +1,14 @@
-{\n}
-{\n}
-> {description}{\n}
-{\n}
-{\n}
+{set "true" as allOk}
+
+{if fn:null[description]}{set "false" as allOk}MISSING variable `description` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "project-description.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	{\n}
+	{\n}
+	> {description}{\n}
+	{\n}
+	{\n}
+{endif}

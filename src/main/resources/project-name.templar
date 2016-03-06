@@ -1,3 +1,12 @@
-{\n}
-# {project}{\n}
-{\n}
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "project-name.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	{\n}
+	# {project}{\n}
+	{\n}
+{endif}

@@ -3,9 +3,9 @@
 		"dependencyLocation": "bintray"
 	},
 	"templates": [
-		{ "type":"inbuilt", "value":"travis-ci-badge" },
-		{ "type":"inbuilt", "value":"bintray-badge" },
-		{ "type":"inbuilt", "value":"shield-io-github-release-badge" },
+		{ "type":"inbuilt", "value":"badge-travis-ci" },
+		{ "type":"inbuilt", "value":"badge-bintray" },
+		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 		{ "type":"template", "value":"usage.md.templar" },

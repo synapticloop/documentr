@@ -1,0 +1,11 @@
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "badge-shield-io-github-release.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	[![GitHub Release](https://img.shields.io/github/release/{group}/{project}.svg)](https://github.com/{group}/{project}/releases)
+{endif}
