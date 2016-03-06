@@ -1,0 +1,5 @@
+Usage:
+    java -jar documentr-all.jar <directory>
+
+This will look for a documentr.json file in the directory, parse it and build
+the documentation.

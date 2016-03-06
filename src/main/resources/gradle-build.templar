@@ -1,0 +1,18 @@
+# Building the Package{\n}
+{\n}
+## *NIX/Mac OS X{\n}
+{\n}
+From the root of the project, simply run{\n}
+{\n}
+`./gradlew build`{\n}
+{\n}
+{\n}
+## Windows{\n}
+{\n}
+`./gradlew.bat build`{\n}
+{\n}
+{\n}
+This will compile and assemble the artefacts into the `build/libs/` directory.{\n}
+{\n}
+Note that this may also run tests (if applicable see the Testing notes){\n}
+{\n}

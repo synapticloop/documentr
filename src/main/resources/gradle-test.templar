@@ -1,0 +1,10 @@
+# Running the Tests{\n}
+{\n}
+`gradle --info test`{\n}
+{\n}
+Which will also print out the logging{\n}
+{\n}
+if you do not have gradle installed, try:{\n}
+{\n}
+`gradlew --info test`{\n}
+{\n}

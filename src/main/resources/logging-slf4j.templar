@@ -1,0 +1,24 @@
+# Logging{\n}
+{\n}
+slf4j is the logging framework used for this project.  In order to use a 
+logging framework with this project, sample configurations are below:{\n}
+{\n}
+## Log4j{\n}
+{\n}
+A sample `log4j2.xml` is below:{\n}
+{\n}
+```{\n}
+<Configuration status="WARN">{\n}
+{\t}<Appenders>{\n}
+{\t}{\t}<Console name="Console" target="SYSTEM_OUT">{\n}
+{\t}{\t}{\t}<PatternLayout pattern="%d{{HH:mm:ss.SSS} [%t] %-5level %logger{{36} - %msg%n"/>{\n}
+{\t}{\t}</Console>{\n}
+{\t}</Appenders>{\n}
+{\t}<Loggers>{\n}
+{\t}{\t}<Root level="trace">{\n}
+{\t}{\t}{\t}<AppenderRef ref="Console"/>{\n}
+{\t}{\t}</Root>{\n}
+{\t}</Loggers>{\n}
+</Configuration>{\n}
+```{\n}
+{\n}
