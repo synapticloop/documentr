@@ -6,6 +6,15 @@
 > description
 
 
+#Java command line usage
+
+```
+Usage:
+    java -jar documentr-all.jar <directory>
+
+This will look for a documentr.json file in the directory, parse it and build
+the documentation.
+```
 # Building the Package
 
 ## *NIX/Mac OS X
@@ -59,6 +68,7 @@ A sample `log4j2.xml` is below:
 
 # Dependency Management
 
+> Note that the latest version can be found [https://bintray.com/group/maven/project/view](https://bintray.com/group/maven/project/view)
 
 Include the dependency
 
@@ -152,8 +162,8 @@ dependencies {
 }
 ```
 
-## Other packages
 
+You may either download the files from [https://bintray.com/group/maven/project/](https://bintray.com/group/maven/project/) or from [https://github.com/group/project/releases](https://github.com/group/project/releases)
 
 # License
 

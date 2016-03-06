@@ -1,22 +1,21 @@
 {
-	"options": {
-		"parseGradle": true,
-	},
 	"context": {
 		"dependencyLocation": "bintray"
 	},
 	"templates": [
-		{ type="inbuilt", name="travis-ci-badge" },
-		{ type="inbuilt", name="bintray-badge" },
-		{ type="inbuilt", name="shield-io-github-release-badge" },
-		{ type="inbuilt", name="project-name" },
-		{ type="inbuilt", name="project-description" },
-		{ type="templar", name="usage.md.templar" },
-		{ type="file", name="src/main/resources/USAGE.txt" },
-		{ type="inbuilt", name="gradle-build" },
-		{ type="inbuilt", name="gradle-test" },
-		{ type="inbuilt", name="logging-slf4j" },
-		{ type="inbuilt", name="dependency-management" },
-		{ type="inbuilt", name="license-mit },
+		{ "type":"inbuilt", "value":"travis-ci-badge" },
+		{ "type":"inbuilt", "value":"bintray-badge" },
+		{ "type":"inbuilt", "value":"shield-io-github-release-badge" },
+		{ "type":"inbuilt", "value":"project-name" },
+		{ "type":"inbuilt", "value":"project-description" },
+		{ "type":"template", "value":"usage.md.templar" },
+		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
+		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
+		{ "type":"markup", "value":"\n```\n" },
+		{ "type":"inbuilt", "value":"gradle-build" },
+		{ "type":"inbuilt", "value":"gradle-test" },
+		{ "type":"inbuilt", "value":"logging-slf4j" },
+		{ "type":"inbuilt", "value":"dependency-management" },
+		{ "type":"inbuilt", "value":"license-mit" }
 	]
 }

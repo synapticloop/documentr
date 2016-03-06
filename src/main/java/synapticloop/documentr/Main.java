@@ -2,6 +2,7 @@ package synapticloop.documentr;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
@@ -14,6 +15,9 @@ import synapticloop.templar.utils.TemplarContext;
 import synapticloop.util.SimpleUsage;
 
 public class Main {
+	private static final String VALUE = "value";
+	private static final String TYPE = "type";
+
 	private static void usageAndExit(String message) {
 		SimpleUsage.usage(message);
 		printInbuiltTemplates();
@@ -23,6 +27,23 @@ public class Main {
 	private static void printInbuiltTemplates() {
 	}
 
+	private static TemplarContext getPopulatedContext(JSONObject jsonObject) {
+		TemplarContext templarContext = new TemplarContext();
+		
+		JSONObject contextObject = jsonObject.getJSONObject("context");
+		Iterator<String> keys = contextObject.keys();
+		while (keys.hasNext()) {
+			String key = (String) keys.next();
+			templarContext.add(key, contextObject.get(key));
+		}
+
+		templarContext.add("description", "description");
+		templarContext.add("group", "group");
+		templarContext.add("project", "project");
+		templarContext.add("version", "version");
+
+		return(templarContext);
+	}
 
 	public static void main(String[] args) {
 		if(args.length != 1) {
@@ -45,24 +66,36 @@ public class Main {
 				JSONArray jsonArray = jsonObject.getJSONArray("templates");
 
 				for (Object object : jsonArray) {
-					String template = (String)object;
-					if(template.startsWith("inbuilt:")) {
+					JSONObject templateObject = (JSONObject)object;
+					if("inbuilt".equals(templateObject.getString(TYPE))) {
 						stringBuilder.append("{import classpath:/");
-						stringBuilder.append(template.substring("inbuilt:".length()));
+						stringBuilder.append(templateObject.getString(VALUE));
 						stringBuilder.append(".templar}\n");
+					} else if("file".equals(templateObject.getString(TYPE))) {
+						stringBuilder.append("{pre\n");
+						stringBuilder.append(FileUtils.readFileToString(new File(file.getParent() + "/" + templateObject.getString(VALUE))));
+						stringBuilder.append("\npre}\n");
+					} else if("markup".equals(templateObject.getString(TYPE))) {
+						stringBuilder.append("\n");
+						stringBuilder.append(templateObject.getString(VALUE).replaceAll("\\{", "\\{\\{").replaceAll("\\n", "\\{\\\\n\\}").replaceAll("\\t", "\\{\\\\t\\}"));
+						stringBuilder.append("\n");
+					} else if("template".equals(templateObject.getString(TYPE))) {
+						stringBuilder.append("\n");
+						stringBuilder.append("{import ");
+						stringBuilder.append(file.getParent() + "/" + templateObject.getString(VALUE));
+						stringBuilder.append("}\n");
+						stringBuilder.append("\n");
 					}
+
 				}
 
-				TemplarContext templarContext = new TemplarContext();
-				templarContext.add("description", "description");
-				templarContext.add("group", "group");
-				templarContext.add("project", "project");
-				templarContext.add("version", "version");
+				System.out.println(stringBuilder.toString());
+
+				TemplarContext templarContext = getPopulatedContext(jsonObject);
 
 				Parser parser = new Parser(stringBuilder.toString());
 				FileUtils.writeStringToFile(new File(file.getParent() + "/README.md"), parser.render(templarContext));
 
-				System.out.println(stringBuilder.toString());
 			} catch (IOException | ParseException | RenderException ex) {
 				usageAndExit("Cannot parse the documentr.json file, message was: " + ex.getMessage());
 			}
