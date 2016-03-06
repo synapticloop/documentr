@@ -125,7 +125,7 @@
 				{if dependencyStatus.first}
 					### {key} dependencies{\n}{\n}
 				{endif}
-				{pre    pre}- {dependency.group}, {dependency.project}, {dependency.version}: (It may be available on: 
+				{pre    pre}- {dependency.group}, {dependency.project}, {dependency.version}: (It may be available on one of: 
 				[bintray](https://bintray.com/{dependency.group}/maven/{dependency.project}/{dependency.version}/view#files/{dependency.group}/{dependency.project}/{dependency.version}) 
 				[mvn central](http://search.maven.org/#artifactdetails|{dependency.group}|{dependency.project}|{dependency.version}|jar) 
 				[mvn repository](http://mvnrepository.com/artifact/{dependency.group}/{dependency.project}/{dependency.version}) )

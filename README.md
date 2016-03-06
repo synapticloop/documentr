@@ -10,9 +10,11 @@
 
 # Usage
 
-This project generates a `README.md` file pulling together information from a variety of sources.  A lot of project documentation is repetitive, hard to generate, contains information that is hard-coded, or is just plain missing.
+This project generates a `README.md` file pulling together information from a variety of sources.  A lot of project documentation is repetitive, hard to generate, contains information that is hard-coded, or is just plain missing or wrong.
 
-The only files that are hand-written is this file `pre-usage.md.templar`, and the subsequent one `post-usage.md.templar`, all other information is generated from the `documentr.json` file in the root of this project.
+`documentr` makes it easier to include a raft of documentation without having to generate multiple files by hand.
+
+For this `README.md` file, the only files that are hand-written is this file `pre-usage.md.templar`, and the subsequent one `post-usage.md.templar`, all other information is generated from the `documentr.json` file in the root of this project.
 
 
 ## The `documentr.json` file
@@ -60,9 +62,9 @@ This is a simple JSON file as show below:
 }
 ```
 
-The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand
+The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand.
 
-Looking at the `documentr.json` file in closer detail, There 
+The `USAGE.txt` file provides more details of how to structure the `documentr.json` file and is shown below:
 
 #Java command line usage
 
@@ -223,7 +225,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.3</version>
+	<version>v1.1.4</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -253,9 +255,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.3', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.4', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.3', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.4', ext: 'jar')
 }
 ```
 
@@ -263,9 +265,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.3'
+	runtime 'synapticloop:documentr:v1.1.4'
 
-	compile 'synapticloop:documentr:v1.1.3'
+	compile 'synapticloop:documentr:v1.1.4'
 }
 ```
 
@@ -278,20 +280,20 @@ You will also need the dependencies:
 
 ### runtime dependencies
 
-  - synapticloop, simpleusage, v1.0.0: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
-  - synapticloop, simplelogger, v1.0.7: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
-  - synapticloop, templar, v1.1.3: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
-  - commons-io, commons-io, 2.4: (It may be available on: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
-  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
+  - synapticloop, simpleusage, v1.0.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
+  - synapticloop, simplelogger, v1.0.7: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
+  - synapticloop, templar, v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
+  - commons-io, commons-io, 2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
+  - org.json, json, 20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
 
 
 ### compile dependencies
 
-  - synapticloop, simpleusage, v1.0.0: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
-  - synapticloop, simplelogger, v1.0.7: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
-  - synapticloop, templar, v1.1.3: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
-  - commons-io, commons-io, 2.4: (It may be available on: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
-  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
+  - synapticloop, simpleusage, v1.0.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
+  - synapticloop, simplelogger, v1.0.7: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
+  - synapticloop, templar, v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
+  - commons-io, commons-io, 2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
+  - org.json, json, 20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
 
 
 
