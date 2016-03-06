@@ -22,6 +22,7 @@
 
 		{ "type":"inbuilt", "value":"gradle-build" },
 		{ "type":"inbuilt", "value":"gradle-test" },
+		{ "type":"inbuilt", "value":"test-warning" },
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 

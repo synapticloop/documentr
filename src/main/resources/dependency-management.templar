@@ -14,9 +14,7 @@
 		> Note that the latest version can be found [https://bintray.com/{group}/maven/{project}/view](https://bintray.com/{group}/maven/{project}/view){\n}
 	{endif}
 	{\n}
-	Include the dependency{\n}
-	{\n}
-	## maven{\n}
+	## maven setup{\n}
 	{\n}
 	this comes from the jcenter bintray, to set up your repository:{\n}
 	{\n}
@@ -66,7 +64,7 @@
 	```{\n}
 	{\n}
 	{\n}
-	## gradle{\n}
+	## gradle setup{\n}
 	{\n}
 	Repository{\n}
 	{\n}

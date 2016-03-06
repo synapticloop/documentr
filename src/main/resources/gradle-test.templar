@@ -1,10 +1,27 @@
 # Running the Tests{\n}
 {\n}
-`gradle --info test`{\n}
+## *NIX/Mac OS X{\n}
 {\n}
-Which will also print out the logging{\n}
+From the root of the project, simply run{\n}
+{\n}
+`gradle --info test`{\n}
 {\n}
 if you do not have gradle installed, try:{\n}
 {\n}
 `gradlew --info test`{\n}
+{\n}
+
+## Windows{\n}
+{\n}
+From the root of the project, simply run{\n}
+{\n}
+`gradle --info test`{\n}
+{\n}
+if you do not have gradle installed, try:{\n}
+{\n}
+`./gradlew.bat --info test`{\n}
+{\n}
+
+{\n}
+The `--info` switch will also output logging for the tests{\n}
 {\n}

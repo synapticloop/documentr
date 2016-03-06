@@ -3,7 +3,7 @@
 
 
 
-> documentation generator
+> documentation (README.md) generator for projects - this utilises the the templar templating language
 
 
 
@@ -32,6 +32,7 @@
 
 		{ "type":"inbuilt", "value":"gradle-build" },
 		{ "type":"inbuilt", "value":"gradle-test" },
+		{ "type":"inbuilt", "value":"test-warning" },
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
@@ -46,11 +47,65 @@
 #Java command line usage
 
 ```
+Generate a README.md file for projects utilising the 'templar' templating 
+engine.
+
 Usage:
     java -jar documentr-all.jar <directory>
 
 This will look for a documentr.json file in the directory, parse it and build
 the documentation.
+
+The format of the documentr.json file is as follows:
+
+{
+	"context": {
+		"key": "value"
+	},
+	"templates": [
+		{ "type":"template-type", "value":"template-name" },
+	]
+}
+
+The "context" keyed object is a JSONObject of key value pairs, and can be valid 
+value apart from a JSONArray or another JSONObject (i.e., long, boolean, string, 
+int).
+
+The "templates" keyed array is a JSONArray of JSONObjects.  Each of the 
+JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only 
+be one of the following:
+
+  - template - this is a 'templar' formatted template that will be used and 
+        parsed
+  - file - the file will be included as is with no parsing done on it
+  - markup - any valid markdown, with '\n' being replaced with a new line 
+        character.  No templar parsing is done on this.
+  - inbuilt - one of the in-built templates (see src/main/resources/*.templar
+        for a complete list of in-built templates).  Note that with the inbuilt
+        templates you do __NOT__ include the '.templar' extension
+
+The list of inbuilt templates:
+
+  - attribution - a nice attribution to synapticloop for generating this 
+        README.md file
+  - badge-bintray - generation of a bintray download badge with version number
+  - badge-shield-io-github-release - generation of a github release version 
+        number
+  - badge-travis-ci - build status from travis-ci
+  - dependency-management - dependency management information with instructions
+        for maven and gradle
+  - gradle-build - gradle build instructions
+  - gradle-test - gradle test instructions
+  - test-warn - warning about running tests, which may consume resources, which
+        may lead to a cost
+  - license-mit - the standard MIT license
+  - logging-slf4j - informing users that slf4j is being used within the project 
+        and information on how to set up various other loggers to utilise it 
+  - project-description - the description of the project
+  - project-name - the name of the project as an h1 markdown
+
+
+
 ```
 # Building the Package
 
@@ -72,13 +127,31 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 # Running the Tests
 
-`gradle --info test`
+## *NIX/Mac OS X
 
-Which will also print out the logging
+From the root of the project, simply run
+
+`gradle --info test`
 
 if you do not have gradle installed, try:
 
 `gradlew --info test`
+
+## Windows
+
+From the root of the project, simply run
+
+`gradle --info test`
+
+if you do not have gradle installed, try:
+
+`./gradlew.bat --info test`
+
+
+The `--info` switch will also output logging for the tests
+
+
+**WARNING:** These tests make calls against resources (either API calls to a service provider, or consumption of resources from a service provider) which may contribute to your limits, which may lead to a cost.
 
 # Logging
 
@@ -107,9 +180,7 @@ A sample `log4j2.xml` is below:
 
 > Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
 
-Include the dependency
-
-## maven
+## maven setup
 
 this comes from the jcenter bintray, to set up your repository:
 
@@ -153,13 +224,13 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v0.0.1</version>
+	<version>v1.0.0</version>
 	<type>jar</type>
 </dependency>
 ```
 
 
-## gradle
+## gradle setup
 
 Repository
 
@@ -183,9 +254,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v0.0.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.0.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v0.0.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.0.0', ext: 'jar')
 }
 ```
 
@@ -193,9 +264,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v0.0.1'
+	runtime 'synapticloop:documentr:v1.0.0'
 
-	compile 'synapticloop:documentr:v0.0.1'
+	compile 'synapticloop:documentr:v1.0.0'
 }
 ```
 
@@ -207,7 +278,7 @@ You may either download the files from [https://bintray.com/synapticloop/maven/d
 ```
 The MIT License (MIT)
 
-Copyright (c) synapticloop
+Copyright (c) 2016 synapticloop
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -19,9 +19,9 @@ plugins {
 // textual information for this project
 group = 'synapticloop'
 archivesBaseName = 'documentr'
-description = """documentation generator"""
+description = """documentation (README.md) generator for projects - this utilises the the templar templating language"""
 
-version = 'v0.0.1'
+version = 'v1.0.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

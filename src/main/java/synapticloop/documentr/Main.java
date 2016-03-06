@@ -2,6 +2,7 @@ package synapticloop.documentr;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Iterator;
 
 import org.apache.commons.io.FileUtils;
@@ -72,9 +73,8 @@ public class Main {
 
 				}
 
-				System.out.println(stringBuilder.toString());
-
 				TemplarContext templarContext = new TemplarContext();
+				templarContext.add("yearTo", Calendar.getInstance().get(Calendar.YEAR));
 
 				// now we need to see whether we have a build.gradle
 				File gradleBuildFile = new File(file.getParent() + "/build.gradle");

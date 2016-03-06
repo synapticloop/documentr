@@ -1,0 +1,22 @@
+# License{\n}
+{\n}
+```{\n}
+Copyright {if fn:notNull[yearFrom]}{yearFrom}-{endif}
+{if fn:notNull[yearTo]}{yearTo} {endif}
+{if fn:notNull[group]}{group}{endif}
+{\n}
+{\n}
+{pre    pre}Licensed under the Apache License, Version 2.0 (the "License");{\n}
+{pre    pre}you may not use this file except in compliance with the License.{\n}
+{pre    pre}You may obtain a copy of the License at{\n}
+{\n}
+{pre    pre}  http://www.apache.org/licenses/LICENSE-2.0{\n}
+{\n}
+{pre    pre}Unless required by applicable law or agreed to in writing, software{\n}
+{pre    pre}distributed under the License is distributed on an "AS IS" BASIS,{\n}
+{pre    pre}WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.{\n}
+{pre    pre}See the License for the specific language governing permissions and{\n}
+{pre    pre}limitations under the License.{\n}
+{\n}
+```{\n}
+{\n}

@@ -1,5 +1,61 @@
+Generate a README.md file for projects utilising the 'templar' templating 
+engine.
+
 Usage:
     java -jar documentr-all.jar <directory>
 
 This will look for a documentr.json file in the directory, parse it and build
 the documentation.
+
+The format of the documentr.json file is as follows:
+
+{
+	"context": {
+		"key": "value"
+	},
+	"templates": [
+		{ "type":"template-type", "value":"template-name" },
+	]
+}
+
+The "context" keyed object is a JSONObject of key value pairs, and can be valid 
+value apart from a JSONArray or another JSONObject (i.e., long, boolean, string, 
+int).
+
+The "templates" keyed array is a JSONArray of JSONObjects.  Each of the 
+JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only 
+be one of the following:
+
+  - template - this is a 'templar' formatted template that will be used and 
+        parsed
+  - file - the file will be included as is with no parsing done on it
+  - markup - any valid markdown, with '\n' being replaced with a new line 
+        character.  No templar parsing is done on this.
+  - inbuilt - one of the in-built templates (see src/main/resources/*.templar
+        for a complete list of in-built templates).  Note that with the inbuilt
+        templates you do __NOT__ include the '.templar' extension
+
+The list of inbuilt templates:
+
+  - attribution - a nice attribution to synapticloop for generating this 
+        README.md file
+  - badge-bintray - generation of a bintray download badge with version number
+  - badge-shield-io-github-release - generation of a github release version 
+        number
+  - badge-travis-ci - build status from travis-ci
+  - dependency-management - dependency management information with instructions
+        for maven and gradle
+  - gradle-build - gradle build instructions
+  - gradle-test - gradle test instructions
+  - test-warn - warning about running tests, which may consume resources, which
+        may lead to a cost
+  - license-apache-2.0 - the standard Apache 2.0 license
+  - license-bsd-2-clause - the BSD 2 Clause license
+  - license-bsd-3-clause - the BSD 3 Clause license
+  - license-mit - the standard MIT license
+  - logging-slf4j - informing users that slf4j is being used within the project 
+        and information on how to set up various other loggers to utilise it 
+  - project-description - the description of the project
+  - project-name - the name of the project as an h1 markdown
+
+
