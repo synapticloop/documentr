@@ -223,7 +223,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.2</version>
+	<version>v1.1.3</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -253,9 +253,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.2', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.3', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.2', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.3', ext: 'jar')
 }
 ```
 
@@ -263,9 +263,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.2'
+	runtime 'synapticloop:documentr:v1.1.3'
 
-	compile 'synapticloop:documentr:v1.1.2'
+	compile 'synapticloop:documentr:v1.1.3'
 }
 ```
 
@@ -326,7 +326,7 @@ SOFTWARE.
 
 --
 
-> `Hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->`[`documentr`](https://github.com/synapticloop/documentr/)
+> `This README.md file was hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
 
