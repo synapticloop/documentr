@@ -223,7 +223,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.0</version>
+	<version>v1.1.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -253,9 +253,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.1', ext: 'jar')
 }
 ```
 
@@ -263,11 +263,13 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.0'
+	runtime 'synapticloop:documentr:v1.1.1'
 
-	compile 'synapticloop:documentr:v1.1.0'
+	compile 'synapticloop:documentr:v1.1.1'
 }
 ```
+
+## Other packages
 
 
 You may either download the files from [https://bintray.com/synapticloop/maven/documentr/](https://bintray.com/synapticloop/maven/documentr/) or from [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
