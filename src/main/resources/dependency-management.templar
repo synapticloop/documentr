@@ -106,7 +106,7 @@
 	{\n}
 
 
-	{if fn:notNull[dependendyGroup]}
+	{if fn:notNull[dependencyGroup]}
 		## Other packages{\n}
 		{\n}
 	{endif}
