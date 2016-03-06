@@ -1,0 +1,19 @@
+{\n}
+# Usage{\n}
+{\n}
+This project generates a `README.md` file pulling together information from a 
+variety of sources.  A lot of project documentation is repetitive, hard to 
+generate, contains information that is hard-coded, or is just plain missing.{\n}
+{\n}
+The only files that are hand-written is this file `pre-usage.md.templar`, and 
+the subsequent one `post-usage.md.templar`, all other information is generated 
+from the `documentr.json` file in the root of this project.{\n}
+{\n}
+{\n}
+## The `documentr.json` file{\n}
+{\n}
+This is a simple JSON file as show below:{\n}
+{\n}
+*in fact - the following file is included from the file system `documentr.json`, 
+so that it is always up-to-date with the correct information...*{\n}
+{\n}

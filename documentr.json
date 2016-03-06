@@ -10,19 +10,19 @@
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
-		{ "type":"template", "value":"usage.md.templar" },
+		{ "type":"template", "value":"pre-usage.md.templar" },
 
 		{ "type":"markup", "value":"\n```\n" },
 		{ "type":"file", "value":"documentr.json" },
 		{ "type":"markup", "value":"\n```\n" },
+
+		{ "type":"template", "value":"post-usage.md.templar" },
 
 		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
-		{ "type":"inbuilt", "value":"gradle-test" },
-		{ "type":"inbuilt", "value":"test-warning" },
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 

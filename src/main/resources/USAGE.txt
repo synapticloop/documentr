@@ -4,17 +4,21 @@ engine.
 Usage:
     java -jar documentr-all.jar <directory>
 
-This will look for a documentr.json file in the directory, parse it and build
-the documentation.
+This will look for a documentr.json file in the directory, parse it, collate 
+the associated resources and generate the documentation.
 
 The format of the documentr.json file is as follows:
 
 {
 	"context": {
-		"key": "value"
+		"key": "value",
+		"key2": "value2",
+		...
 	},
 	"templates": [
 		{ "type":"template-type", "value":"template-name" },
+		{ "type":"template-type", "value":"template-name" },
+		...
 	]
 }
 

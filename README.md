@@ -3,8 +3,22 @@
 
 
 
-> documentation (README.md) generator for projects - this utilises the the templar templating language
+> documentation (README.md) generator for projects - this utilises the templar templating language
 
+
+
+# Usage
+
+This project generates a `README.md` file pulling together information from a variety of sources.  A lot of project documentation is repetitive, hard to generate, contains information that is hard-coded, or is just plain missing.
+
+The only files that are hand-written is this file `pre-usage.md.templar`, and the subsequent one `post-usage.md.templar`, all other information is generated from the `documentr.json` file in the root of this project.
+
+
+## The `documentr.json` file
+
+This is a simple JSON file as show below:
+
+*in fact - the following file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*
 
 
 ```
@@ -20,19 +34,19 @@
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
-		{ "type":"template", "value":"usage.md.templar" },
+		{ "type":"template", "value":"pre-usage.md.templar" },
 
 		{ "type":"markup", "value":"\n```\n" },
 		{ "type":"file", "value":"documentr.json" },
 		{ "type":"markup", "value":"\n```\n" },
+
+		{ "type":"template", "value":"post-usage.md.templar" },
 
 		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
-		{ "type":"inbuilt", "value":"gradle-test" },
-		{ "type":"inbuilt", "value":"test-warning" },
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
@@ -44,6 +58,11 @@
 	]
 }
 ```
+
+The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand
+
+Looking at the `documentr.json` file in closer detail, There 
+
 #Java command line usage
 
 ```
@@ -53,17 +72,21 @@ engine.
 Usage:
     java -jar documentr-all.jar <directory>
 
-This will look for a documentr.json file in the directory, parse it and build
-the documentation.
+This will look for a documentr.json file in the directory, parse it, collate 
+the associated resources and generate the documentation.
 
 The format of the documentr.json file is as follows:
 
 {
 	"context": {
-		"key": "value"
+		"key": "value",
+		"key2": "value2",
+		...
 	},
 	"templates": [
 		{ "type":"template-type", "value":"template-name" },
+		{ "type":"template-type", "value":"template-name" },
+		...
 	]
 }
 
@@ -98,6 +121,9 @@ The list of inbuilt templates:
   - gradle-test - gradle test instructions
   - test-warn - warning about running tests, which may consume resources, which
         may lead to a cost
+  - license-apache-2.0 - the standard Apache 2.0 license
+  - license-bsd-2-clause - the BSD 2 Clause license
+  - license-bsd-3-clause - the BSD 3 Clause license
   - license-mit - the standard MIT license
   - logging-slf4j - informing users that slf4j is being used within the project 
         and information on how to set up various other loggers to utilise it 
@@ -124,34 +150,6 @@ From the root of the project, simply run
 This will compile and assemble the artefacts into the `build/libs/` directory.
 
 Note that this may also run tests (if applicable see the Testing notes)
-
-# Running the Tests
-
-## *NIX/Mac OS X
-
-From the root of the project, simply run
-
-`gradle --info test`
-
-if you do not have gradle installed, try:
-
-`gradlew --info test`
-
-## Windows
-
-From the root of the project, simply run
-
-`gradle --info test`
-
-if you do not have gradle installed, try:
-
-`./gradlew.bat --info test`
-
-
-The `--info` switch will also output logging for the tests
-
-
-**WARNING:** These tests make calls against resources (either API calls to a service provider, or consumption of resources from a service provider) which may contribute to your limits, which may lead to a cost.
 
 # Logging
 
