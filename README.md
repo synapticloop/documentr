@@ -14,7 +14,7 @@ You __MUST__ include the above listed variables in the `context` section of the 
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
 
 --
 
@@ -34,7 +34,7 @@ You __MUST__ include the above listed variables in the `context` section of the 
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
 
 --
 
@@ -54,7 +54,7 @@ You __MUST__ include the above listed variables in the `context` section of the 
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
 
 --
 
@@ -72,7 +72,7 @@ You __MUST__ include the above listed variables in the `context` section of the 
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
 
 --
 
@@ -159,7 +159,7 @@ You __MUST__ include the above listed variables in the `context` section of the 
 }
 ```
 
-If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and automatically bound in the context.
+If the project has a `gradle.build` or `pom.xml` then they will be attempted to be parsed and certain variables will be automatically bound in the context.
 
 --
 
@@ -168,7 +168,7 @@ If the project has a `gradle.build` or `pom.xml` then they will be attempted to 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015 Synapticloop
+Copyright (c) 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -188,4 +188,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+
+--
+
+> `Hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->` [`documentr`](https://github.com/synapticloop/documentr/)
+
+--
 

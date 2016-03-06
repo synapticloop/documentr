@@ -3,7 +3,11 @@
 ```{\n}
 The MIT License (MIT){\n}
 {\n}
-Copyright (c) 2015 Synapticloop{\n}
+Copyright (c) 
+{if fn:notNull[yearFrom]}{yearFrom}-{endif}
+{if fn:notNull[yearTo]}{yearTo} {endif}
+{if fn:notNull[group]}{group}{endif}
+{\n}
 {\n}
 Permission is hereby granted, free of charge, to any person obtaining a copy{\n}
 of this software and associated documentation files (the "Software"), to deal{\n}

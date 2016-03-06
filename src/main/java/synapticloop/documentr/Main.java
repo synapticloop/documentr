@@ -18,18 +18,9 @@ public class Main {
 	private static final String VALUE = "value";
 	private static final String TYPE = "type";
 
-	private static void usageAndExit(String message) {
-		SimpleUsage.usage(message);
-		printInbuiltTemplates();
-		System.exit(-1);
-	}
-
-	private static void printInbuiltTemplates() {
-	}
-
 	private static TemplarContext getPopulatedContext(JSONObject jsonObject) {
 		TemplarContext templarContext = new TemplarContext();
-		
+
 		JSONObject contextObject = jsonObject.getJSONObject("context");
 		Iterator<String> keys = contextObject.keys();
 		while (keys.hasNext()) {
@@ -38,21 +29,21 @@ public class Main {
 		}
 
 		templarContext.add("description", "description");
-//		templarContext.add("group", "group");
-//		templarContext.add("project", "project");
-//		templarContext.add("version", "version");
+		//		templarContext.add("group", "group");
+		//		templarContext.add("project", "project");
+		//		templarContext.add("version", "version");
 
 		return(templarContext);
 	}
 
 	public static void main(String[] args) {
 		if(args.length != 1) {
-			usageAndExit(null);
+			SimpleUsage.usageAndExit(null);
 		}
 
 		String option = args[0];
 		if("--help".equals(option)) {
-			usageAndExit(null);
+			SimpleUsage.usageAndExit(null);
 		}
 
 		//at this point we have a directory - make sure we can find a documentr.json file 
@@ -97,10 +88,10 @@ public class Main {
 				FileUtils.writeStringToFile(new File(file.getParent() + "/README.md"), parser.render(templarContext));
 
 			} catch (IOException | ParseException | RenderException ex) {
-				usageAndExit("Cannot parse the documentr.json file, message was: " + ex.getMessage());
+				SimpleUsage.usageAndExit("Cannot parse/render the documentr.json file, message was: " + ex.getMessage());
 			}
 		} else {
-			usageAndExit("Cannot find the documentr.json file.");
+			SimpleUsage.usageAndExit("Cannot find the documentr.json file.");
 		}
 	}
 

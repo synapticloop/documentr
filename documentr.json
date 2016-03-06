@@ -16,6 +16,7 @@
 		{ "type":"inbuilt", "value":"gradle-test" },
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 		{ "type":"inbuilt", "value":"dependency-management" },
-		{ "type":"inbuilt", "value":"license-mit" }
+		{ "type":"inbuilt", "value":"license-mit" },
+		{ "type":"inbuilt", "value":"attribution" }
 	]
 }
