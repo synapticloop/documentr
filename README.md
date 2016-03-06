@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr)[![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg) ](https://bintray.com/synapticloop/maven/documentr/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases)
+
 # documentr
 
 
@@ -222,7 +223,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.0.0</version>
+	<version>v1.1.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -252,9 +253,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.0.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.0.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.0', ext: 'jar')
 }
 ```
 
@@ -262,14 +263,37 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.0.0'
+	runtime 'synapticloop:documentr:v1.1.0'
 
-	compile 'synapticloop:documentr:v1.0.0'
+	compile 'synapticloop:documentr:v1.1.0'
 }
 ```
 
 
 You may either download the files from [https://bintray.com/synapticloop/maven/documentr/](https://bintray.com/synapticloop/maven/documentr/) or from [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
+
+You will also need the dependencies:
+
+### runtime dependencies
+
+  - synapticloop, simpleusage, v1.0.0: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
+  - synapticloop, simplelogger, v1.0.7: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
+  - synapticloop, templar, v1.1.3: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
+  - commons-io, commons-io, 2.4: (It may be available on: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
+  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
+
+
+### compile dependencies
+
+  - synapticloop, simpleusage, v1.0.0: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
+  - synapticloop, simplelogger, v1.0.7: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
+  - synapticloop, templar, v1.1.3: (It may be available on: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
+  - commons-io, commons-io, 2.4: (It may be available on: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )
+  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
+
+
+
+**NOTE:** You may need to download any dependencies of the above dependencies in turn
 
 # License
 

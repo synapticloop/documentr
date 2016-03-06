@@ -2,10 +2,12 @@ package synapticloop.documentr.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import synapticloop.documentr.bean.DependencyGroup;
 import synapticloop.templar.utils.TemplarContext;
 import synapticloop.util.SimpleLogger;
 
@@ -17,20 +19,45 @@ public class GradleParser {
 			// try and parse it
 			try {
 				List<String> readLines = FileUtils.readLines(file);
-				for (String line : readLines) {
-					if(line.trim().startsWith("group")) {
+				Iterator<String> iterator = readLines.iterator();
+				while (iterator.hasNext()) {
+					String line = iterator.next().trim();
+					if(line.startsWith("group")) {
 						addToContext(templarContext, "group", line);
-					} else if(line.trim().startsWith("version")) {
+					} else if(line.startsWith("version")) {
 						addToContext(templarContext, "version", line);
-					} else if(line.trim().startsWith("description")) {
+					} else if(line.startsWith("description")) {
 						addToContext(templarContext, "description", line);
-					} else if(line.trim().startsWith("archivesBaseName")) {
+					} else if(line.startsWith("archivesBaseName")) {
 						addToContext(templarContext, "project", line);
+					} else if(line.startsWith("dependencies")) {
+						addToContext(templarContext, iterator, "dependencyGroup");
 					}
 				}
 			} catch (IOException ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
+			}
+		}
+	}
+
+	private void addToContext(TemplarContext templarContext, Iterator<String> iterator, String key) {
+		DependencyGroup dependencyGroup = new DependencyGroup();
+		while (iterator.hasNext()) {
+			String line = iterator.next().trim();
+			if(line.startsWith("}")) {
+				templarContext.add("dependencyGroup", dependencyGroup);
+				return;
+			}
+
+			if(line.startsWith("runtime")) {
+				String dependency = line.split(" ")[1];
+				dependencyGroup.addDependency("runtime", dependency);
+				LOGGER.info(String.format("Found 'runtime' dependency of '%s'", dependency));
+			} else if(line.startsWith("compile")) {
+				String dependency = line.split(" ")[1];
+				dependencyGroup.addDependency("compile", dependency);
+				LOGGER.info(String.format("Found 'compile' dependency of '%s'", dependency));
 			}
 		}
 	}

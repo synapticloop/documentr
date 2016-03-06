@@ -1,4 +1,6 @@
+{\n}
 # License{\n}
+{\n}
 {\n}
 ```{\n}
 Copyright {if fn:notNull[yearFrom]}{yearFrom}-{endif}

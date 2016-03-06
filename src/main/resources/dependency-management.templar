@@ -106,7 +106,7 @@
 	{\n}
 
 
-	{if fn:notNull[dependencies]}
+	{if fn:notNull[dependendyGroup]}
 		## Other packages{\n}
 		{\n}
 	{endif}
@@ -117,16 +117,25 @@
 		{endif}
 	{endif}
 	{\n}
-	{if fn:notNull[dependencies]}
+	{if fn:notNull[dependencyGroup]}
 		You will also need the dependencies:{\n}
 		{\n}
-
-		{loop dependencies as dependency}
-		{pre  pre}- runtime '{dependency.group}:{dependency.project}:{dependency.version}'{\n}
+		{loop dependencyGroup.dependencyGroups.keySet as key}
+			{loop dependencyGroup.dependencyGroups.$key as dependency}
+				{if dependencyStatus.first}
+					### {key} dependencies{\n}{\n}
+				{endif}
+				{pre    pre}- {dependency.group}, {dependency.project}, {dependency.version}: (It may be available on: 
+				[bintray](https://bintray.com/{dependency.group}/maven/{dependency.project}/{dependency.version}/view#files/{dependency.group}/{dependency.project}/{dependency.version}) 
+				[mvn central](http://search.maven.org/#artifactdetails|{dependency.group}|{dependency.project}|{dependency.version}|jar) 
+				[mvn repository](http://mvnrepository.com/artifact/{dependency.group}/{dependency.project}/{dependency.version}) )
+				{\n}
+			{endloop}
+			{\n}
+			{\n}
 		{endloop}
 
 		{\n}
-		which can be found by searching here: [http://mvnrepository.com/](http://mvnrepository.com/) 
-		(and you may need to download their dependencies in turn)
+		**NOTE:** You may need to download any dependencies of the above dependencies in turn{\n}
 	{endif}
 {endif}
