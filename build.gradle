@@ -21,7 +21,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = 'v1.1.1'
+version = 'v1.1.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
