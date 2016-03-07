@@ -14,7 +14,7 @@ plugins {
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
 	id 'com.github.johnrengelman.shadow' version '1.2.2'
-	id 'synapticloop.documentr' version '0.0.5'
+	id 'synapticloop.documentr' version 'v1.1.6'
 }
 
 // textual information for this project
@@ -22,10 +22,10 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = 'v1.1.6'
+version = 'v1.1.7'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 
 // all of the repositories that this project will use
