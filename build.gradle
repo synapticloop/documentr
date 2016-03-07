@@ -10,10 +10,11 @@ plugins {
 	id 'eclipse'
 	id 'maven'
 	id 'maven-publish'
+	id 'com.gradle.plugin-publish' version '0.9.3'
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
 	id 'com.github.johnrengelman.shadow' version '1.2.2'
-	id 'synapticloop.documentr' version '0.0.2'
+	id 'synapticloop.documentr' version '0.0.5'
 }
 
 // textual information for this project
@@ -21,7 +22,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = 'v1.1.4'
+version = 'v1.1.5'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -130,6 +131,19 @@ bintray {
 		repo = 'maven'
 		name = archivesBaseName
 	}
+}
 
+pluginBundle {
+	website = 'https://github.com/synapticloop/documentr'
+	vcsUrl = 'https://github.com/synapticloop/documentr'
+	description = 'documentation (README.md) generator for projects'
+	tags = ['README', 'documentation', 'generator']
+
+	plugins {
+		documentrPlugin {
+			id = 'synapticloop.documentr'
+			displayName = 'Synapticloop Gradle documentr plugin'
+		}
+	}
 }
 

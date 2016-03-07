@@ -4,7 +4,7 @@
 
 
 
-> documentation (README.md) generator for projects - this utilises the templar templating language
+> documentation (README.md) generator for projects
 
 
 
@@ -45,7 +45,9 @@ This is a simple JSON file as show below:
 
 		{ "type":"template", "value":"post-usage.md.templar" },
 
-		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
+		{ "type":"template", "value":"build.gradle.md.templar" },
+
+		{ "type":"markup", "value":"\n#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
@@ -65,6 +67,48 @@ This is a simple JSON file as show below:
 The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand.
 
 The `USAGE.txt` file provides more details of how to structure the `documentr.json` file and is shown below:
+
+
+# Gradle plugin usage
+
+### if you are using gradle < 2.1 - you need to use the following to apply the plugin
+
+```
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.5"
+	}
+}
+
+apply plugin: "synapticloop.documentr"
+
+```
+### if you are using gradle >= 2.1 - you need to use the following to apply the plugin
+
+```
+plugins {
+	id 'synapticloop.documentr' version 'v1.1.5'
+}
+```
+
+### Defaults
+
+By default the plugin looks for a `documentr.json` file in the current directory, you may override this by doing the following:
+
+```
+documentr {
+	directory = '../some/directory/'
+}
+```
+
+
+Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`)
+
 
 #Java command line usage
 
@@ -225,7 +269,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.4</version>
+	<version>v1.1.5</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -255,9 +299,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.4', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.5', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.4', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.5', ext: 'jar')
 }
 ```
 
@@ -265,9 +309,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.4'
+	runtime 'synapticloop:documentr:v1.1.5'
 
-	compile 'synapticloop:documentr:v1.1.4'
+	compile 'synapticloop:documentr:v1.1.5'
 }
 ```
 
@@ -289,6 +333,7 @@ You will also need the dependencies:
 
 ### compile dependencies
 
+  - gradleApi(): this is an internal gradle bound dependency
   - synapticloop, simpleusage, v1.0.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
   - synapticloop, simplelogger, v1.0.7: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
   - synapticloop, templar, v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
@@ -328,7 +373,7 @@ SOFTWARE.
 
 --
 
-> `This README.md file was hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->`[`documentr`](https://github.com/synapticloop/documentr/)
+> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
 

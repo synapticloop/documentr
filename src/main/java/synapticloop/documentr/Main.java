@@ -23,6 +23,7 @@ public class Main {
 		try {
 			generator.generate();
 		} catch (DocumentrException ex) {
+			ex.printStackTrace();
 			SimpleUsage.usageAndExit(ex.getMessage());
 		}
 	}

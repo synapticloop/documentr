@@ -18,7 +18,9 @@
 
 		{ "type":"template", "value":"post-usage.md.templar" },
 
-		{ "type":"markup", "value":"#Java command line usage\n\n```\n" },
+		{ "type":"template", "value":"build.gradle.md.templar" },
+
+		{ "type":"markup", "value":"\n#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
