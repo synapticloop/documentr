@@ -14,7 +14,7 @@ plugins {
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
 	id 'com.github.johnrengelman.shadow' version '1.2.2'
-	id 'synapticloop.documentr' version 'v1.1.6'
+	id 'synapticloop.documentr' version 'v1.1.7'
 }
 
 // textual information for this project
