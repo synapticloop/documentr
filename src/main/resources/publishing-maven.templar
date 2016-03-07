@@ -1,0 +1,33 @@
+{set "true" as allOk}
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "publishing-maven.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	# Dependency Management Maven{\n}
+	{\n}
+	This project publishes artefacts to [Maven Central](https://search.maven.org/){\n}
+	{\n}
+	> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|{group}|{project}|{version}|jar){\n}
+	{\n}
+	## maven setup{\n}
+	{\n}
+	No setup is required{\n}
+	{\n}
+	## gradle setup{\n}
+	{\n}
+	Repository{\n}
+	{\n}
+	```{\n}
+	repositories {{{\n}
+	{\t}mavenCentral(){\n}
+	}{\n}
+	```{\n}
+	{\n}
+	{endif}
+{endif}

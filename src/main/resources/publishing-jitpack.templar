@@ -1,0 +1,43 @@
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "publishing-jitpack.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	# Artefact Publishing - jitpack{\n}
+	{\n}
+	This project publishes artefacts to [jitpack](https://jitpack.io/){\n}
+	{\n}	
+	> Note that the latest version can be found [https://jitpack.io/com/github/{group}/{project}/{version}/](https://jitpack.io/com/github/{group}/{project}/{version}/){\n}
+	{\n}
+	## maven setup{\n}
+	{\n}
+	this comes from the jitpack.io repository, to set up your repository:{\n}
+	{\n}
+	```{\n}
+	<repositories>{\n}
+	{pre  pre}<repository>{\n}
+	{pre    pre}<id>jitpack.io</id>{\n}
+	{pre    pre}<url>https://jitpack.io</url>{\n}
+	{pre  pre}</repository>{\n}
+	</repositories>{\n}
+	```{\n}
+	{\n}
+	{\n}
+	## gradle setup{\n}
+	{\n}
+	Repository{\n}
+	{\n}
+	```{\n}
+	repositories {{{\n}
+	{\t}maven {{{\n}
+	{\t}{\t}url "https://jitpack.io" {\n}
+	{\t}}{\n}
+	}{\n}
+	```{\n}
+	{\n}
+{endif}

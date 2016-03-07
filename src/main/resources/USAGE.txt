@@ -47,8 +47,15 @@ The list of inbuilt templates:
   - badge-shield-io-github-release - generation of a github release version 
         number
   - badge-travis-ci - build status from travis-ci
-  - dependency-management - dependency management information with instructions
-        for maven and gradle
+  - dependencies - Listing out dependencies for the project
+  - publishing-bintray - Information about the publishing of artefacts to the
+        jcenter bintray repository
+  - publishing-github - Information about the publishing of artefacts to the
+        github releases page
+  - publishing-jitpack - Information about the publishing of artefacts to the
+        jitpack repository
+  - publishing-maven - Information about the publishing of artefacts to the
+        maven central repository
   - gradle-build - gradle build instructions
   - gradle-test - gradle test instructions
   - test-warn - warning about running tests, which may consume resources, which

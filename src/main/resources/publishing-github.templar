@@ -1,0 +1,19 @@
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "publishing-github.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	# Artefact Publishing - Github{\n}
+	{\n}
+	This project publishes artefacts to [GitHib](https://github.com/){\n}
+	{\n}
+	> Note that the latest version can be found [https://github.com/{group}/{project}/releases](https://github.com/{group}/{project}/releases){\n}
+	{\n}
+	As such, this is not a repository, but a location to download files from.{\n}
+	{\n}
+{endif}

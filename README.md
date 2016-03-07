@@ -55,7 +55,11 @@ This is a simple JSON file as show below:
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
-		{ "type":"inbuilt", "value":"dependency-management" },
+		{ "type":"inbuilt", "value":"publishing-github" },
+
+		{ "type":"inbuilt", "value":"publishing-maven" },
+
+		{ "type":"inbuilt", "value":"dependencies" },
 
 		{ "type":"inbuilt", "value":"license-mit" },
 
@@ -81,7 +85,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.6"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.8"
 	}
 }
 
@@ -92,7 +96,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version 'v1.1.6'
+	id 'synapticloop.documentr' version 'v1.1.8'
 }
 ```
 
@@ -162,8 +166,15 @@ The list of inbuilt templates:
   - badge-shield-io-github-release - generation of a github release version 
         number
   - badge-travis-ci - build status from travis-ci
-  - dependency-management - dependency management information with instructions
-        for maven and gradle
+  - dependencies - Listing out dependencies for the project
+  - publishing-bintray - Information about the publishing of artefacts to the
+        jcenter bintray repository
+  - publishing-github - Information about the publishing of artefacts to the
+        github releases page
+  - publishing-jitpack - Information about the publishing of artefacts to the
+        jitpack repository
+  - publishing-maven - Information about the publishing of artefacts to the
+        maven central repository
   - gradle-build - gradle build instructions
   - gradle-test - gradle test instructions
   - test-warn - warning about running tests, which may consume resources, which
@@ -221,59 +232,23 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
-# Dependency Management
+# Artefact Publishing - Github
 
-> Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
+This project publishes artefacts to [GitHib](https://github.com/)
+
+> Note that the latest version can be found [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
+
+As such, this is not a repository, but a location to download files from.
+
+# Dependency Management Maven
+
+This project publishes artefacts to [Maven Central](https://search.maven.org/)
+
+> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|v1.1.8|jar)
 
 ## maven setup
 
-this comes from the jcenter bintray, to set up your repository:
-
-```
-<?xml version="1.0" encoding="UTF-8" ?>
-<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <profiles>
-    <profile>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>bintray</name>
-          <url>http://jcenter.bintray.com</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>bintray-plugins</name>
-          <url>http://jcenter.bintray.com</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <id>bintray</id>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>bintray</activeProfile>
-  </activeProfiles>
-</settings>
-```
-
-And now for the dependency
-
-```
-<dependency>
-	<groupId>synapticloop</groupId>
-	<artifactId>documentr</artifactId>
-	<version>v1.1.6</version>
-	<type>jar</type>
-</dependency>
-```
-
+No setup is required
 
 ## gradle setup
 
@@ -281,27 +256,17 @@ Repository
 
 ```
 repositories {
-	maven {
-		url  "http://jcenter.bintray.com" 
-	}
+	mavenCentral()
 }
 ```
 
-or just
-
-```
-repositories {
-	jcenter()
-}
-```
-
-and then include the dependency:
+## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.6', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.8', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.6', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.8', ext: 'jar')
 }
 ```
 
@@ -309,10 +274,21 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.6'
+	runtime 'synapticloop:documentr:v1.1.8'
 
-	compile 'synapticloop:documentr:v1.1.6'
+	compile 'synapticloop:documentr:v1.1.8'
 }
+```
+
+## Dependencies - Maven
+
+```
+<dependency>
+	<groupId>synapticloop</groupId>
+	<artifactId>documentr</artifactId>
+	<version>v1.1.8</version>
+	<type>jar</type>
+</dependency>
 ```
 
 ## Other packages
@@ -333,7 +309,7 @@ You will also need the dependencies:
 
 ### compile dependencies
 
-  - gradleApi(): this is an internal gradle bound dependency
+  - gradleApi(): this is generated by gradle
   - synapticloop, simpleusage, v1.0.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/v1.0.0/view#files/synapticloop/simpleusage/v1.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|v1.0.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/v1.0.0) )
   - synapticloop, simplelogger, v1.0.7: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/v1.0.7/view#files/synapticloop/simplelogger/v1.0.7) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|v1.0.7|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/v1.0.7) )
   - synapticloop, templar, v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )
