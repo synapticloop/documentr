@@ -4,7 +4,6 @@
  * templating language.
  */
 
-
 // list all of the plugins for this project
 plugins {
 	id 'java'
@@ -14,6 +13,7 @@ plugins {
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
 	id 'com.github.johnrengelman.shadow' version '1.2.2'
+	id 'synapticloop.documentr' version '0.0.2'
 }
 
 // textual information for this project
@@ -42,6 +42,7 @@ dependencies {
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
 
+	compile gradleApi()
 	compile 'synapticloop:simpleusage:v1.0.0'
 	compile 'synapticloop:simplelogger:v1.0.7'
 	compile 'synapticloop:templar:v1.1.3'
