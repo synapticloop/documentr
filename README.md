@@ -14,7 +14,7 @@ This project generates a `README.md` file pulling together information from a va
 
 `documentr` makes it easier to include a raft of documentation without having to generate multiple files by hand.
 
-For this `README.md` file, the only files that are hand-written is this file `pre-usage.md.templar`, and the subsequent one `post-usage.md.templar`, all other information is generated from the `documentr.json` file in the root of this project.
+For this `README.md` file, the only files that are hand-written are the `pre-usage.md.templar`, `post-usage.md.templar`, and build.gradle.md.templar files. All other information is generated from the `documentr.json` file in the root of this project.
 
 
 ## The `documentr.json` file
@@ -81,7 +81,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.5"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.6"
 	}
 }
 
@@ -92,7 +92,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version 'v1.1.5'
+	id 'synapticloop.documentr' version 'v1.1.6'
 }
 ```
 
@@ -269,7 +269,7 @@ And now for the dependency
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.5</version>
+	<version>v1.1.6</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -299,9 +299,9 @@ and then include the dependency:
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.5', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.6', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.5', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.6', ext: 'jar')
 }
 ```
 
@@ -309,9 +309,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.5'
+	runtime 'synapticloop:documentr:v1.1.6'
 
-	compile 'synapticloop:documentr:v1.1.5'
+	compile 'synapticloop:documentr:v1.1.6'
 }
 ```
 
