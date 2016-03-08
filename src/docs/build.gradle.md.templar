@@ -1,6 +1,11 @@
 {\n}
 # Gradle plugin usage{\n}
 {\n}
+{\n}
+Include the plugin and simply run:{\n}
+{\n}
+`gradle documentr`{\n}
+{\n}
 ### if you are using gradle < 2.1 - you need to use the following to apply the plugin{\n}
 {\n}
 ```{\n}

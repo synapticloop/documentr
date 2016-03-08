@@ -19,6 +19,6 @@
 	{\n}
 	For example:{\n}
 	{\n}
-	```{group}-{version}.jar -> {group}-{version}-all.jar`{\n}
+	```{project}-{version}.jar -> {project}-{version}-all.jar```{\n}
 	{\n}
 {endif}

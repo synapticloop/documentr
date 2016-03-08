@@ -7,5 +7,5 @@
 	{set "badge-shield-io-github-release.templar" as template}
 	{import classpath:/includes/missing-variables.templar}
 {else}
-	[![GitHub Release](https://img.shields.io/github/release/{group}/{project}.svg)](https://github.com/{group}/{project}/releases)
+	[![GitHub Release](https://img.shields.io/github/release/{group}/{project}.svg)](https://github.com/{group}/{project}/releases) 
 {endif}

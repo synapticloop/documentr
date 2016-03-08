@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr)[![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases)
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.1.11-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 # documentr
 
@@ -8,44 +8,49 @@
 
 
 
-# Usage
+A lot of project documentation is just plain incorrect, mainly due to the fact that it is hard to keep up to date.  Furthermore, there are different levels of documentation required for the novice to the expert.  Making your project as easy as possible to set up and integrate helps everybody.
 
-This project generates a `README.md` file pulling together information from a variety of sources.  A lot of project documentation is repetitive, hard to generate, contains information that is hard-coded, or is just plain missing or wrong.
+Making documentation hard to update reduces the likelihood that it will be kept up-to-date at all. Consequently, this project easily generates a `README.md` file pulling together information from a variety of sources (files, templates, in-built resources and in-line mark-up), making it easier to include a raft of information without having to generate multiple files by hand.
 
-`documentr` makes it easier to include a raft of documentation without having to generate multiple files by hand.
+For this `README.md` file, the only files that are hand-written are the `pre-usage.md.templar`, `post-usage.md.templar`, and `build.gradle.md.templar` files. All other information is generated from the `documentr.json` file in the root of this project.
 
-For this `README.md` file, the only files that are hand-written are the `pre-usage.md.templar`, `post-usage.md.templar`, and build.gradle.md.templar files. All other information is generated from the `documentr.json` file in the root of this project.
+# Getting Started
 
+In order to generate the `README.md` file a file named `documentr.json` needs to be included in the root of the project
+
+`documentr` may be invoked either through the main class `synapticloop.documentr.Main` or through the gradle plugin mechanism - see the information below.
 
 ## The `documentr.json` file
 
 This is a simple JSON file as show below:
 
-*in fact - the following file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*
-
 
 ```
 {
 	"context": {
-		"dependencyLocation": "bintray"
+		"pluginId": "synapticloop.documentr"
 	},
 	"templates": [
 		{ "type":"inbuilt", "value":"badge-travis-ci" },
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
+		{ "type":"inbuilt", "value":"badge-shield-io-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
-		{ "type":"template", "value":"pre-usage.md.templar" },
+		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
 
-		{ "type":"markup", "value":"\n```\n" },
-		{ "type":"file", "value":"documentr.json" },
-		{ "type":"markup", "value":"\n```\n" },
+		{ "type": "markup", "value": "## The `documentr.json` file\n\n" },
+		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
+		{ "type": "markup", "value":"\n```\n" },
+		{ "type": "file", "value":"documentr.json" },
+		{ "type": "markup", "value":"\n```\n" },
+		{ "type": "markup", "value":"> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*\n\n" },
 
-		{ "type":"template", "value":"post-usage.md.templar" },
+		{ "type":"template", "value":"src/docs/post-usage.md.templar" },
 
-		{ "type":"template", "value":"build.gradle.md.templar" },
+		{ "type":"template", "value":"src/docs/build.gradle.md.templar" },
 
 		{ "type":"markup", "value":"\n#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
@@ -56,8 +61,8 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
 		{ "type":"inbuilt", "value":"publishing-github" },
-
 		{ "type":"inbuilt", "value":"publishing-maven" },
+		{ "type":"inbuilt", "value":"publishing-all-in-one-jar" },
 
 		{ "type":"inbuilt", "value":"dependencies" },
 
@@ -67,13 +72,20 @@ This is a simple JSON file as show below:
 	]
 }
 ```
+> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*
 
-The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand.
+
+The above file generated this complete `README.md` file, while only requiring 3 files to be created by hand.
 
 The `USAGE.txt` file provides more details of how to structure the `documentr.json` file and is shown below:
 
 
 # Gradle plugin usage
+
+
+Include the plugin and simply run:
+
+`gradle documentr`
 
 ### if you are using gradle < 2.1 - you need to use the following to apply the plugin
 
@@ -85,7 +97,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.1.10"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.1.11"
 	}
 }
 
@@ -96,7 +108,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.1.10'
+	id 'synapticloop.documentr' version '1.1.11'
 }
 ```
 
@@ -162,8 +174,12 @@ The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
         README.md file
+  - all-in-one-jar - where an artefact is generated with all dependencies 
+        contained within the jar
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
+        number
+  - badge-shield-io-gradle-plugin - generation of a gradle plugin version release
         number
   - badge-travis-ci - build status from travis-ci
   - dependencies - Listing out dependencies for the project
@@ -211,9 +227,52 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 # Logging
 
-slf4j is the logging framework used for this project.  In order to use a logging framework with this project, sample configurations are below:
+slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
 
 ## Log4j
+
+
+You will need to include dependencies for this - note that the versions may need to be updated.
+
+### Maven
+
+```
+<dependency>
+	<groupId>org.apache.logging.log4j</groupId>
+	<artifactId>log4j-slf4j-impl</artifactId>
+	<version>2.5</version>
+	<scope>runtime</scope>
+</dependency>
+
+<dependency>
+	<groupId>org.apache.logging.log4j</groupId>
+	<artifactId>log4j-core</artifactId>
+	<version>2.5</version>
+	<scope>runtime</scope>
+</dependency>
+
+```
+
+### Gradle < 2.1
+
+```dependencies {
+	...
+	runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar')
+	runtime(group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5', ext: 'jar')
+	...
+}
+```
+### Gradle >= 2.1
+
+```
+	...
+	runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'
+	runtime 'org.apache.logging.log4j:log4j-core:2.5'
+	...
+```
+
+
+### Setting up the logging:
 
 A sample `log4j2.xml` is below:
 
@@ -244,7 +303,7 @@ As such, this is not a repository, but a location to download files from.
 
 This project publishes artefacts to [Maven Central](https://search.maven.org/)
 
-> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|1.1.10|jar)
+> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|1.1.11|jar)
 
 ## maven setup
 
@@ -260,13 +319,24 @@ repositories {
 }
 ```
 
+
+# All-In-One
+
+This project's artefact output is an 'all in one' jar which includes all runtime dependencies.
+
+This should appear in the artefact repository along with the compiled code, as a convention, this is usually appended with an `-all` classifier
+
+For example:
+
+```documentr-1.1.11.jar -> documentr-1.1.11-all.jar```
+
 ## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.1.10', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.1.11', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.1.10', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.1.11', ext: 'jar')
 }
 ```
 
@@ -274,9 +344,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.1.10'
+	runtime 'synapticloop:documentr:1.1.11'
 
-	compile 'synapticloop:documentr:1.1.10'
+	compile 'synapticloop:documentr:1.1.11'
 }
 ```
 
@@ -286,7 +356,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.1.10</version>
+	<version>1.1.11</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -294,7 +364,6 @@ dependencies {
 ## Other packages
 
 
-You may either download the files from [https://bintray.com/synapticloop/maven/documentr/](https://bintray.com/synapticloop/maven/documentr/) or from [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
 
 You will also need the dependencies:
 
@@ -353,3 +422,4 @@ SOFTWARE.
 
 --
 
+ 

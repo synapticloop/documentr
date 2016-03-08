@@ -1,0 +1,11 @@
+{set "true" as allOk}
+
+{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+{if fn:null[pluginId]}{set "false" as allOk}MISSING variable `pluginId` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "badge-shield-io-gradle-plugin.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	[![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-{version}-blue.svg)](https://plugins.gradle.org/plugin/{pluginId}) 
+{endif}

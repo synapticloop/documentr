@@ -7,5 +7,5 @@
 	{set "badge-bintray.templar" as template}
 	{import classpath:/includes/missing-variables.templar}
 {else}
-	[![Download](https://api.bintray.com/packages/{group}/maven/{project}/images/download.svg)](https://bintray.com/{group}/maven/{project}/_latestVersion)
+	[![Download](https://api.bintray.com/packages/{group}/maven/{project}/images/download.svg)](https://bintray.com/{group}/maven/{project}/_latestVersion) 
 {endif}

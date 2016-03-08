@@ -43,13 +43,15 @@ The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
         README.md file
-  - all-in-one-jar - where an artefact is generated with all dependencies 
-        contained within the jar
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
         number
+  - badge-shield-io-gradle-plugin - generation of a gradle plugin version release
+        number
   - badge-travis-ci - build status from travis-ci
   - dependencies - Listing out dependencies for the project
+  - publishing-all-in-one-jar - where an artefact is generated with all 
+        dependencies contained within the jar
   - publishing-bintray - Information about the publishing of artefacts to the
         jcenter bintray repository
   - publishing-github - Information about the publishing of artefacts to the

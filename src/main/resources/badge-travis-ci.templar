@@ -7,5 +7,5 @@
 	{set "badge-travis-ci.templar" as template}
 	{import classpath:/includes/missing-variables.templar}
 {else}
-	[![Build Status](https://travis-ci.org/{group}/{project}.svg?branch=master)](https://travis-ci.org/{group}/{project})
+	[![Build Status](https://travis-ci.org/{group}/{project}.svg?branch=master)](https://travis-ci.org/{group}/{project}) 
 {endif}

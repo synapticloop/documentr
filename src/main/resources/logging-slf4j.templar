@@ -1,6 +1,6 @@
 # Logging{\n}
 {\n}
-slf4j is the logging framework used for this project.  In order to use a 
+slf4j is the logging framework used for this project.  In order to set up a 
 logging framework with this project, sample configurations are below:{\n}
 {\n}
 ## Log4j{\n}
@@ -11,6 +11,7 @@ to be updated.{\n}
 {\n}
 ### Maven{\n}
 {\n}
+```{\n}
 <dependency>{\n}
 {\t}<groupId>org.apache.logging.log4j</groupId>{\n}
 {\t}<artifactId>log4j-slf4j-impl</artifactId>{\n}
