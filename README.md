@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.1.11-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.1.12-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 # documentr
 
@@ -61,10 +61,11 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
 		{ "type":"inbuilt", "value":"publishing-github" },
-		{ "type":"inbuilt", "value":"publishing-maven" },
-		{ "type":"inbuilt", "value":"publishing-all-in-one-jar" },
+		{ "type":"inbuilt", "value":"publishing-bintray" },
 
 		{ "type":"inbuilt", "value":"dependencies" },
+
+		{ "type":"inbuilt", "value":"publishing-all-in-one-jar" },
 
 		{ "type":"inbuilt", "value":"license-mit" },
 
@@ -97,7 +98,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.1.11"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.1.12"
 	}
 }
 
@@ -108,7 +109,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.1.11'
+	id 'synapticloop.documentr' version '1.1.12'
 }
 ```
 
@@ -174,8 +175,6 @@ The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
         README.md file
-  - all-in-one-jar - where an artefact is generated with all dependencies 
-        contained within the jar
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
         number
@@ -183,6 +182,8 @@ The list of inbuilt templates:
         number
   - badge-travis-ci - build status from travis-ci
   - dependencies - Listing out dependencies for the project
+  - publishing-all-in-one-jar - where an artefact is generated with all 
+        dependencies contained within the jar
   - publishing-bintray - Information about the publishing of artefacts to the
         jcenter bintray repository
   - publishing-github - Information about the publishing of artefacts to the
@@ -253,16 +254,17 @@ You will need to include dependencies for this - note that the versions may need
 
 ```
 
-### Gradle < 2.1
+### Gradle &lt; 2.1
 
-```dependencies {
+```
+dependencies {
 	...
 	runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar')
 	runtime(group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5', ext: 'jar')
 	...
 }
 ```
-### Gradle >= 2.1
+### Gradle &gt;= 2.1
 
 ```
 	...
@@ -299,15 +301,49 @@ This project publishes artefacts to [GitHib](https://github.com/)
 
 As such, this is not a repository, but a location to download files from.
 
-# Dependency Management Maven
+# Artefact Publishing - Bintray
 
-This project publishes artefacts to [Maven Central](https://search.maven.org/)
+This project publishes artefacts to [bintray](https://bintray.com/)
 
-> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|1.1.11|jar)
+> Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
 
 ## maven setup
 
-No setup is required
+this comes from the jcenter bintray, to set up your repository:
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>bintray</name>
+          <url>http://jcenter.bintray.com</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>bintray-plugins</name>
+          <url>http://jcenter.bintray.com</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>bintray</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>bintray</activeProfile>
+  </activeProfiles>
+</settings>
+```
 
 ## gradle setup
 
@@ -315,28 +351,27 @@ Repository
 
 ```
 repositories {
-	mavenCentral()
+	maven {
+		url  "http://jcenter.bintray.com" 
+	}
 }
 ```
 
+or just
 
-# All-In-One
-
-This project's artefact output is an 'all in one' jar which includes all runtime dependencies.
-
-This should appear in the artefact repository along with the compiled code, as a convention, this is usually appended with an `-all` classifier
-
-For example:
-
-```documentr-1.1.11.jar -> documentr-1.1.11-all.jar```
+```
+repositories {
+	jcenter()
+}
+```
 
 ## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.1.11', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.1.12', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.1.11', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.1.12', ext: 'jar')
 }
 ```
 
@@ -344,9 +379,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.1.11'
+	runtime 'synapticloop:documentr:1.1.12'
 
-	compile 'synapticloop:documentr:1.1.11'
+	compile 'synapticloop:documentr:1.1.12'
 }
 ```
 
@@ -356,7 +391,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.1.11</version>
+	<version>1.1.12</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -388,6 +423,17 @@ You will also need the dependencies:
 
 
 **NOTE:** You may need to download any dependencies of the above dependencies in turn
+
+# All-In-One
+
+This project's artefact output is an 'all in one' jar which includes all runtime dependencies.
+
+This should appear in the artefact repository along with the compiled code, as a convention, this is usually appended with an `-all` classifier
+
+For example:
+
+```documentr-1.1.12.jar -> documentr-1.1.12-all.jar```
+
 
 # License
 
@@ -422,4 +468,3 @@ SOFTWARE.
 
 --
 
- 

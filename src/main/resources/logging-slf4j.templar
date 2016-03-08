@@ -28,9 +28,9 @@ to be updated.{\n}
 {\n}
 ```{\n}
 {\n}
-### Gradle < 2.1{\n}
+### Gradle &lt; 2.1{\n}
 {\n}
-```
+```{\n}
 dependencies {{{\n}
 {\t}...{\n}
 {\t}runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar'){\n}
@@ -39,7 +39,7 @@ dependencies {{{\n}
 }{\n}
 ```
 {\n}
-### Gradle >= 2.1{\n}
+### Gradle &gt;= 2.1{\n}
 {\n}
 ```{\n}
 {\t}...{\n}
