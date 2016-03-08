@@ -1,4 +1,4 @@
-# Logging{\n}
+# Logging - slf4j{\n}
 {\n}
 slf4j is the logging framework used for this project.  In order to set up a 
 logging framework with this project, sample configurations are below:{\n}

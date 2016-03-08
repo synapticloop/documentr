@@ -43,17 +43,9 @@
 
 
 	{if fn:notNull[dependencyGroup]}
-		## Other packages{\n}
+		## Dependencies - Downloads{\n}
 		{\n}
-	{endif}
-	{\n}
-	{if fn:notNull[dependencyLocation]}
-		{if fn:=[dependencyLocation, "bintray"}
-			You may either download the files from [https://bintray.com/{group}/maven/{project}/](https://bintray.com/{group}/maven/{project}/) or from [https://github.com/{group}/{project}/releases](https://github.com/{group}/{project}/releases){\n}
-		{endif}
-	{endif}
-	{\n}
-	{if fn:notNull[dependencyGroup]}
+		{\n}
 		You will also need the dependencies:{\n}
 		{\n}
 		{loop dependencyGroup.dependencyGroups.keySet as key}

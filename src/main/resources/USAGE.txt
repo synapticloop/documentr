@@ -4,6 +4,11 @@ engine.
 Usage:
     java -jar documentr-all.jar <directory>
 
+Where:
+    <directory> is an optional argument for which directory to look for the
+        documentr.json file and generate the README.md.  This defaults to 
+        the current working directory
+
 This will look for a documentr.json file in the directory, parse it, collate 
 the associated resources and generate the documentation.
 

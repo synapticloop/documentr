@@ -9,17 +9,24 @@ import synapticloop.util.SimpleUsage;
 public class Main {
 
 	public static void main(String[] args) {
-		if(args.length != 1) {
-			SimpleUsage.usageAndExit(null);
+		String directory = ".";
+		switch(args.length) {
+		case 0:
+			// using the current directory
+			break;
+		case 1:
+			if("--help".equals(args[0])) {
+				SimpleUsage.usageAndExit(null);
+			} else {
+				directory = args[0];
+			}
+		default:
+			SimpleUsage.usageAndExit("Incorrect arguments");
 		}
 
-		String option = args[0];
-		if("--help".equals(option)) {
-			SimpleUsage.usageAndExit(null);
-		}
-
-		File rootDirectory = new File(option);
+		File rootDirectory = new File(directory);
 		Generator generator = new Generator(rootDirectory);
+
 		try {
 			generator.generate();
 		} catch (DocumentrException ex) {
