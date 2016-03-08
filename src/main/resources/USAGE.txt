@@ -43,6 +43,8 @@ The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
         README.md file
+  - all-in-one-jar - where an artefact is generated with all dependencies 
+        contained within the jar
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
         number

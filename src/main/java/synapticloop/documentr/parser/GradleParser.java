@@ -9,10 +9,10 @@ import org.apache.commons.io.FileUtils;
 
 import synapticloop.documentr.bean.DependencyGroup;
 import synapticloop.templar.utils.TemplarContext;
-import synapticloop.util.SimpleLogger;
+import synapticloop.util.simplelogger.Logger;
 
 public class GradleParser {
-	private static final SimpleLogger LOGGER = SimpleLogger.getLoggerSimpleName(GradleParser.class);
+	private static final Logger LOGGER = Logger.getLoggerSimpleName(GradleParser.class);
 
 	public GradleParser(TemplarContext templarContext, File file) {
 		if(file.exists() && file.canRead() && file.isFile()) {

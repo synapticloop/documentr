@@ -1,0 +1,24 @@
+{set "true" as allOk}
+
+{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "dependency-management.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	{\n}
+	# All-In-One{\n}
+	{\n}
+	This project's artefact output is an 'all in one' jar which includes all 
+	runtime dependencies.{\n}
+	{\n}
+	This should appear in the artefact repository along with the compiled code, 
+	as a convention, this is usually appended with an `-all` classifier{\n}
+	{\n}
+	For example:{\n}
+	{\n}
+	```{group}-{version}.jar -> {group}-{version}-all.jar`{\n}
+	{\n}
+{endif}

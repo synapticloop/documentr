@@ -5,6 +5,51 @@ logging framework with this project, sample configurations are below:{\n}
 {\n}
 ## Log4j{\n}
 {\n}
+{\n}
+You will need to include dependencies for this - note that the versions may need 
+to be updated.{\n}
+{\n}
+### Maven{\n}
+{\n}
+<dependency>{\n}
+{\t}<groupId>org.apache.logging.log4j</groupId>{\n}
+{\t}<artifactId>log4j-slf4j-impl</artifactId>{\n}
+{\t}<version>2.5</version>{\n}
+{\t}<scope>runtime</scope>{\n}
+</dependency>{\n}
+{\n}
+<dependency>{\n}
+{\t}<groupId>org.apache.logging.log4j</groupId>{\n}
+{\t}<artifactId>log4j-core</artifactId>{\n}
+{\t}<version>2.5</version>{\n}
+{\t}<scope>runtime</scope>{\n}
+</dependency>{\n}
+{\n}
+```{\n}
+{\n}
+### Gradle < 2.1{\n}
+{\n}
+```
+dependencies {{{\n}
+{\t}...{\n}
+{\t}runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar'){\n}
+{\t}runtime(group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5', ext: 'jar'){\n}
+{\t}...{\n}
+}{\n}
+```
+{\n}
+### Gradle >= 2.1{\n}
+{\n}
+```{\n}
+{\t}...{\n}
+{\t}runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'{\n}
+{\t}runtime 'org.apache.logging.log4j:log4j-core:2.5'{\n}
+{\t}...{\n}
+```{\n}
+{\n}
+{\n}
+### Setting up the logging:{\n}
+{\n}
 A sample `log4j2.xml` is below:{\n}
 {\n}
 ```{\n}
