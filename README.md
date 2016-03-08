@@ -85,7 +85,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:v1.1.8"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.1.9"
 	}
 }
 
@@ -96,7 +96,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version 'v1.1.8'
+	id 'synapticloop.documentr' version '1.1.9'
 }
 ```
 
@@ -244,7 +244,7 @@ As such, this is not a repository, but a location to download files from.
 
 This project publishes artefacts to [Maven Central](https://search.maven.org/)
 
-> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|v1.1.8|jar)
+> Note that the latest version can be found [mvn central](http://search.maven.org/#artifactdetails|synapticloop|documentr|1.1.9|jar)
 
 ## maven setup
 
@@ -264,9 +264,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: 'v1.1.8', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.1.9', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: 'v1.1.8', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.1.9', ext: 'jar')
 }
 ```
 
@@ -274,9 +274,9 @@ or, more simply for versions of gradle greater than 2.4
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:v1.1.8'
+	runtime 'synapticloop:documentr:1.1.9'
 
-	compile 'synapticloop:documentr:v1.1.8'
+	compile 'synapticloop:documentr:1.1.9'
 }
 ```
 
@@ -286,7 +286,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>v1.1.8</version>
+	<version>1.1.9</version>
 	<type>jar</type>
 </dependency>
 ```
