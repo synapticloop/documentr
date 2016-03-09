@@ -94,7 +94,7 @@ public class Generator {
 
 					String type = templateObject.getString(TYPE);
 					if(!TYPE_LOOKUP.containsKey(type)) {
-						throw new DocumentrException(String.format("Unknown type of '{}'", type));
+						throw new DocumentrException(String.format("Unknown type of '%s'", type));
 					}
 
 					String pathname = documentrJsonFile.getParent() + "/" + templateObject.getString(VALUE);
@@ -125,7 +125,7 @@ public class Generator {
 						stringBuilder.append(".templar}\n");
 						break;
 					default:
-						throw new DocumentrException(String.format("Could not determine type {}", type));
+						throw new DocumentrException(String.format("Could not determine type %s", type));
 					}
 				}
 
@@ -138,7 +138,6 @@ public class Generator {
 				FileUtils.writeStringToFile(new File(documentrJsonFile.getParent() + "/README.md"), parser.render(templarContext));
 
 			} catch (IOException | ParseException | RenderException ex) {
-				ex.printStackTrace();
 				throw new DocumentrException("Cannot parse/render the documentr.json file, message was: " + ex.getMessage(), ex);
 			}
 		} else {

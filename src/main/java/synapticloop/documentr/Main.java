@@ -9,7 +9,6 @@ import synapticloop.util.SimpleUsage;
 public class Main {
 // wtf
 	public static void main(String[] args) {
-		System.out.println("asdlkj");
 		String directory = ".";
 		switch(args.length) {
 		case 0:

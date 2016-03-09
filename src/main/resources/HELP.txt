@@ -44,20 +44,11 @@ The list of inbuilt templates:
         number
   - badge-travis-ci - build status from travis-ci
   - dependencies - Listing out all of the dependencies for the project
-  - publishing-all-in-one-jar - where an artefact is generated with all 
-        dependencies contained within the jar
-  - publishing-bintray - Information about the publishing of artefacts to the
-        jcenter bintray repository
-  - publishing-github - Information about the publishing of artefacts to the
-        github releases page
-  - publishing-jitpack - Information about the publishing of artefacts to the
-        jitpack repository
-  - publishing-maven - Information about the publishing of artefacts to the
-        maven central repository
+  - dumpcontext - for debugging, this will dump the available context items to
+        the output
   - gradle-build - gradle build instructions
   - gradle-test - gradle test instructions
-  - test-warn - warning about running tests, which may consume resources, which
-        may lead to a cost
+  - jvm-compatability - Output a JVM compatability notice
   - license-apache-2.0 - the standard Apache 2.0 license
   - license-bsd-2-clause - the BSD 2 Clause license
   - license-bsd-3-clause - the BSD 3 Clause license
@@ -66,4 +57,18 @@ The list of inbuilt templates:
         and information on how to set up various other loggers to utilise it 
   - project-description - the description of the project
   - project-name - the name of the project as an h1 markdown
+  - publishing-all-in-one-jar - where an artefact is generated with all 
+        dependencies contained within the jar
+  - publishing-bintray - Information about the publishing of artefacts to the
+        jcenter bintray repository
+  - publishing-github - Information about the publishing of artefacts to the
+        github releases page
+  - publishing-gradle-plugin - Information about the publishing of artefacts to 
+        the gradle plugins repository
+  - publishing-jitpack - Information about the publishing of artefacts to the
+        jitpack repository
+  - publishing-maven - Information about the publishing of artefacts to the
+        maven central repository
+  - test-warn - warning about running tests, which may consume resources, which
+        may lead to a cost
 
