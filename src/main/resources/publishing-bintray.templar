@@ -1,8 +1,8 @@
 {set "true" as allOk}
 
-{if fn:null[archivesBaseName]}{set "false" as allOk}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
-{if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
-{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
+{if fn:null[archivesBaseName]}{set "false" as allOk}{\n}{\n}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}{\n}{\n}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}{\n}{\n}MISSING variable `version` in the context{\n}{\n}{endif}
 
 {if fn:=[allOk, "false"]}
 	{set "publishing-bintray.templar" as template}

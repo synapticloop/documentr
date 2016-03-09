@@ -1,6 +1,6 @@
 {set "true" as allOk}
 
-{if fn:null[sourceCompatibility]}{set "false" as allOk}MISSING variable `sourceCompatibility` in the context{\n}{\n}{endif}
+{if fn:null[sourceCompatibility]}{set "false" as allOk}{\n}{\n}MISSING variable `sourceCompatibility` in the context{\n}{\n}{endif}
 
 {if fn:=[allOk, "false"]}
 	{set "jvm-compatability.templar" as template}

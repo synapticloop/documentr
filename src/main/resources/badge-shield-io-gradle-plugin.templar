@@ -1,7 +1,7 @@
 {set "true" as allOk}
 
-{if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
-{if fn:null[pluginId]}{set "false" as allOk}MISSING variable `pluginId` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}{\n}{\n}MISSING variable `version` in the context{\n}{\n}{endif}
+{if fn:null[pluginId]}{set "false" as allOk}{\n}{\n}MISSING variable `pluginId` in the context{\n}{\n}{endif}
 
 {if fn:=[allOk, "false"]}
 	{set "badge-shield-io-gradle-plugin.templar" as template}
