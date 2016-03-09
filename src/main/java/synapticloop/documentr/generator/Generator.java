@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 
 import org.apache.commons.io.FileUtils;
@@ -26,6 +28,21 @@ import synapticloop.templar.utils.TemplarContext;
 public class Generator {
 	private static final String VALUE = "value";
 	private static final String TYPE = "type";
+
+	private static final int TYPE_FILE = 1;
+	private static final int TYPE_INBUILT = 0;
+	private static final int TYPE_TEMPLAR = 2;
+	private static final int TYPE_TEMPLATE = 3;
+	private static final int TYPE_MARKUP = 4;
+
+	private static final Map<String, Integer> TYPE_LOOKUP = new HashMap<String, Integer>();
+	static {
+		TYPE_LOOKUP.put("inbuilt", TYPE_INBUILT);
+		TYPE_LOOKUP.put("file", TYPE_FILE);
+		TYPE_LOOKUP.put("templar", TYPE_TEMPLAR);
+		TYPE_LOOKUP.put("template", TYPE_TEMPLATE);
+		TYPE_LOOKUP.put("markup", TYPE_MARKUP);
+	}
 
 	private Project project;
 	private final File rootDirectory;
@@ -74,24 +91,41 @@ public class Generator {
 
 				for (Object object : jsonArray) {
 					JSONObject templateObject = (JSONObject)object;
-					if("inbuilt".equals(templateObject.getString(TYPE))) {
-						stringBuilder.append("{import classpath:/");
-						stringBuilder.append(templateObject.getString(VALUE));
-						stringBuilder.append(".templar}\n");
-					} else if("file".equals(templateObject.getString(TYPE))) {
+
+					String type = templateObject.getString(TYPE);
+					if(!TYPE_LOOKUP.containsKey(type)) {
+						throw new DocumentrException(String.format("Unknown type of '{}'", type));
+					}
+
+					String pathname = documentrJsonFile.getParent() + "/" + templateObject.getString(VALUE);
+					switch(TYPE_LOOKUP.get(type)) {
+					case TYPE_FILE:
 						stringBuilder.append("{pre\n");
-						stringBuilder.append(FileUtils.readFileToString(new File(documentrJsonFile.getParent() + "/" + templateObject.getString(VALUE))));
+						stringBuilder.append(FileUtils.readFileToString(new File(pathname)));
 						stringBuilder.append("\npre}\n");
-					} else if("markup".equals(templateObject.getString(TYPE))) {
+						break;
+					case TYPE_MARKUP:
 						stringBuilder.append("\n");
 						stringBuilder.append(templateObject.getString(VALUE).replaceAll("\\{", "\\{\\{").replaceAll("\\n", "\\{\\\\n\\}").replaceAll("\\t", "\\{\\\\t\\}"));
 						stringBuilder.append("\n");
-					} else if("template".equals(templateObject.getString(TYPE))) {
+						break;
+					case TYPE_TEMPLATE:
 						stringBuilder.append("\n");
 						stringBuilder.append("{import ");
-						stringBuilder.append(documentrJsonFile.getParent() + "/" + templateObject.getString(VALUE));
+						stringBuilder.append(pathname);
 						stringBuilder.append("}\n");
 						stringBuilder.append("\n");
+						break;
+					case TYPE_TEMPLAR:
+						stringBuilder.append(templateObject.getString(VALUE));
+						break;
+					case TYPE_INBUILT:
+						stringBuilder.append("{import classpath:/");
+						stringBuilder.append(templateObject.getString(VALUE));
+						stringBuilder.append(".templar}\n");
+						break;
+					default:
+						throw new DocumentrException(String.format("Could not determine type {}", type));
 					}
 				}
 

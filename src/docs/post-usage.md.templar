@@ -12,6 +12,9 @@ Include the plugin and simply run:{\n}
 {\n}
 `gradle documentr`{\n}
 {\n}
+This will also parse the build file and place various objects into the context 
+that are then available to use in the templar templates.{\n}
+{\n}
 ### For all versions of gradle - you may use the following to apply the plugin{\n}
 {\n}
 ```{\n}
