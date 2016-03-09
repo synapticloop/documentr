@@ -4,6 +4,16 @@
  * templating language.
  */
 
+buildscript {
+	repositories {
+		mavenLocal()
+	}
+
+	dependencies {
+		classpath 'synapticloop:documentr:1.2.0'
+	}
+}
+
 // list all of the plugins for this project
 plugins {
 	id 'java'
@@ -14,15 +24,16 @@ plugins {
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
 	id 'com.github.johnrengelman.shadow' version '1.2.2'
-	id 'synapticloop.documentr' version '1.1.12'
 }
+
+apply plugin: 'synapticloop.documentr'
 
 // textual information for this project
 group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = '1.1.12'
+version = '1.2.0'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -37,14 +48,14 @@ repositories {
 
 // now for all of the dependencies
 dependencies {
-	runtime 'synapticloop:simpleusage:v1.0.0'
+	runtime 'synapticloop:simpleusage:1.1.0'
 	runtime 'synapticloop:simplelogger:1.1.0'
 	runtime 'synapticloop:templar:v1.1.3'
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
-
+	
 	compile gradleApi()
-	compile 'synapticloop:simpleusage:v1.0.0'
+	compile 'synapticloop:simpleusage:1.1.0'
 	compile 'synapticloop:simplelogger:1.1.0'
 	compile 'synapticloop:templar:v1.1.3'
 	compile 'commons-io:commons-io:2.4'
@@ -82,7 +93,7 @@ github {
 	]
 }
 
-def javaApiUrl = 'http://docs.oracle.com/javase/1.8.0/docs/api/'
+def javaApiUrl = 'http://docs.oracle.com/javase/1.7.0/docs/api/'
 def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
 
 tasks.withType(Javadoc) {

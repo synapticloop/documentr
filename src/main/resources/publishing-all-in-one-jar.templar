@@ -1,6 +1,6 @@
 {set "true" as allOk}
 
-{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[archivesBaseName]}{set "false" as allOk}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
 {if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
 {if fn:null[version]}{set "false" as allOk}MISSING variable `version` in the context{\n}{\n}{endif}
 
@@ -19,6 +19,6 @@
 	{\n}
 	For example:{\n}
 	{\n}
-	```{project}-{version}.jar -> {project}-{version}-all.jar```{\n}
+	```{archivesBaseName}-{version}.jar -> {archivesBaseName}-{version}-all.jar```{\n}
 	{\n}
 {endif}

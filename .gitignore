@@ -70,5 +70,6 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+hs_err_*.log
 
 #!! ERROR:  is undefined. Use list command to see defined gitignore types !!#

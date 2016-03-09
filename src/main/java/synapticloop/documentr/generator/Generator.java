@@ -2,15 +2,22 @@ package synapticloop.documentr.generator;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
+import java.util.SortedSet;
 
 import org.apache.commons.io.FileUtils;
+import org.gradle.api.Project;
+import org.gradle.api.artifacts.Configuration;
+import org.gradle.api.artifacts.ConfigurationContainer;
+import org.gradle.api.artifacts.DependencySet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import synapticloop.documentr.bean.ConfigurationBean;
 import synapticloop.documentr.exception.DocumentrException;
-import synapticloop.documentr.parser.GradleParser;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
@@ -20,7 +27,35 @@ public class Generator {
 	private static final String VALUE = "value";
 	private static final String TYPE = "type";
 
+	private Project project;
 	private final File rootDirectory;
+	private final TemplarContext templarContext = new TemplarContext();
+	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
+
+	public Generator(Project project, File rootDirectory) {
+		this.project = project;
+		this.rootDirectory = rootDirectory;
+
+		// now go through and initialise the templarcontext
+		ConfigurationContainer configurations = project.getConfigurations();
+		SortedSet<String> configurationNames = configurations.getNames();
+		for (String configurationName : configurationNames) {
+			ConfigurationBean configurationBean = new ConfigurationBean(configurationName);
+			Configuration configuration = configurations.getByName(configurationName);
+			DependencySet dependencySet = configuration.getDependencies();
+			configurationBean.addDependency(dependencySet);
+			configurationBeans.add(configurationBean);
+		}
+
+		templarContext.add("configurations", project.getConfigurations());
+		templarContext.add("configurationBeans", configurationBeans);
+
+		Iterator<String> iterator = project.getProperties().keySet().iterator();
+		while (iterator.hasNext()) {
+			String key = (String) iterator.next();
+			templarContext.add(key, project.getProperties().get(key));
+		}
+	}
 
 	public Generator(File rootDirectory) {
 		this.rootDirectory = rootDirectory;
@@ -60,13 +95,7 @@ public class Generator {
 					}
 				}
 
-				TemplarContext templarContext = new TemplarContext();
 				templarContext.add("yearTo", Calendar.getInstance().get(Calendar.YEAR));
-
-				// now we need to see whether we have a build.gradle
-				File gradleBuildFile = new File(documentrJsonFile.getParent() + "/build.gradle");
-
-				new GradleParser(templarContext, gradleBuildFile);
 
 				// now override
 				overrideContext(templarContext, jsonObject);
@@ -75,7 +104,8 @@ public class Generator {
 				FileUtils.writeStringToFile(new File(documentrJsonFile.getParent() + "/README.md"), parser.render(templarContext));
 
 			} catch (IOException | ParseException | RenderException ex) {
-				throw new DocumentrException("Cannot parse/render the documentr.json file, message was: " + ex.getMessage());
+				ex.printStackTrace();
+				throw new DocumentrException("Cannot parse/render the documentr.json file, message was: " + ex.getMessage(), ex);
 			}
 		} else {
 			throw new DocumentrException("Cannot find the documentr.json file.");

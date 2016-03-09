@@ -7,8 +7,9 @@ import synapticloop.documentr.generator.Generator;
 import synapticloop.util.SimpleUsage;
 
 public class Main {
-
+// wtf
 	public static void main(String[] args) {
+		System.out.println("asdlkj");
 		String directory = ".";
 		switch(args.length) {
 		case 0:
@@ -16,10 +17,11 @@ public class Main {
 			break;
 		case 1:
 			if("--help".equals(args[0])) {
-				SimpleUsage.usageAndExit(null);
+				SimpleUsage.helpAndExit();
 			} else {
 				directory = args[0];
 			}
+			break;
 		default:
 			SimpleUsage.usageAndExit("Incorrect arguments");
 		}
@@ -30,8 +32,7 @@ public class Main {
 		try {
 			generator.generate();
 		} catch (DocumentrException ex) {
-			ex.printStackTrace();
-			SimpleUsage.usageAndExit(ex.getMessage());
+			SimpleUsage.usageAndExit(ex);
 		}
 	}
 

@@ -6,4 +6,8 @@ public class DocumentrException extends Exception {
 	public DocumentrException(String message) {
 		super(message);
 	}
+
+	public DocumentrException(String message, Throwable throwable) {
+		super(message, throwable);
+	}
 }

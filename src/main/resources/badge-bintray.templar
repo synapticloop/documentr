@@ -1,11 +1,11 @@
 {set "true" as allOk}
 
-{if fn:null[project]}{set "false" as allOk}MISSING variable `project` in the context{\n}{\n}{endif}
+{if fn:null[archivesBaseName]}{set "false" as allOk}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
 {if fn:null[group]}{set "false" as allOk}MISSING variable `group` in the context{\n}{\n}{endif}
 
 {if fn:=[allOk, "false"]}
 	{set "badge-bintray.templar" as template}
 	{import classpath:/includes/missing-variables.templar}
 {else}
-	[![Download](https://api.bintray.com/packages/{group}/maven/{project}/images/download.svg)](https://bintray.com/{group}/maven/{project}/_latestVersion) 
+	[![Download](https://api.bintray.com/packages/{group}/maven/{archivesBaseName}/images/download.svg)](https://bintray.com/{group}/maven/{archivesBaseName}/_latestVersion) 
 {endif}

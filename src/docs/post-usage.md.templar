@@ -1,4 +1,66 @@
 {\n}
-The above file generated this complete `README.md` file, while only requiring 3 
+The above file generated this complete `README.md` file, while only requiring 2 
 files to be created by hand.{\n}
+{\n}
+{\n}
+## Step 2 - generate the `README.md` file{\n}
+
+### Gradle plugin usage{\n}
+{\n}
+{\n}
+Include the plugin and simply run:{\n}
+{\n}
+`gradle documentr`{\n}
+{\n}
+### For all versions of gradle - you may use the following to apply the plugin{\n}
+{\n}
+```{\n}
+buildscript {{{\n}
+{\t}repositories {{{\n}
+{\t}{\t}maven {{{\n}
+{\t}{\t}{\t}url "https://plugins.gradle.org/m2/"{\n}
+{\t}{\t}}{\n}
+{\t}}{\n}
+{\t}dependencies {{{\n}
+{\t}{\t}classpath "gradle.plugin.synapticloop.documentr:documentr:{version}"{\n}
+{\t}}{\n}
+}{\n}
+{\n}
+apply plugin: "synapticloop.documentr"{\n}
+{\n}
+```{\n}
+### if you are using gradle >= 2.1 - you may use the shorthand format to apply the plugin{\n}
+{\n}
+```{\n}
+plugins {{{\n}
+{\t}id 'synapticloop.documentr' version '{version}'{\n}
+}{\n}
+```{\n}
+{\n}
+### Defaults{\n}
+{\n}
+By default the plugin looks for a `documentr.json` file in the current directory, 
+you may override this by doing the following:{\n}
+{\n}
+```{\n}
+documentr {{{\n}
+{\t}directory = '../some/directory/'{\n}
+}{\n}
+```{\n}
+{\n}
+{\n}
+Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`){\n}
+{\n}
+### Java command line usage{\n}
+{\n}
+simply run{\n}
+{\n}
+{\n}
+```{\n}
+java -jar {archivesBaseName}-{version}-all.jar"{\n}
+```{\n}
+{\n}
+By default this will generate the `README.md` file looking at the current 
+directory for a `documentr.json` file.{\n}
+{\n}
 {\n}

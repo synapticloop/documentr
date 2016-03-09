@@ -42,10 +42,12 @@ dependencies {{{\n}
 ### Gradle &gt;= 2.1{\n}
 {\n}
 ```{\n}
+dependencies {{{\n}
 {\t}...{\n}
 {\t}runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'{\n}
 {\t}runtime 'org.apache.logging.log4j:log4j-core:2.5'{\n}
 {\t}...{\n}
+}{\n}
 ```{\n}
 {\n}
 {\n}

@@ -14,7 +14,7 @@
 
 		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
 
-		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
+		{ "type": "markup", "value": "## The `documentr.json` file\n\n" },
 		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
 		{ "type": "markup", "value":"\n```\n" },
 		{ "type": "file", "value":"documentr.json" },
@@ -23,7 +23,9 @@
 
 		{ "type":"template", "value":"src/docs/post-usage.md.templar" },
 
-		{ "type":"markup", "value":"\n\n```\n" },
+		{ "type":"template", "value":"src/docs/build.gradle.md.templar" },
+
+		{ "type":"markup", "value":"\n#Java command line usage\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 

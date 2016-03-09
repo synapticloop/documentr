@@ -1,0 +1,9 @@
+
+{loop configurationBeans as configurationBean}
+	{if !fn:=[configurationBean.dependencies.size, '0']}
+		::{configurationBean.name}::{configurationBean.dependencies.size}{\n}
+		{loop configurationBean.dependencies as dependency}
+			{\t}::{dependency.name}, {dependency.group}, {dependency.version}::{\n}
+		{endloop}
+	{endif}
+{endloop}

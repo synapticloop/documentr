@@ -1,9 +1,8 @@
 {\n}
 A lot of project documentation is just plain incorrect, mainly due to the fact 
 that it is hard to keep up to date.  Furthermore, there are different levels of 
-documentation required for the novice to the 
-expert.  Making your project as easy as possible to set up and integrate helps 
-everybody.{\n}
+documentation required for the novice to the expert.  Making your project as 
+easy as possible to set up and integrate helps everybody.{\n}
 {\n}
 Making documentation hard to update reduces the likelihood that it will be kept 
 up-to-date at all. Consequently, this project easily generates a `README.md` 
@@ -11,16 +10,23 @@ file pulling together information from a variety of sources (files, templates,
 in-built resources and in-line mark-up), making it easier to include a raft of 
 information without having to generate multiple files by hand.{\n}
 {\n}
-For this `README.md` file, the only files that are hand-written are the 
-`pre-usage.md.templar`, `post-usage.md.templar`, and `build.gradle.md.templar` 
-files. All other information is generated from the `documentr.json` file in the 
-root of this project.{\n}
+For this `README.md` file, the only files that are hand-written are:{\n}
+{\n}
+  - `src/docs/pre-usage.md.templar`,{\n}
+  - `src/docs/post-usage.md.templar`{\n}
+{\n}
+files. All other information is generated from the `documentr.json` file in 
+the root of this project.{\n}
 {\n}
 # Getting Started{\n}
 {\n}
-In order to generate the `README.md` file a file named `documentr.json` needs to 
-be included in the root of the project{\n}
+  1. Create a `documentr.json` file{\n}
+  1. Generate the `README.md` file either through the gradle plugin, or through the command line{\n}
+  1. ... There is no step 3{\n}
 {\n}
-`documentr` may be invoked either through the main class `synapticloop.documentr.Main` 
-or through the gradle plugin mechanism - see the information below.{\n}
+{\n}
+## Step 1 - create the `documentr.json` file{\n}
+{\n}
+{\n}
+This is a simple JSON formatted file:{\n}
 {\n}

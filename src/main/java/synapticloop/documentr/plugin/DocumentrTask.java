@@ -18,7 +18,7 @@ public class DocumentrTask extends DefaultTask {
 			extension = new DocumentrPluginExtension();
 		}
 
-		Generator generator = new Generator(new File(extension.getDirectory()));
+		Generator generator = new Generator(getProject(), new File(extension.getDirectory()));
 		generator.generate();
 	}
 }
