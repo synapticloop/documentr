@@ -33,6 +33,7 @@
 
 		{ "type":"inbuilt", "value":"publishing-github" },
 		{ "type":"inbuilt", "value":"publishing-bintray" },
+		{ "type":"inbuilt", "value":"publishing-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"dependencies" },
 

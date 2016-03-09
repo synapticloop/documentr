@@ -1,0 +1,15 @@
+{set "true" as allOk}
+
+{if fn:null[pluginId]}{set "false" as allOk}{\n}{\n}MISSING variable `pluginId` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "publishing-gradle-plugin.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+	# Artefact Publishing - gradle plugin portal{\n}
+	{\n}
+	This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/){\n}
+	{\n}	
+	> Note that the latest version can be found [https://plugins.gradle.org/plugin/{pluginId}](https://plugins.gradle.org/plugin/{pluginId}){\n}
+	{\n}
+{endif}
