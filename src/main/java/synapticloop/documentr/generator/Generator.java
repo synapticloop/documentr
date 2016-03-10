@@ -144,10 +144,10 @@ public class Generator {
 				Parser parser = new Parser(stringBuilder.toString());
 				FileUtils.writeStringToFile(new File(documentrJsonFile.getParent() + "/README.md"), parser.render(templarContext));
 			} catch (IOException | ParseException | RenderException ex) {
-				throw new DocumentrException("Cannot parse/render the documentr.json file, message was: " + ex.getMessage(), ex);
+				throw new DocumentrException(String.format("Cannot parse/render the '%' file, message was: %s", documentrJsonFile, ex.getMessage()), ex);
 			}
 		} else {
-			throw new DocumentrException("Cannot find the documentr.json file.");
+			throw new DocumentrException(String.format("Cannot find the '%s' file.", documentrJsonFile));
 		}
 	}
 
