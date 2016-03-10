@@ -10,7 +10,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:1.2.3'
+		classpath 'synapticloop:documentr:1.3.0'
 	}
 }
 
@@ -56,7 +56,8 @@ dependencies {
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
 	runtime 'commons-cli:commons-cli:1.3.1'
-	
+	runtime 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0'
+
 	compile gradleApi()
 	compile 'synapticloop:simpleusage:1.1.2'
 	compile 'synapticloop:simplelogger:1.1.0'
@@ -64,6 +65,7 @@ dependencies {
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.json:json:20160212'
 	compile 'commons-cli:commons-cli:1.3.1'
+	compile 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0'
 }
 
 // we always want to fail on version conflict
@@ -76,6 +78,8 @@ configurations.all {
 documentrSetting {
 	directory = '.'
 	verbose = 'true'
+	extension = 'md' // this is the default
+	// extension = 'adoc' // perhaps you want asciidoc?
 }
 
 def locateJar(lib) {
@@ -95,6 +99,8 @@ task fatJar(type: Jar) {
 	from { locateJar('commons-cli') } { include "**" }
 	from { locateJar('json') } { include "**" }
 	from { locateJar('templar') } { include "**" }
+	from { locateJar('markdown_to_asciidoc') } { include "**" }
+
 	from(sourceSets.main.output) { include "**" }
 }
 
@@ -171,8 +177,8 @@ bintray {
 pluginBundle {
 	website = 'https://github.com/synapticloop/documentr'
 	vcsUrl = 'https://github.com/synapticloop/documentr'
-	description = 'documentation (README.md) generator for projects'
-	tags = ['README', 'documentation', 'generator']
+	description = 'documentation (README) generator for projects in both MarkDown and AsciiDoc'
+	tags = [ 'README', 'documentation', 'generator' ]
 
 	plugins {
 		documentrPlugin {

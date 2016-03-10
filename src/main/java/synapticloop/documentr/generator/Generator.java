@@ -18,6 +18,7 @@ import org.gradle.api.artifacts.DependencySet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
 import synapticloop.documentr.exception.DocumentrException;
 import synapticloop.templar.Parser;
@@ -129,8 +130,8 @@ public class Generator {
 					case TYPE_INBUILT:
 						stringBuilder.append("{import classpath:/");
 						stringBuilder.append(templateObject.getString(VALUE));
-						stringBuilder.append(".");
-						stringBuilder.append(extension);
+//						stringBuilder.append(".");
+//						stringBuilder.append(extension);
 						stringBuilder.append(".templar}\n");
 						break;
 					default:
@@ -148,9 +149,15 @@ public class Generator {
 				}
 
 				Parser parser = new Parser(stringBuilder.toString());
-				FileUtils.writeStringToFile(new File(documentrJsonFile.getParent() + "/README.md"), parser.render(templarContext));
+				String renderered = parser.render(templarContext);
+				File outputFile = new File(documentrJsonFile.getParent() + "/README." + extension);
+				if("adoc".equals(extension)) {
+					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(renderered));
+				} else {
+					FileUtils.writeStringToFile(outputFile, renderered);
+				}
 			} catch (IOException | ParseException | RenderException ex) {
-				throw new DocumentrException(String.format("Cannot parse/render the '%' file, message was: %s", documentrJsonFile, ex.getMessage()), ex);
+				throw new DocumentrException(String.format("Cannot parse/render the '%s' file, message was: %s", documentrJsonFile, ex.getMessage()), ex);
 			}
 		} else {
 			throw new DocumentrException(String.format("Cannot find the '%s' file.", documentrJsonFile));

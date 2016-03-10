@@ -4,7 +4,7 @@ public class DocumentrPluginExtension {
 	private boolean verbose = false;
 
 	private String directory = ".";
-	private String extension = ".md";
+	private String extension = "md";
 
 	public String getDirectory() {
 		return(directory);

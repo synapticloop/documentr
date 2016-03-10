@@ -5,8 +5,6 @@ import java.io.File;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
@@ -19,17 +17,11 @@ public class Main {
 	public static void main(String[] args) {
 		Options options = new Options();
 
-		OptionGroup helpOptionGroup = new OptionGroup();
-		helpOptionGroup.addOption(new Option("h", "help", false, "Print out the usage and help message."));
-
-		options.addOptionGroup(helpOptionGroup);
-
-		OptionGroup generateOptionGroup = new OptionGroup();
-		generateOptionGroup.addOption(new Option("v", "verbose", true, "Output more verbose information"));
-		generateOptionGroup.addOption(new Option("d", "directory", true, "The directory in which the 'documentr.json' "
-				+ "file resides, default the current working directory (i.e. '.')"));
-		generateOptionGroup.addOption(new Option("e", "extension", true, "The extension for the README file, default '.md'."));
-		options.addOptionGroup(generateOptionGroup);
+		options.addOption("h", "help", false, "Print out the usage and help message.");
+		options.addOption("v", "verbose", true, "Output more verbose information");
+		options.addOption("d", "directory", true, "The directory in which the 'documentr.json' "
+				+ "file resides, default the current working directory (i.e. '.')");
+		options.addOption("e", "extension", true, "The extension for the README file, default '.md'.");
 
 		boolean verbose = false;
 		String directory = ".";
@@ -38,7 +30,7 @@ public class Main {
 		CommandLineParser parser = new DefaultParser();
 		try {
 			// parse the command line arguments
-			CommandLine line = parser.parse( options, args );
+			CommandLine line = parser.parse(options, args);
 			if(line.hasOption("h")) {
 				SimpleUsage.helpAndExit();
 			}

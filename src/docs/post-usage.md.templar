@@ -48,7 +48,9 @@ you may override this by doing the following:{\n}
 ```{\n}
 documentrSetting {{{\n}
 {\t}directory = '../some/directory/'{\n}
-{\t}verbose = 'true'{\n}
+{\t}verbose = 'false'{\n}
+{\t}extension = 'md' // this is the default{\n}
+{\t}// extension = 'adoc' // perhaps you want asciidoc?{\n}
 }{\n}
 ```{\n}
 {\n}

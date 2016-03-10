@@ -16,7 +16,7 @@ Where OPTIONS are one of
 
  -d, --directory <arg>   The directory in which the 'documentr.json' file 
                          resides, default the current working directory
-                        (i.e. '.')
+                         (i.e. '.')
  -e, --extension <arg>   The extension for the README file, default '.md'. Only
                          '.md' and '.adoc' are supported by the inbuilt 
                          templates, only other extension __MUST__ not use the 

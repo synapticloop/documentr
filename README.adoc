@@ -1,47 +1,45 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.3.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+image:https://travis-ci.org/synapticloop/documentr.svg?branch=master[Build Status,link=https://travis-ci.org/synapticloop/documentr] image:https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg[Download,link=https://bintray.com/synapticloop/maven/documentr/_latestVersion] image:https://img.shields.io/github/release/synapticloop/documentr.svg[GitHub Release,link=https://github.com/synapticloop/documentr/releases] image:https://img.shields.io/badge/gradle%20plugin-1.3.0-blue.svg[Gradle Plugin Release,link=https://plugins.gradle.org/plugin/synapticloop.documentr] 
 
-> **This project requires JVM version of at least 1.7**
+____
 
+*This project requires JVM version of at least 1.7*
 
+____
 
+= documentr
 
-# documentr
+____
 
+documentation (README.md) generator for projects - this utilises the templar templating language
 
+____
 
-> documentation (README.md) generator for projects - this utilises the templar templating language
-
-
-
-A lot of project documentation is just plain incorrect, mainly due to the fact that it is hard to keep up to date.  Furthermore, there are different levels of documentation required for the novice to the expert.  Making your project as easy as possible to set up and integrate helps everybody.
+A lot of project documentation is just plain incorrect, mainly due to the fact that it is hard to keep up to date. Furthermore, there are different levels of documentation required for the novice to the expert. Making your project as easy as possible to set up and integrate helps everybody.
 
 Making documentation hard to update reduces the likelihood that it will be kept up-to-date at all. Consequently, this project easily generates a `README.md` file pulling together information from a variety of sources (files, templates, in-built resources and in-line mark-up), making it easier to include a raft of information without having to generate multiple files by hand.
 
 For this `README.md` file, the only files that are hand-written are:
 
-  - `src/docs/pre-usage.md.templar`,
-  - `src/docs/post-usage.md.templar`
+* `src/docs/pre-usage.md.templar`,
+* `src/docs/post-usage.md.templar`
 
 files. All other information is generated from the `documentr.json` file in the root of this project.
 
-# Getting Started
+= Getting Started
 
-  1. Create a `documentr.json` file
-  1. Generate the `README.md` file either through the gradle plugin, or through the command line
-  1. ... There is no step 3
+. Create a `documentr.json` file
+. Generate the `README.md` file either through the gradle plugin, or through the command line
+. … There is no step 3
 
-
-## Step 1 - create the `documentr.json` file
-
+== Step 1 - create the `documentr.json` file
 
 This is a simple JSON formatted file:
 
-### The `documentr.json` file
+=== The `documentr.json` file
 
 This is a simple JSON file as show below:
 
-
-```
+----
 {
 	"context": {
 		"pluginId": "synapticloop.documentr"
@@ -90,16 +88,20 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"attribution" }
 	]
 }
-```
-> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*
 
+----
+
+____
+
+_in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information…_
+
+____
 
 The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand.
 
+== Step 2 - generate the `README.md` file
 
-## Step 2 - generate the `README.md` file
-### Gradle plugin usage
-
+=== Gradle plugin usage
 
 Include the plugin and simply run:
 
@@ -107,9 +109,9 @@ Include the plugin and simply run:
 
 This will also parse the build file and place various objects into the context that are then available to use in the templar templates.
 
-### For all versions of gradle - you may use the following to apply the plugin
+=== For all versions of gradle - you may use the following to apply the plugin
 
-```
+----
 buildscript {
 	repositories {
 		maven {
@@ -123,57 +125,50 @@ buildscript {
 
 apply plugin: "synapticloop.documentr"
 
-```
-### if you are using gradle >= 2.1 - you may use the shorthand format to apply the plugin
+----
 
-```
+=== if you are using gradle &gt;= 2.1 - you may use the shorthand format to apply the plugin
+
+----
 plugins {
 	id 'synapticloop.documentr' version '1.3.0'
 }
-```
+----
 
-### Defaults
+=== Defaults
 
 By default the plugin looks for a `documentr.json` file in the current directory, you may override this by doing the following:
 
-```
+----
 documentrSetting {
 	directory = '../some/directory/'
 	verbose = 'true'
-	extension = 'md' // this is the default
-	// extension = 'adoc' // perhaps you want asciidoc?
 }
-```
-
+----
 
 Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`)
 
 The `verbose` setting will output the pre-parsed and rendered templar template to the console
 
-### Java command line usage
+=== Java command line usage
 
 simply run
 
-
-```
+----
 java -jar documentr-1.3.0-all.jar
-```
+----
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
 
-
 Running:
 
-```
+----
 java -jar documentr-1.3.0-all.jar --help
-```
+----
 
 Will yield the following information:
 
-
-
-
-```
+----
 Generate a README.md file for projects utilising the 'templar' templating 
 engine.
 
@@ -275,40 +270,35 @@ The list of inbuilt templates:
   - test-warn - warning about running tests, which may consume resources, which
         may lead to a cost
 
+----
 
-```
+= Building the Package
 
-
-# Building the Package
-
-## *NIX/Mac OS X
+== *NIX/Mac OS X
 
 From the root of the project, simply run
 
 `./gradlew build`
 
-
-## Windows
+== Windows
 
 `./gradlew.bat build`
-
 
 This will compile and assemble the artefacts into the `build/libs/` directory.
 
 Note that this may also run tests (if applicable see the Testing notes)
 
-# Logging - slf4j
+= Logging - slf4j
 
-slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
+slf4j is the logging framework used for this project. In order to set up a logging framework with this project, sample configurations are below:
 
-## Log4j
-
+== Log4j
 
 You will need to include dependencies for this - note that the versions may need to be updated.
 
-### Maven
+=== Maven
 
-```
+----
 <dependency>
 	<groupId>org.apache.logging.log4j</groupId>
 	<artifactId>log4j-slf4j-impl</artifactId>
@@ -323,35 +313,35 @@ You will need to include dependencies for this - note that the versions may need
 	<scope>runtime</scope>
 </dependency>
 
-```
+----
 
-### Gradle &lt; 2.1
+=== Gradle &lt; 2.1
 
-```
+----
 dependencies {
 	...
 	runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar')
 	runtime(group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5', ext: 'jar')
 	...
 }
-```
-### Gradle &gt;= 2.1
+----
 
-```
+=== Gradle &gt;= 2.1
+
+----
 dependencies {
 	...
 	runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'
 	runtime 'org.apache.logging.log4j:log4j-core:2.5'
 	...
 }
-```
+----
 
-
-### Setting up the logging:
+=== Setting up the logging:
 
 A sample `log4j2.xml` is below:
 
-```
+----
 <Configuration status="WARN">
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
@@ -364,27 +354,35 @@ A sample `log4j2.xml` is below:
 		</Root>
 	</Loggers>
 </Configuration>
-```
+----
 
-# Artefact Publishing - Github
+= Artefact Publishing - Github
 
-This project publishes artefacts to [GitHib](https://github.com/)
+This project publishes artefacts to https://github.com/[GitHib]
 
-> Note that the latest version can be found [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
+____
+
+Note that the latest version can be found https://github.com/synapticloop/documentr/releases
+
+____
 
 As such, this is not a repository, but a location to download files from.
 
-# Artefact Publishing - Bintray
+= Artefact Publishing - Bintray
 
-This project publishes artefacts to [bintray](https://bintray.com/)
+This project publishes artefacts to https://bintray.com/[bintray]
 
-> Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
+____
 
-## maven setup
+Note that the latest version can be found https://bintray.com/synapticloop/maven/documentr/view
+
+____
+
+== maven setup
 
 this comes from the jcenter bintray, to set up your repository:
 
-```
+----
 <?xml version="1.0" encoding="UTF-8" ?>
 <settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <profiles>
@@ -416,96 +414,96 @@ this comes from the jcenter bintray, to set up your repository:
     <activeProfile>bintray</activeProfile>
   </activeProfiles>
 </settings>
-```
+----
 
-## gradle setup
+== gradle setup
 
 Repository
 
-```
+----
 repositories {
 	maven {
 		url  "http://jcenter.bintray.com" 
 	}
 }
-```
+----
 
 or just
 
-```
+----
 repositories {
 	jcenter()
 }
-```
+----
 
-## Dependencies - Gradle
+== Dependencies - Gradle
 
-```
+----
 dependencies {
 	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.0', ext: 'jar')
 
 	compile(group: 'synapticloop', name: 'documentr', version: '1.3.0', ext: 'jar')
 }
-```
+----
 
 or, more simply for versions of gradle greater than 2.1
 
-```
+----
 dependencies {
 	runtime 'synapticloop:documentr:1.3.0'
 
 	compile 'synapticloop:documentr:1.3.0'
 }
-```
+----
 
-## Dependencies - Maven
+== Dependencies - Maven
 
-```
+----
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
 	<version>1.3.0</version>
 	<type>jar</type>
 </dependency>
-```
+----
 
-## Dependencies - Downloads
-
+== Dependencies - Downloads
 
 You will also need to download the following dependencies:
 
+=== compile dependencies
 
+* synapticloop:simpleusage:1.1.2: (It may be available on one of: https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2[bintray] http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar[mvn central]
+* synapticloop:simplelogger:1.1.0: (It may be available on one of: https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0[bintray] http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar[mvn central]
+* synapticloop:templar:1.2.1: (It may be available on one of: https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1[bintray] http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar[mvn central]
+* commons-io:commons-io:2.4: (It may be available on one of: https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4[bintray] http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar[mvn central]
+* org.json:json:20160212: (It may be available on one of: https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212[bintray] http://search.maven.org/#artifactdetails|org.json|json|20160212|jar[mvn central]
+* commons-cli:commons-cli:1.3.1: (It may be available on one of: https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1[bintray] http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar[mvn central]
+* nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0[bintray] http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar[mvn central]
 
-### compile dependencies
+=== runtime dependencies
 
-  - synapticloop:simpleusage:1.1.2: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar)
-  - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
-  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar)
-  - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
-  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
-  - commons-cli:commons-cli:1.3.1: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar)
-  - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar)
+* synapticloop:simpleusage:1.1.2: (It may be available on one of: https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2[bintray] http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar[mvn central]
+* synapticloop:simplelogger:1.1.0: (It may be available on one of: https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0[bintray] http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar[mvn central]
+* synapticloop:templar:1.2.1: (It may be available on one of: https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1[bintray] http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar[mvn central]
+* commons-io:commons-io:2.4: (It may be available on one of: https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4[bintray] http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar[mvn central]
+* org.json:json:20160212: (It may be available on one of: https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212[bintray] http://search.maven.org/#artifactdetails|org.json|json|20160212|jar[mvn central]
+* commons-cli:commons-cli:1.3.1: (It may be available on one of: https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1[bintray] http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar[mvn central]
+* nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0[bintray] http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar[mvn central]
 
+*NOTE:* You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
-### runtime dependencies
+= Artefact Publishing - gradle plugin portal
 
-  - synapticloop:simpleusage:1.1.2: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar)
-  - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
-  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar)
-  - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
-  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
-  - commons-cli:commons-cli:1.3.1: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar)
-  - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar)
+This project publishes artefacts to https://plugins.gradle.org/[the gradle plugin portal]
 
-**NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
-# Artefact Publishing - gradle plugin portal
+____
 
-This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
+Note that the latest version can be found https://plugins.gradle.org/plugin/synapticloop.documentr
 
-> Note that the latest version can be found [https://plugins.gradle.org/plugin/synapticloop.documentr](https://plugins.gradle.org/plugin/synapticloop.documentr)
+____
 
-
-# All-In-One
+= All-In-One
 
 This project's artefact output is an 'all in one' jar which includes all runtime dependencies.
 
@@ -513,12 +511,13 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-```documentr-1.3.0.jar -> documentr-1.3.0-all.jar```
-
+[source,documentr-1.3.0.jar -> documentr-1.3.0-all.jar```]
+----
 
 # License
 
-```
+----
+
 The MIT License (MIT)
 
 Copyright (c) 2016 synapticloop
@@ -542,10 +541,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+–
 
---
+____
 
-> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
+`This README.md file was hand-crafted with care utilising synapticloop`https://github.com/synapticloop/templar/[`templar`]`-&gt;`https://github.com/synapticloop/documentr/[`documentr`]
 
---
+____
 
+–
