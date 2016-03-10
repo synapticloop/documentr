@@ -19,6 +19,8 @@
 	{\n}
 	For example:{\n}
 	{\n}
-	```{archivesBaseName}-{version}.jar -> {archivesBaseName}-{version}-all.jar```{\n}
+	`{archivesBaseName}-{version}.jar -> {archivesBaseName}-{version}-all.jar`{\n}
+	{\n}
+	{\n}
 	{\n}
 {endif}

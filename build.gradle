@@ -7,10 +7,13 @@
 buildscript {
 	repositories {
 		mavenLocal()
+		maven {
+			url "https://plugins.gradle.org/"
+		}
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:1.3.0'
+		classpath 'synapticloop:documentr:1.3.1'
 	}
 }
 
@@ -32,7 +35,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = '1.3.0'
+version = '1.3.1'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -78,8 +81,8 @@ configurations.all {
 documentrSetting {
 	directory = '.'
 	verbose = 'true'
-	extension = 'md' // this is the default
-	// extension = 'adoc' // perhaps you want asciidoc?
+//	extension = 'md' // this is the default
+	 extension = 'adoc' // perhaps you want asciidoc?
 }
 
 def locateJar(lib) {

@@ -139,7 +139,7 @@ By default the plugin looks for a `documentr.json` file in the current directory
 ```
 documentrSetting {
 	directory = '../some/directory/'
-	verbose = 'true'
+	verbose = 'false'
 	extension = 'md' // this is the default
 	// extension = 'adoc' // perhaps you want asciidoc?
 }
@@ -513,7 +513,9 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-```documentr-1.3.0.jar -> documentr-1.3.0-all.jar```
+```documentr-1.3.0.jar to documentr-1.3.0-all.jar```
+
+
 
 
 # License
