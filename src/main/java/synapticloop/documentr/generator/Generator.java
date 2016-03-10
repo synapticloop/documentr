@@ -46,14 +46,17 @@ public class Generator {
 
 	private Project project;
 	private final File rootDirectory;
-	private final TemplarContext templarContext = new TemplarContext();
-	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
+	private final String extension;
 	private boolean verbose = false;
 
-	public Generator(Project project, File rootDirectory, boolean verbose) {
+	private final TemplarContext templarContext = new TemplarContext();
+	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
+
+	public Generator(Project project, File rootDirectory, String extension, boolean verbose) {
 		this.project = project;
 		this.rootDirectory = rootDirectory;
 		this.verbose = verbose;
+		this.extension = extension;
 
 		// now go through and initialise the templarcontext
 		ConfigurationContainer configurations = project.getConfigurations();
@@ -76,7 +79,8 @@ public class Generator {
 		}
 	}
 
-	public Generator(File rootDirectory, boolean debug) {
+	public Generator(File rootDirectory, String extension, boolean debug) {
+		this.extension = extension;
 		this.rootDirectory = rootDirectory;
 		this.verbose = debug;
 	}
@@ -125,6 +129,8 @@ public class Generator {
 					case TYPE_INBUILT:
 						stringBuilder.append("{import classpath:/");
 						stringBuilder.append(templateObject.getString(VALUE));
+						stringBuilder.append(".");
+						stringBuilder.append(extension);
 						stringBuilder.append(".templar}\n");
 						break;
 					default:
