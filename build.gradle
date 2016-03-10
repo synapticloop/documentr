@@ -10,7 +10,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:1.2.1'
+		classpath 'synapticloop:documentr:1.2.2'
 	}
 }
 
@@ -32,7 +32,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = '1.2.1'
+version = '1.2.2'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -69,6 +69,10 @@ configurations.all {
 	resolutionStrategy {
 		failOnVersionConflict()
 	}
+}
+
+documentrSetting {
+	verbose = 'true'
 }
 
 def locateJar(lib) {

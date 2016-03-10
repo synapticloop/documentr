@@ -48,10 +48,12 @@ public class Generator {
 	private final File rootDirectory;
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
+	private boolean verbose = false;
 
-	public Generator(Project project, File rootDirectory) {
+	public Generator(Project project, File rootDirectory, boolean verbose) {
 		this.project = project;
 		this.rootDirectory = rootDirectory;
+		this.verbose = verbose;
 
 		// now go through and initialise the templarcontext
 		ConfigurationContainer configurations = project.getConfigurations();
@@ -74,8 +76,9 @@ public class Generator {
 		}
 	}
 
-	public Generator(File rootDirectory) {
+	public Generator(File rootDirectory, boolean debug) {
 		this.rootDirectory = rootDirectory;
+		this.verbose = debug;
 	}
 
 	public void generate() throws DocumentrException {
@@ -134,9 +137,12 @@ public class Generator {
 				// now override
 				overrideContext(templarContext, jsonObject);
 
+				if(verbose) {
+					System.out.println(stringBuilder.toString());
+				}
+
 				Parser parser = new Parser(stringBuilder.toString());
 				FileUtils.writeStringToFile(new File(documentrJsonFile.getParent() + "/README.md"), parser.render(templarContext));
-
 			} catch (IOException | ParseException | RenderException ex) {
 				throw new DocumentrException("Cannot parse/render the documentr.json file, message was: " + ex.getMessage(), ex);
 			}

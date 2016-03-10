@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.2.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.2.2-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -117,7 +117,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.1"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.2"
 	}
 }
 
@@ -128,7 +128,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.2.1'
+	id 'synapticloop.documentr' version '1.2.2'
 }
 ```
 
@@ -137,8 +137,9 @@ plugins {
 By default the plugin looks for a `documentr.json` file in the current directory, you may override this by doing the following:
 
 ```
-documentr {
+documentrSetting {
 	directory = '../some/directory/'
+	verbose = 'true'
 }
 ```
 
@@ -151,7 +152,7 @@ simply run
 
 
 ```
-java -jar documentr-1.2.1-all.jar
+java -jar documentr-1.2.2-all.jar
 ```
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
@@ -160,7 +161,7 @@ By default this will generate the `README.md` file looking at the current direct
 Running:
 
 ```
-java -jar documentr-1.2.1-all.jar --help
+java -jar documentr-1.2.2-all.jar --help
 ```
 
 Will yield the following information:
@@ -173,9 +174,11 @@ Generate a README.md file for projects utilising the 'templar' templating
 engine.
 
 Usage:
-    java -jar documentr-all.jar [ <directory> | --help ]
+    java -jar documentr-all.jar [ --verbose ] [ <directory> | --help ]
 
 Where:
+    --verbose is an optional parameter as to whether to output the generated
+        templar markup that will be parsed
     <directory> is an optional argument for which directory to look for the
         documentr.json file and generate the README.md.  This defaults to 
         the current working directory
@@ -424,9 +427,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.2', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.2.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.2.2', ext: 'jar')
 }
 ```
 
@@ -434,9 +437,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.2.1'
+	runtime 'synapticloop:documentr:1.2.2'
 
-	compile 'synapticloop:documentr:1.2.1'
+	compile 'synapticloop:documentr:1.2.2'
 }
 ```
 
@@ -446,7 +449,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.2.1</version>
+	<version>1.2.2</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -491,7 +494,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-```documentr-1.2.1.jar -> documentr-1.2.1-all.jar```
+```documentr-1.2.2.jar -> documentr-1.2.2-all.jar```
 
 
 # License

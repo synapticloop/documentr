@@ -46,8 +46,9 @@ By default the plugin looks for a `documentr.json` file in the current directory
 you may override this by doing the following:{\n}
 {\n}
 ```{\n}
-documentr {{{\n}
+documentrSetting {{{\n}
 {\t}directory = '../some/directory/'{\n}
+{\t}verbose = 'true'{\n}
 }{\n}
 ```{\n}
 {\n}
