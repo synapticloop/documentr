@@ -55,6 +55,9 @@ documentrSetting {{{\n}
 {\n}
 Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`){\n}
 {\n}
+The `verbose` setting will output the pre-parsed and rendered templar template 
+to the console{\n}
+{\n}
 ### Java command line usage{\n}
 {\n}
 simply run{\n}
