@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.2.2-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+
 
 > **This project requires JVM version of at least 1.7**
 
@@ -117,7 +117,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.2"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.3"
 	}
 }
 
@@ -128,7 +128,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.2.2'
+	id 'synapticloop.documentr' version '1.2.3'
 }
 ```
 
@@ -154,7 +154,7 @@ simply run
 
 
 ```
-java -jar documentr-1.2.2-all.jar
+java -jar documentr-1.2.3-all.jar
 ```
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
@@ -163,7 +163,7 @@ By default this will generate the `README.md` file looking at the current direct
 Running:
 
 ```
-java -jar documentr-1.2.2-all.jar --help
+java -jar documentr-1.2.3-all.jar --help
 ```
 
 Will yield the following information:
@@ -429,9 +429,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.2', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.3', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.2.2', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.2.3', ext: 'jar')
 }
 ```
 
@@ -439,9 +439,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.2.2'
+	runtime 'synapticloop:documentr:1.2.3'
 
-	compile 'synapticloop:documentr:1.2.2'
+	compile 'synapticloop:documentr:1.2.3'
 }
 ```
 
@@ -451,7 +451,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.2.2</version>
+	<version>1.2.3</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -467,7 +467,7 @@ You will also need to download the following dependencies:
 
   - synapticloop:simpleusage:1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar)
   - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
-  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar)
+  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar)
   - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
   - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
 
@@ -476,11 +476,11 @@ You will also need to download the following dependencies:
 
   - synapticloop:simpleusage:1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar)
   - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
-  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar)
+  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar)
   - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
   - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
 
-**NOTE:** You may need to download any dependencies of the above dependencies in turn
+**NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 # Artefact Publishing - gradle plugin portal
 
 This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
@@ -496,7 +496,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-```documentr-1.2.2.jar -> documentr-1.2.2-all.jar```
+```documentr-1.2.3.jar -> documentr-1.2.3-all.jar```
 
 
 # License

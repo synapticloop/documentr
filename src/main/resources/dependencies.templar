@@ -57,7 +57,7 @@
 					{endif}
 
 					{if !fn:=[dependency.name, 'unspecified']}
-						{pre    pre}- {dependency.group}:{dependency.name}:{dependency.version}: (It may be available on one of: 
+						{\  }- {dependency.group}:{dependency.name}:{dependency.version}: (It may be available on one of: 
 						[bintray](https://bintray.com/{dependency.group}/maven/{dependency.name}/{dependency.version}/view#files/{dependency.group}/{dependency.name}/{dependency.version}) 
 						[mvn central](http://search.maven.org/#artifactdetails|{dependency.group}|{dependency.name}|{dependency.version}|jar){\n}
 					{endif}
@@ -65,6 +65,6 @@
 			{endif}
 		{endloop}
 		{\n}
-		**NOTE:** You may need to download any dependencies of the above dependencies in turn{\n}
+		**NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies){\n}
 	{endif}
 {endif}

@@ -20,10 +20,10 @@
 	{\n}
 	```{\n}
 	<repositories>{\n}
-	{pre  pre}<repository>{\n}
-	{pre    pre}<id>jitpack.io</id>{\n}
-	{pre    pre}<url>https://jitpack.io</url>{\n}
-	{pre  pre}</repository>{\n}
+	{\  }<repository>{\n}
+	{\    }<id>jitpack.io</id>{\n}
+	{\    }<url>https://jitpack.io</url>{\n}
+	{\  }</repository>{\n}
 	</repositories>{\n}
 	```{\n}
 	{\n}

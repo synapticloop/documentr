@@ -20,36 +20,36 @@
 	{\n}
 	```{\n}
 	<?xml version="1.0" encoding="UTF-8" ?>{\n}
-	{pre  pre}<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>{\n}
-	{pre    pre}<profiles>{\n}
-	{pre      pre}<profile>{\n}
-	{pre        pre}<repositories>{\n}
-	{pre          pre}<repository>{\n}
-	{pre            pre}<snapshots>{\n}
-	{pre              pre}<enabled>false</enabled>{\n}
-	{pre            pre}</snapshots>{\n}
-	{pre            pre}<id>central</id>{\n}
-	{pre            pre}<name>bintray</name>{\n}
-	{pre            pre}<url>http://jcenter.bintray.com</url>{\n}
-	{pre          pre}</repository>{\n}
-	{pre        pre}</repositories>{\n}
-	{pre        pre}<pluginRepositories>{\n}
-	{pre          pre}<pluginRepository>{\n}
-	{pre            pre}<snapshots>{\n}
-	{pre              pre}<enabled>false</enabled>{\n}
-	{pre            pre}</snapshots>{\n}
-	{pre            pre}<id>central</id>{\n}
-	{pre            pre}<name>bintray-plugins</name>{\n}
-	{pre            pre}<url>http://jcenter.bintray.com</url>{\n}
-	{pre          pre}</pluginRepository>{\n}
-	{pre        pre}</pluginRepositories>{\n}
-	{pre        pre}<id>bintray</id>{\n}
-	{pre      pre}</profile>{\n}
-	{pre    pre}</profiles>{\n}
-	{pre    pre}<activeProfiles>{\n}
-	{pre      pre}<activeProfile>bintray</activeProfile>{\n}
-	{pre    pre}</activeProfiles>{\n}
-	{pre  pre}</settings>{\n}
+	{\  }<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>{\n}
+	{\    }<profiles>{\n}
+	{\      }<profile>{\n}
+	{\        }<repositories>{\n}
+	{\          }<repository>{\n}
+	{\            }<snapshots>{\n}
+	{\              }<enabled>false</enabled>{\n}
+	{\            }</snapshots>{\n}
+	{\            }<id>central</id>{\n}
+	{\            }<name>bintray</name>{\n}
+	{\            }<url>http://jcenter.bintray.com</url>{\n}
+	{\          }</repository>{\n}
+	{\        }</repositories>{\n}
+	{\        }<pluginRepositories>{\n}
+	{\          }<pluginRepository>{\n}
+	{\            }<snapshots>{\n}
+	{\              }<enabled>false</enabled>{\n}
+	{\            }</snapshots>{\n}
+	{\            }<id>central</id>{\n}
+	{\            }<name>bintray-plugins</name>{\n}
+	{\            }<url>http://jcenter.bintray.com</url>{\n}
+	{\          }</pluginRepository>{\n}
+	{\        }</pluginRepositories>{\n}
+	{\        }<id>bintray</id>{\n}
+	{\      }</profile>{\n}
+	{\    }</profiles>{\n}
+	{\    }<activeProfiles>{\n}
+	{\      }<activeProfile>bintray</activeProfile>{\n}
+	{\    }</activeProfiles>{\n}
+	{\  }</settings>{\n}
 	```{\n}
 	{\n}
 	## gradle setup{\n}
