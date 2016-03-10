@@ -1,8 +1,10 @@
 package synapticloop.documentr.plugin;
 
 public class DocumentrPluginExtension {
-	private String directory = ".";
 	private boolean verbose = false;
+
+	private String directory = ".";
+	private String extension = ".md";
 
 	public String getDirectory() {
 		return(directory);
@@ -18,5 +20,13 @@ public class DocumentrPluginExtension {
 
 	public void setVerbose(boolean verbose) {
 		this.verbose = verbose;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
 	}
 }
