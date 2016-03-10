@@ -25,6 +25,7 @@
 
 		{ "type":"markup", "value":"\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
+		{ "type":"file", "value":"src/main/resources/HELP.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
@@ -33,9 +34,10 @@
 
 		{ "type":"inbuilt", "value":"publishing-github" },
 		{ "type":"inbuilt", "value":"publishing-bintray" },
-		{ "type":"inbuilt", "value":"publishing-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"dependencies" },
+
+		{ "type":"inbuilt", "value":"publishing-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"publishing-all-in-one-jar" },
 

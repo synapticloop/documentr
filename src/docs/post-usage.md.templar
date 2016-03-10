@@ -60,10 +60,19 @@ simply run{\n}
 {\n}
 {\n}
 ```{\n}
-java -jar {archivesBaseName}-{version}-all.jar"{\n}
+java -jar {archivesBaseName}-{version}-all.jar{\n}
 ```{\n}
 {\n}
 By default this will generate the `README.md` file looking at the current 
 directory for a `documentr.json` file.{\n}
+{\n}
+{\n}
+Running:{\n}
+{\n}
+```{\n}
+java -jar {archivesBaseName}-{version}-all.jar --help{\n}
+```{\n}
+{\n}
+Will yield the following information:{\n}
 {\n}
 {\n}

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.2.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.2.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -69,6 +69,7 @@ This is a simple JSON file as show below:
 
 		{ "type":"markup", "value":"\n\n```\n" },
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
+		{ "type":"file", "value":"src/main/resources/HELP.txt" },
 		{ "type":"markup", "value":"\n```\n" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
@@ -77,9 +78,10 @@ This is a simple JSON file as show below:
 
 		{ "type":"inbuilt", "value":"publishing-github" },
 		{ "type":"inbuilt", "value":"publishing-bintray" },
-		{ "type":"inbuilt", "value":"publishing-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"dependencies" },
+
+		{ "type":"inbuilt", "value":"publishing-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"publishing-all-in-one-jar" },
 
@@ -115,7 +117,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.0"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.2.1"
 	}
 }
 
@@ -126,7 +128,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.2.0'
+	id 'synapticloop.documentr' version '1.2.1'
 }
 ```
 
@@ -149,10 +151,19 @@ simply run
 
 
 ```
-java -jar documentr-1.2.0-all.jar"
+java -jar documentr-1.2.1-all.jar
 ```
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
+
+
+Running:
+
+```
+java -jar documentr-1.2.1-all.jar --help
+```
+
+Will yield the following information:
 
 
 
@@ -172,6 +183,80 @@ Where:
 
 This will look for a documentr.json file in the directory, parse it, collate 
 the associated resources and generate the documentation.
+
+The format of the documentr.json file is as follows:
+
+{
+	"context": {
+		"key": "value",
+		"key2": "value2",
+		...
+	},
+	"templates": [
+		{ "type":"template-type", "value":"template-name" },
+		{ "type":"template-type", "value":"template-name" },
+		...
+	]
+}
+
+The "context" keyed object is a JSONObject of key value pairs, and can be valid 
+value apart from a JSONArray or another JSONObject (i.e., long, boolean, string, 
+int).
+
+The "templates" keyed array is a JSONArray of JSONObjects.  Each of the 
+JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only 
+be one of the following:
+
+  - template - this is a 'templar' formatted template that will be used and 
+        parsed
+  - templar - inline templar format tokens - a useful debugging one is:
+        {dumpcontext} - which dumps all available context key/value pairs to
+        the output
+  - file - the file will be included as is with no parsing done on it
+  - markup - any valid markdown, with '\n' being replaced with a new line 
+        character.  No templar parsing is done on this.
+  - inbuilt - one of the in-built templates (see below for a list of the 
+        inbuilt templates).
+
+The list of inbuilt templates:
+
+  - attribution - a nice attribution to synapticloop for generating this 
+        README.md file.
+  - badge-bintray - generation of a bintray download badge with version number
+  - badge-shield-io-github-release - generation of a github release version 
+        number
+  - badge-shield-io-gradle-plugin - generation of a gradle plugin version release
+        number
+  - badge-travis-ci - build status from travis-ci
+  - dependencies - Listing out all of the dependencies for the project
+  - dumpcontext - for debugging, this will dump the available context items to
+        the output
+  - gradle-build - gradle build instructions
+  - gradle-test - gradle test instructions
+  - jvm-compatability - Output a JVM compatability notice
+  - license-apache-2.0 - the standard Apache 2.0 license
+  - license-bsd-2-clause - the BSD 2 Clause license
+  - license-bsd-3-clause - the BSD 3 Clause license
+  - license-mit - the standard MIT license
+  - logging-slf4j - informing users that slf4j is being used within the project 
+        and information on how to set up various other loggers to utilise it 
+  - project-description - the description of the project
+  - project-name - the name of the project as an h1 markdown
+  - publishing-all-in-one-jar - where an artefact is generated with all 
+        dependencies contained within the jar
+  - publishing-bintray - Information about the publishing of artefacts to the
+        jcenter bintray repository
+  - publishing-github - Information about the publishing of artefacts to the
+        github releases page
+  - publishing-gradle-plugin - Information about the publishing of artefacts to 
+        the gradle plugins repository
+  - publishing-jitpack - Information about the publishing of artefacts to the
+        jitpack repository
+  - publishing-maven - Information about the publishing of artefacts to the
+        maven central repository
+  - test-warn - warning about running tests, which may consume resources, which
+        may lead to a cost
+
 
 ```
 
@@ -335,19 +420,13 @@ repositories {
 }
 ```
 
-# Artefact Publishing - gradle plugin portal
-
-This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
-
-> Note that the latest version can be found [https://plugins.gradle.org/plugin/synapticloop.documentr](https://plugins.gradle.org/plugin/synapticloop.documentr)
-
 ## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.2.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.2.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.2.1', ext: 'jar')
 }
 ```
 
@@ -355,9 +434,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.2.0'
+	runtime 'synapticloop:documentr:1.2.1'
 
-	compile 'synapticloop:documentr:1.2.0'
+	compile 'synapticloop:documentr:1.2.1'
 }
 ```
 
@@ -367,7 +446,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -377,8 +456,32 @@ dependencies {
 
 You will also need to download the following dependencies:
 
-  - synapticloop:simpleusage", "1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/1.1.1) )  - synapticloop:simplelogger", "1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/1.1.0) )  - synapticloop:templar", "v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )  - commons-io:commons-io", "2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )  - org.json:json", "20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )  - synapticloop:simpleusage", "1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simpleusage/1.1.1) )  - synapticloop:simplelogger", "1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/simplelogger/1.1.0) )  - synapticloop:templar", "v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar) [mvn repository](http://mvnrepository.com/artifact/synapticloop/templar/v1.1.3) )  - commons-io:commons-io", "2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar) [mvn repository](http://mvnrepository.com/artifact/commons-io/commons-io/2.4) )  - org.json:json", "20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
+
+
+### compile dependencies
+
+  - synapticloop:simpleusage:1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar)
+  - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
+  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar)
+  - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
+  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
+
+
+### runtime dependencies
+
+  - synapticloop:simpleusage:1.1.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.1/view#files/synapticloop/simpleusage/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.1|jar)
+  - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar)
+  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar)
+  - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar)
+  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar)
+
 **NOTE:** You may need to download any dependencies of the above dependencies in turn
+# Artefact Publishing - gradle plugin portal
+
+This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
+
+> Note that the latest version can be found [https://plugins.gradle.org/plugin/synapticloop.documentr](https://plugins.gradle.org/plugin/synapticloop.documentr)
+
 
 # All-In-One
 
@@ -388,7 +491,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-```documentr-1.2.0.jar -> documentr-1.2.0-all.jar```
+```documentr-1.2.1.jar -> documentr-1.2.1-all.jar```
 
 
 # License
