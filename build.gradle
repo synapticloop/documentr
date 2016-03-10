@@ -32,7 +32,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
 
-version = '1.2.3'
+version = '1.3.0'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -50,18 +50,20 @@ configurations {
 
 // now for all of the dependencies
 dependencies {
-	runtime 'synapticloop:simpleusage:1.1.1'
+	runtime 'synapticloop:simpleusage:1.1.2'
 	runtime 'synapticloop:simplelogger:1.1.0'
 	runtime 'synapticloop:templar:1.2.1'
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
-
+	runtime 'commons-cli:commons-cli:1.3.1'
+	
 	compile gradleApi()
-	compile 'synapticloop:simpleusage:1.1.1'
+	compile 'synapticloop:simpleusage:1.1.2'
 	compile 'synapticloop:simplelogger:1.1.0'
 	compile 'synapticloop:templar:1.2.1'
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.json:json:20160212'
+	compile 'commons-cli:commons-cli:1.3.1'
 }
 
 // we always want to fail on version conflict
@@ -87,24 +89,13 @@ task fatJar(type: Jar) {
 		attributes("Main-Class": "synapticloop.documentr.Main")
 	}
 
-	from { locateJar('simpleusage') } {
-		include "**"
-	}
-	from { locateJar('simplelogger') } {
-		include "**"
-	}
-	from { locateJar('commons-io') } {
-		include "**"
-	}
-	from { locateJar('json') } {
-		include "**"
-	}
-	from { locateJar('templar') } {
-		include "**"
-	}
-	from(sourceSets.main.output) {
-		include "**"
-	}
+	from { locateJar('simpleusage') } { include "**" }
+	from { locateJar('simplelogger') } { include "**" }
+	from { locateJar('commons-io') } { include "**" }
+	from { locateJar('commons-cli') } { include "**" }
+	from { locateJar('json') } { include "**" }
+	from { locateJar('templar') } { include "**" }
+	from(sourceSets.main.output) { include "**" }
 }
 
 build.finalizedBy(project.tasks.fatJar)

@@ -2,15 +2,26 @@ Generate a README.md file for projects utilising the 'templar' templating
 engine.
 
 Usage:
-    java -jar documentr-all.jar [ --verbose ] [ <directory> | --help ]
+    java -jar documentr-all.jar [OPTIONS}
 
-Where:
-    --verbose is an optional parameter as to whether to output the generated
-        templar markup that will be parsed
-    <directory> is an optional argument for which directory to look for the
-        documentr.json file and generate the README.md.  This defaults to 
-        the current working directory
-    --help will print out a longer version of the usage message.
+All OPTIONS are optional
+
+Where OPTIONS are one of 
+
+ -h, --help              will print out a longer version of the usage message.
+                         Note: If you use this parameter all other parameters 
+                         are ignored
+
+ ~ OR ~
+
+ -d, --directory <arg>   The directory in which the 'documentr.json' file 
+                         resides, default the current working directory
+                        (i.e. '.')
+ -e, --extension <arg>   The extension for the README file, default '.md'. Only
+                         '.md' and '.adoc' are supported by the inbuilt 
+                         templates, only other extension __MUST__ not use the 
+                         'inbuilt' template type
+ -v, --verbose <arg>     Output more verbose information
 
 This will look for a documentr.json file in the directory, parse it, collate 
 the associated resources and generate the documentation.
