@@ -8,15 +8,15 @@ The format of the documentr.json file is as follows:
 		...
 	},
 	"templates": [
-		{ "type":"template-type", "value":"template-name" },
-		{ "type":"template-type", "value":"template-name" },
+		{ "type": "template-type", "value": "template-name" },
+		{ "type": "template-type", "value": "template-name" },
 		...
 	]
 }
 
-The "context" keyed object is a JSONObject of key value pairs, and can be valid 
-value apart from a JSONArray or another JSONObject (i.e., long, boolean, string, 
-int).
+The "context" keyed object is a JSONObject of key value pairs, and can be any 
+valid JSON values apart from a JSONArray or another JSONObject (i.e., long, 
+boolean, string, int).
 
 The "templates" keyed array is a JSONArray of JSONObjects.  Each of the 
 JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only 
@@ -36,7 +36,7 @@ be one of the following:
 The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
-        README.md file.
+        README file.
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
         number
