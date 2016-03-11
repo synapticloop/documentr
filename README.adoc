@@ -1,4 +1,4 @@
-image:https://travis-ci.org/synapticloop/documentr.svg?branch=master[Build Status,link=https://travis-ci.org/synapticloop/documentr] image:https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg[Download,link=https://bintray.com/synapticloop/maven/documentr/_latestVersion] image:https://img.shields.io/github/release/synapticloop/documentr.svg[GitHub Release,link=https://github.com/synapticloop/documentr/releases] image:https://img.shields.io/badge/gradle%20plugin-1.3.1-blue.svg[Gradle Plugin Release,link=https://plugins.gradle.org/plugin/synapticloop.documentr] 
+image:https://travis-ci.org/synapticloop/documentr.svg?branch=master[Build Status,link=https://travis-ci.org/synapticloop/documentr] image:https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg[Download,link=https://bintray.com/synapticloop/maven/documentr/_latestVersion] image:https://img.shields.io/github/release/synapticloop/documentr.svg[GitHub Release,link=https://github.com/synapticloop/documentr/releases] image:https://img.shields.io/badge/gradle%20plugin-1.3.2-blue.svg[Gradle Plugin Release,link=https://plugins.gradle.org/plugin/synapticloop.documentr] 
 
 ____
 
@@ -10,7 +10,7 @@ ____
 
 ____
 
-documentation (README.md) generator for projects - this utilises the templar templating language
+documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language
 
 ____
 
@@ -119,7 +119,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.3.1"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.3.2"
 	}
 }
 
@@ -131,7 +131,7 @@ apply plugin: "synapticloop.documentr"
 
 ----
 plugins {
-	id 'synapticloop.documentr' version '1.3.1'
+	id 'synapticloop.documentr' version '1.3.2'
 }
 ----
 
@@ -157,7 +157,7 @@ The `verbose` setting will output the pre-parsed and rendered templar template t
 simply run
 
 ----
-java -jar documentr-1.3.1-all.jar
+java -jar documentr-1.3.2-all.jar
 ----
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
@@ -165,7 +165,7 @@ By default this will generate the `README.md` file looking at the current direct
 Running:
 
 ----
-java -jar documentr-1.3.1-all.jar --help
+java -jar documentr-1.3.2-all.jar --help
 ----
 
 Will yield the following information:
@@ -442,9 +442,9 @@ repositories {
 
 ----
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.2', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.3.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.3.2', ext: 'jar')
 }
 ----
 
@@ -452,9 +452,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ----
 dependencies {
-	runtime 'synapticloop:documentr:1.3.1'
+	runtime 'synapticloop:documentr:1.3.2'
 
-	compile 'synapticloop:documentr:1.3.1'
+	compile 'synapticloop:documentr:1.3.2'
 }
 ----
 
@@ -464,7 +464,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.3.1</version>
+	<version>1.3.2</version>
 	<type>jar</type>
 </dependency>
 ----
@@ -513,7 +513,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-1.3.1.jar -&gt; documentr-1.3.1-all.jar`
+`documentr-1.3.2.jar -&gt; documentr-1.3.2-all.jar`
 
 = License
 

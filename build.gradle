@@ -13,7 +13,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:1.3.1'
+		classpath 'synapticloop:documentr:1.3.2'
 	}
 }
 
@@ -33,9 +33,9 @@ apply plugin: 'synapticloop.documentr'
 // textual information for this project
 group = 'synapticloop'
 archivesBaseName = 'documentr'
-description = """documentation (README.md) generator for projects - this utilises the templar templating language"""
+description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language"""
 
-version = '1.3.1'
+version = '1.3.2'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -81,8 +81,8 @@ configurations.all {
 documentrSetting {
 	directory = '.'
 	verbose = 'true'
-//	extension = 'md' // this is the default
-	 extension = 'adoc' // perhaps you want asciidoc?
+	extension = 'md' // this is the default
+//	 extension = 'adoc' // perhaps you want asciidoc?
 }
 
 def locateJar(lib) {
@@ -180,7 +180,7 @@ bintray {
 pluginBundle {
 	website = 'https://github.com/synapticloop/documentr'
 	vcsUrl = 'https://github.com/synapticloop/documentr'
-	description = 'documentation (README) generator for projects in both MarkDown and AsciiDoc'
+	description = 'documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language'
 	tags = [ 'README', 'documentation', 'generator' ]
 
 	plugins {

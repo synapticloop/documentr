@@ -2,6 +2,7 @@ package synapticloop.documentr.generator;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -105,7 +106,8 @@ public class Generator {
 						throw new DocumentrException(String.format("Unknown type of '%s'", type));
 					}
 
-					String pathname = documentrJsonFile.getParent() + "/" + templateObject.getString(VALUE);
+					String value = templateObject.getString(VALUE);
+					String pathname = documentrJsonFile.getParent() + "/" + value;
 					switch(TYPE_LOOKUP.get(type)) {
 					case TYPE_FILE:
 						stringBuilder.append("{pre\n");
@@ -114,7 +116,7 @@ public class Generator {
 						break;
 					case TYPE_MARKUP:
 						stringBuilder.append("\n");
-						stringBuilder.append(templateObject.getString(VALUE).replaceAll("\\{", "\\{\\{").replaceAll("\\n", "\\{\\\\n\\}").replaceAll("\\t", "\\{\\\\t\\}"));
+						stringBuilder.append(value.replaceAll("\\{", "\\{\\{").replaceAll("\\n", "\\{\\\\n\\}").replaceAll("\\t", "\\{\\\\t\\}"));
 						stringBuilder.append("\n");
 						break;
 					case TYPE_TEMPLATE:
@@ -125,14 +127,12 @@ public class Generator {
 						stringBuilder.append("\n");
 						break;
 					case TYPE_TEMPLAR:
-						stringBuilder.append(templateObject.getString(VALUE));
+						stringBuilder.append(value);
 						break;
 					case TYPE_INBUILT:
 						stringBuilder.append("{import classpath:/");
-						stringBuilder.append(templateObject.getString(VALUE));
-//						stringBuilder.append(".");
-//						stringBuilder.append(extension);
-						stringBuilder.append(".templar}\n");
+						stringBuilder.append(getInbuiltTemplateName(value));
+						stringBuilder.append("}\n");
 						break;
 					default:
 						throw new DocumentrException(String.format("Could not determine type %s", type));
@@ -161,6 +161,23 @@ public class Generator {
 			}
 		} else {
 			throw new DocumentrException(String.format("Cannot find the '%s' file.", documentrJsonFile));
+		}
+	}
+
+	private String getInbuiltTemplateName(String template) {
+		InputStream resourceAsStream = null;
+		try {
+			String lookForTemplate = String.format("%s.%s.templar", template, extension);
+			resourceAsStream = Generator.class.getResourceAsStream(lookForTemplate);
+			if(null == resourceAsStream) {
+				return(String.format("%s.md.templar", template));
+			} else {
+				return(lookForTemplate);
+			}
+		} finally {
+			if(null != resourceAsStream) {
+				try { resourceAsStream.close(); } catch (IOException ex) { /* do nothing */ }
+			}
 		}
 	}
 
