@@ -168,7 +168,7 @@ public class Generator {
 		InputStream resourceAsStream = null;
 		try {
 			String lookForTemplate = String.format("%s.%s.templar", template, extension);
-			resourceAsStream = Generator.class.getResourceAsStream(lookForTemplate);
+			resourceAsStream = Generator.class.getResourceAsStream("/" + lookForTemplate);
 			if(null == resourceAsStream) {
 				return(String.format("%s.md.templar", template));
 			} else {

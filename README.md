@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.3.2-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.3.3-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -117,7 +117,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop.documentr:documentr:1.3.2"
+		classpath "gradle.plugin.synapticloop.documentr:documentr:1.3.3"
 	}
 }
 
@@ -128,7 +128,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.3.2'
+	id 'synapticloop.documentr' version '1.3.3'
 }
 ```
 
@@ -156,7 +156,7 @@ simply run
 
 
 ```
-java -jar documentr-1.3.2-all.jar
+java -jar documentr-1.3.3-all.jar
 ```
 
 By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
@@ -165,7 +165,7 @@ By default this will generate the `README.md` file looking at the current direct
 Running:
 
 ```
-java -jar documentr-1.3.2-all.jar --help
+java -jar documentr-1.3.3-all.jar --help
 ```
 
 Will yield the following information:
@@ -442,9 +442,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.2', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.3', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.3.2', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '1.3.3', ext: 'jar')
 }
 ```
 
@@ -452,9 +452,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.3.2'
+	runtime 'synapticloop:documentr:1.3.3'
 
-	compile 'synapticloop:documentr:1.3.2'
+	compile 'synapticloop:documentr:1.3.3'
 }
 ```
 
@@ -464,7 +464,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.3.2</version>
+	<version>1.3.3</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -513,7 +513,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-1.3.2.jar -> documentr-1.3.2-all.jar`
+`documentr-1.3.3.jar -> documentr-1.3.3-all.jar`
 
 
 
