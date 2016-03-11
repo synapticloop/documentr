@@ -81,8 +81,8 @@ configurations.all {
 documentrSetting {
 	directory = '.'
 	verbose = 'true'
-	extension = 'md' // this is the default
-//	extension = 'adoc' // perhaps you want asciidoc?
+//	extension = 'md' // this is the default
+	extension = 'adoc' // perhaps you want asciidoc?
 }
 
 def locateJar(lib) {

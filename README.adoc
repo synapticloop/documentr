@@ -14,11 +14,43 @@ documentation (README) generator for projects in both markdown and asciidoc - th
 
 ____
 
-A lot of project documentation is just plain incorrect, mainly due to the fact that it is hard to keep up to date. Furthermore, there are different levels of documentation required for the novice to the expert. Making your project as easy as possible to set up and integrate helps everybody.
+= Overview
 
-Making documentation hard to update reduces the likelihood that it will be kept up-to-date at all. Consequently, this project easily generates a `README.md` file pulling together information from a variety of sources (files, templates, in-built resources and in-line mark-up), making it easier to include a raft of information without having to generate multiple files by hand.
+== Why document anything?
 
-For this `README.md` file, the only files that are hand-written are:
+Ever duckduckgo, google, bing or yahoo searched for an answer to your question? You are searching the world's largest index of documentation - all of which was written by somebody else (or maybe you)
+
+Whilst documentation is seen as the thing that developers love to read, but hate to write, documentation for any project/module/framework/extension helps:
+
+* Increase adoption - that's right, if you want people to use your project, documentation makies is _so_ much easier
+* You to understand your code better - if you can explain it in clear english (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
+* Give an all-round happy feeling - and we all like this, don't we!
+
+== Do's and Don'ts of documentation
+
+=== Do
+
+* Give a quick example of how to get up and running
+* Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do
+* Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen
+* Keep it up to date - old, out of date documentation is almost as bad as no documentation
+* Make it as easy as possible to get your software up and running as quickly as possible
+
+=== Don't
+
+* Tell people to read the test cases
+** People want to use your software, not understand your how you test your code
+** Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running
+** If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do
+* Let your documentation get out of date
+
+____
+
+The above Do's and Don'ts were the basis for why `documentr` was created, minimising the hand created stuff and maximising the information
+
+____
+
+For this `README` file, the only files that are hand-written are:
 
 * `src/docs/pre-usage.md.templar`,
 * `src/docs/post-usage.md.templar`
@@ -28,7 +60,7 @@ files. All other information is generated from the `documentr.json` file in the 
 = Getting Started
 
 . Create a `documentr.json` file
-. Generate the `README.md` file either through the gradle plugin, or through the command line
+. Generate the `README` file either through the gradle plugin, or through the command line
 . … There is no step 3
 
 == Step 1 - create the `documentr.json` file
@@ -97,9 +129,9 @@ _in fact - the above file is included from the file system `documentr.json`, so 
 
 ____
 
-The above file generated this complete `README.md` file, while only requiring 2 files to be created by hand.
+The above file generated this complete `README` file, while only requiring 2 files to be created by hand.
 
-== Step 2 - generate the `README.md` file
+== Step 2 - generate the `README` file
 
 === Gradle plugin usage
 
@@ -148,7 +180,7 @@ documentrSetting {
 }
 ----
 
-Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`)
+Note that this will generate the `README` file in the same directory (i.e. `../some/directory/README.md` or `../some/directory/README.adoc`)
 
 The `verbose` setting will output the pre-parsed and rendered templar template to the console
 
@@ -160,7 +192,13 @@ simply run
 java -jar documentr-1.3.3-all.jar
 ----
 
-By default this will generate the `README.md` file looking at the current directory for a `documentr.json` file.
+By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
+
+____
+
+note that you will need to place everything in the `context` object manually when running from the command line
+
+____
 
 Running:
 
@@ -208,15 +246,15 @@ The format of the documentr.json file is as follows:
 		...
 	},
 	"templates": [
-		{ "type":"template-type", "value":"template-name" },
-		{ "type":"template-type", "value":"template-name" },
+		{ "type": "template-type", "value": "template-name" },
+		{ "type": "template-type", "value": "template-name" },
 		...
 	]
 }
 
-The "context" keyed object is a JSONObject of key value pairs, and can be valid 
-value apart from a JSONArray or another JSONObject (i.e., long, boolean, string, 
-int).
+The "context" keyed object is a JSONObject of key value pairs, and can be any 
+valid JSON values apart from a JSONArray or another JSONObject (i.e., long, 
+boolean, string, int).
 
 The "templates" keyed array is a JSONArray of JSONObjects.  Each of the 
 JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only 
@@ -236,7 +274,7 @@ be one of the following:
 The list of inbuilt templates:
 
   - attribution - a nice attribution to synapticloop for generating this 
-        README.md file.
+        README file.
   - badge-bintray - generation of a bintray download badge with version number
   - badge-shield-io-github-release - generation of a github release version 
         number

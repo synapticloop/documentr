@@ -1,9 +1,9 @@
 {\n}
-The above file generated this complete `README.md` file, while only requiring 2 
+The above file generated this complete `README` file, while only requiring 2 
 files to be created by hand.{\n}
 {\n}
 {\n}
-## Step 2 - generate the `README.md` file{\n}
+## Step 2 - generate the `README` file{\n}
 
 ### Gradle plugin usage{\n}
 {\n}
@@ -55,10 +55,9 @@ documentrSetting {{{\n}
 ```{\n}
 {\n}
 {\n}
-Note that this will generate the `README.md` file in the same directory (i.e. `../some/directory/README.md`){\n}
+Note that this will generate the `README` file in the same directory (i.e. `../some/directory/README.md` or `../some/directory/README.adoc`){\n}
 {\n}
-The `verbose` setting will output the pre-parsed and rendered templar template 
-to the console{\n}
+The `verbose` setting will output the pre-parsed and rendered templar template to the console{\n}
 {\n}
 ### Java command line usage{\n}
 {\n}
@@ -69,8 +68,10 @@ simply run{\n}
 java -jar {archivesBaseName}-{version}-all.jar{\n}
 ```{\n}
 {\n}
-By default this will generate the `README.md` file looking at the current 
-directory for a `documentr.json` file.{\n}
+By default this will generate the `README` file looking at the current directory for a `documentr.json` file.{\n}
+{\n}
+{\n}
+> note that you will need to place everything in the `context` object manually when running from the command line{\n}
 {\n}
 {\n}
 Running:{\n}

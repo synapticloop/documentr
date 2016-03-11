@@ -1,16 +1,45 @@
 {\n}
-A lot of project documentation is just plain incorrect, mainly due to the fact 
-that it is hard to keep up to date.  Furthermore, there are different levels of 
-documentation required for the novice to the expert.  Making your project as 
-easy as possible to set up and integrate helps everybody.{\n}
 {\n}
-Making documentation hard to update reduces the likelihood that it will be kept 
-up-to-date at all. Consequently, this project easily generates a `README.md` 
-file pulling together information from a variety of sources (files, templates, 
-in-built resources and in-line mark-up), making it easier to include a raft of 
-information without having to generate multiple files by hand.{\n}
+# Overview{\n}
 {\n}
-For this `README.md` file, the only files that are hand-written are:{\n}
+{\n}
+## Why document anything?{\n}
+{\n}
+Ever duckduckgo, google, bing or yahoo searched for an answer to your question? You are searching the world's largest index of documentation - all of which was written by somebody else (or maybe you){\n}
+{\n}
+{\n}
+Whilst documentation is seen as the thing that developers love to read, but hate 
+to write, documentation for any project/module/framework/extension helps:{\n}
+{\n}
+{\  }- Increase adoption - that's right, if you want people to use your project, documentation makies is _so_ much easier{\n}
+{\  }- You to understand your code better - if you can explain it in clear english (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base{\n}
+{\  }- Give an all-round happy feeling - and we all like this, don't we!{\n}
+{\n}
+{\n}
+## Do's and Don'ts of documentation{\n}
+{\n}
+### Do{\n}
+{\n}
+{\  }- Give a quick example of how to get up and running{\n}
+{\  }- Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do{\n}
+{\  }- Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen{\n}
+{\  }- Keep it up to date - old, out of date documentation is almost as bad as no documentation{\n}
+{\  }- Make it as easy as possible to get your software up and running as quickly as possible{\n}
+{\n}
+{\n}
+### Don't{\n}
+{\n}
+{\  }- Tell people to read the test cases{\n}
+{\    }- People want to use your software, not understand your how you test your code{\n}
+{\    }- Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running{\n}
+{\    }- If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do{\n}
+{\  }- Let your documentation get out of date{\n}
+{\n}
+{\n}
+> The above Do's and Don'ts were the basis for why `documentr` was created, minimising the hand created stuff and maximising the information{\n}
+{\n}
+{\n}
+For this `README` file, the only files that are hand-written are:{\n}
 {\n}
   - `src/docs/pre-usage.md.templar`,{\n}
   - `src/docs/post-usage.md.templar`{\n}
@@ -21,7 +50,7 @@ the root of this project.{\n}
 # Getting Started{\n}
 {\n}
   1. Create a `documentr.json` file{\n}
-  1. Generate the `README.md` file either through the gradle plugin, or through the command line{\n}
+  1. Generate the `README` file either through the gradle plugin, or through the command line{\n}
   1. ... There is no step 3{\n}
 {\n}
 {\n}
