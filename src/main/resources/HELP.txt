@@ -47,6 +47,7 @@ The list of inbuilt templates:
   - dumpcontext - for debugging, this will dump the available context items to
         the output
   - gradle-build - gradle build instructions
+  - gradle-plugin-usage - print out the default gradle plugin usage instructions
   - gradle-test - gradle test instructions
   - jvm-compatability - Output a JVM compatability notice
   - license-apache-2.0 - the standard Apache 2.0 license

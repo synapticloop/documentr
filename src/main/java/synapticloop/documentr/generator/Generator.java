@@ -1,5 +1,21 @@
 package synapticloop.documentr.generator;
 
+/*
+ * Copyright (c) 2016 Synapticloop.
+ * 
+ * All rights reserved.
+ * 
+ * This code may contain contributions from other parties which, where 
+ * applicable, will be listed in the default build file for the project 
+ * ~and/or~ in a file named CONTRIBUTORS.txt in the root of the project.
+ * 
+ * This source code and any derived binaries are covered by the terms and 
+ * conditions of the Licence agreement ("the Licence").  You may not use this 
+ * source code or any derived binaries except in compliance with the Licence.  
+ * A copy of the Licence is available in the file named LICENSE.txt shipped with 
+ * this source code or binaries.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +62,6 @@ public class Generator {
 		TYPE_LOOKUP.put("markup", TYPE_MARKUP);
 	}
 
-	private Project project;
 	private final File rootDirectory;
 	private final String extension;
 	private boolean verbose = false;
@@ -55,7 +70,6 @@ public class Generator {
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
 
 	public Generator(Project project, File rootDirectory, String extension, boolean verbose) {
-		this.project = project;
 		this.rootDirectory = rootDirectory;
 		this.verbose = verbose;
 		this.extension = extension;

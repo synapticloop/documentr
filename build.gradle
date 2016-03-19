@@ -26,6 +26,7 @@ plugins {
 	id 'com.gradle.plugin-publish' version '0.9.3'
 	id 'co.riiid.gradle' version '0.4.2'
 	id 'com.jfrog.bintray' version '1.6'
+	id 'synapticloop.copyrightr' version '1.0.1'
 }
 
 apply plugin: 'synapticloop.documentr'
@@ -35,7 +36,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language"""
 
-version = '1.3.4'
+version = '1.3.5'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -76,6 +77,21 @@ configurations.all {
 	resolutionStrategy {
 		failOnVersionConflict()
 	}
+}
+
+copyrightr {
+	dryRun = false
+
+	copyrightHolder = "Synapticloop"
+
+	includes = [ 
+		"src/main/**/*.java",
+		"LICENSE.txt"
+	]
+
+	onlyReplaceFirst = true
+
+	yearSeparator = " - "
 }
 
 documentrSetting {

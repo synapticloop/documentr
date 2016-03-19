@@ -1,0 +1,36 @@
+{set "true" as allOk}
+
+{if fn:null[archivesBaseName]}{set "false" as allOk}{\n}{\n}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
+{if fn:null[group]}{set "false" as allOk}{\n}{\n}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[version]}{set "false" as allOk}{\n}{\n}MISSING variable `version` in the context{\n}{\n}{endif}
+
+{if fn:=[allOk, "false"]}
+	{set "dependency-management.templar" as template}
+	{import classpath:/includes/missing-variables.templar}
+{else}
+{\n}
+{\n}
+# Gradle plugin usage{\n}
+{\n}
+## Build script snippet for use in all Gradle versions:{\n}
+{\n}
+buildscript {{{\n}
+{\  }repositories {{{\n}
+{\    }maven {{{\n}
+{\      }url "https://plugins.gradle.org/m2/"{\n}
+{\    }}{\n}
+{\  }}{\n}
+{\  }dependencies {{{\n}
+{\    }classpath "gradle.plugin.{group}:{archivesBaseName}:{version}"{\n}
+{\  }}{\n}
+}{\n}
+{\n}
+apply plugin: "{pluginId}"{\n}
+{\n}
+{\n}
+## Build script snippet for new, incubating, plugin mechanism introduced in Gradle 2.1:{\n}
+{\n}
+plugins {{{\n}
+{\  }id "{pluginId}" version "{version}"{\n}
+}{\n}
+{\n}
