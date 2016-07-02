@@ -94,7 +94,7 @@ copyrightr {
 	yearSeparator = " - "
 }
 
-documentrSetting {
+documentr {
 	directory = '.'
 	verbose = 'true'
 	extension = 'md' // this is the default
@@ -124,86 +124,3 @@ task fatJar(type: Jar) {
 }
 
 build.finalizedBy(project.tasks.fatJar)
-publishPlugins.finalizedBy(project.tasks.fatJar)
-
-github {
-	owner = group
-	repo = archivesBaseName
-	if(System.getenv('GITHUB_TOKEN')) {
-		token = System.getenv('GITHUB_TOKEN')
-	}
-	tagName = version
-	name = version
-	assets = [
-		'build/libs/' + archivesBaseName + '-' + version + '-all.jar',
-		'build/libs/' + archivesBaseName + '-' + version + '.jar'
-	]
-}
-
-def javaApiUrl = 'http://docs.oracle.com/javase/1.7.0/docs/api/'
-def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
-
-tasks.withType(Javadoc) {
-	options.links(javaApiUrl, groovyApiUrl)
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-	classifier = 'javadoc'
-	from 'build/docs/javadoc'
-}
-
-task sourcesJar(type: Jar) {
-	from sourceSets.main.allSource
-	classifier = 'sources'
-}
-
-publishing {
-	publications {
-		Synapticloop(MavenPublication) {
-			from components.java
-			artifact sourcesJar
-			artifact javadocJar
-
-			groupId group
-			artifactId archivesBaseName
-
-			pom.withXml {
-				configurations.compile.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
-					asNode().dependencies[0].dependency.find {
-						it.artifactId[0].text() == dep.moduleName &&
-								it.groupId[0].text() == dep.moduleGroup
-					}.scope[0].value = 'compile'
-				}
-			}
-		}
-	}
-}
-
-bintray {
-	user = System.getenv('BINTRAY_USER')
-	key = System.getenv('BINTRAY_PASSWORD')
-
-	publications = [ 'Synapticloop' ]
-
-	publish = true
-
-	pkg {
-		repo = 'maven'
-		name = archivesBaseName
-	}
-}
-
-pluginBundle {
-	website = 'https://github.com/synapticloop/documentr'
-	vcsUrl = 'https://github.com/synapticloop/documentr'
-	description = 'documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language'
-	tags = [ 'README', 'documentation', 'generator' ]
-
-	plugins {
-		documentrPlugin {
-			id = 'synapticloop.documentr'
-			displayName = 'Synapticloop Gradle documentr plugin'
-		}
-	}
-}
-

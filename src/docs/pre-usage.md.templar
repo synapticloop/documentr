@@ -1,3 +1,38 @@
+# IMPORTANT{\n}
+{\n}
+{\n}
+Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`{\n}
+{\n}
+## NEW{\n}
+{\n}
+{\n}
+```{\n}
+documentr {{{\n}
+{\t}directory = '../some/directory/'{\n}
+{\t}verbose = 'false'{\n}
+{\t}extension = 'md' // this is the default{\n}
+{\t}// extension = 'adoc' // perhaps you want asciidoc?{\n}
+{\t}documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?{\n}
+}{\n}
+```{\n}
+{\n}
+{\n}
+
+
+## OLD{\n}
+{\n}
+```{\n}
+documentrSetting {{{\n}
+{\t}directory = '../some/directory/'{\n}
+{\t}verbose = 'false'{\n}
+{\t}extension = 'md' // this is the default{\n}
+{\t}// extension = 'adoc' // perhaps you want asciidoc?{\n}
+{\t}documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?{\n}
+}{\n}
+```{\n}
+{\n}
+{\n}
+
 {\n}
 {\n}
 # Overview{\n}

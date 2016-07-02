@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.3.6-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.0.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -10,6 +10,38 @@
 
 
 > documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language
+
+
+# IMPORTANT
+
+
+Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`
+
+## NEW
+
+
+```
+documentr {
+	directory = '../some/directory/'
+	verbose = 'false'
+	extension = 'md' // this is the default
+	// extension = 'adoc' // perhaps you want asciidoc?
+	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
+}
+```
+
+
+## OLD
+
+```
+documentrSetting {
+	directory = '../some/directory/'
+	verbose = 'false'
+	extension = 'md' // this is the default
+	// extension = 'adoc' // perhaps you want asciidoc?
+	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
+}
+```
 
 
 
@@ -152,7 +184,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:1.3.6"
+		classpath "gradle.plugin.synapticloop:documentr:2.0.0"
 	}
 }
 
@@ -163,7 +195,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '1.3.6'
+	id 'synapticloop.documentr' version '2.0.0'
 }
 ```
 
@@ -172,11 +204,12 @@ plugins {
 By default the plugin looks for a `documentr.json` file in the current directory, you may override this by doing the following:
 
 ```
-documentrSetting {
+documentr {
 	directory = '../some/directory/'
 	verbose = 'false'
 	extension = 'md' // this is the default
 	// extension = 'adoc' // perhaps you want asciidoc?
+	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
 }
 ```
 
@@ -191,7 +224,7 @@ simply run
 
 
 ```
-java -jar documentr-1.3.6-all.jar
+java -jar documentr-2.0.0-all.jar
 ```
 
 By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
@@ -203,7 +236,7 @@ By default this will generate the `README` file looking at the current directory
 Running:
 
 ```
-java -jar documentr-1.3.6-all.jar --help
+java -jar documentr-2.0.0-all.jar --help
 ```
 
 Will yield the following information:
@@ -481,9 +514,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '1.3.6', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.0.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '1.3.6', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.0.0', ext: 'jar')
 }
 ```
 
@@ -491,9 +524,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:1.3.6'
+	runtime 'synapticloop:documentr:2.0.0'
 
-	compile 'synapticloop:documentr:1.3.6'
+	compile 'synapticloop:documentr:2.0.0'
 }
 ```
 
@@ -503,7 +536,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>1.3.6</version>
+	<version>2.0.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -552,7 +585,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-1.3.6.jar -> documentr-1.3.6-all.jar`
+`documentr-2.0.0.jar -> documentr-2.0.0-all.jar`
 
 
 
