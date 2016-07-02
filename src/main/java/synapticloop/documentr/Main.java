@@ -30,7 +30,11 @@ import synapticloop.util.SimpleUsage;
 
 public class Main {
 
-	public static void main(String[] args) {
+	private static boolean verbose = false;
+	private static String directory = ".";
+	private static String extension = "md";
+
+	private static void parseCommandLineOptions(String[] args) throws ParseException {
 		Options options = new Options();
 
 		options.addOption("h", "help", false, "Print out the usage and help message.");
@@ -39,34 +43,34 @@ public class Main {
 				+ "file resides, default the current working directory (i.e. '.')");
 		options.addOption("e", "extension", true, "The extension for the README file, default '.md'.");
 
-		boolean verbose = false;
-		String directory = ".";
-		String extension = "md";
-
 		CommandLineParser parser = new DefaultParser();
+		// parse the command line arguments
+		CommandLine line = parser.parse(options, args);
+		if(line.hasOption("h")) {
+			SimpleUsage.helpAndExit();
+		}
+
+		// at this point we are going to do the generation
+		if(line.hasOption("v")) {
+			verbose = true;
+		}
+
+		if(line.hasOption("d")) {
+			directory = line.getOptionValue("d");
+		}
+
+		if(line.hasOption("e")) {
+			extension = line.getOptionValue("e");
+			if(extension.startsWith(".")) {
+				extension = extension.substring(0, 1);
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
 		try {
-			// parse the command line arguments
-			CommandLine line = parser.parse(options, args);
-			if(line.hasOption("h")) {
-				SimpleUsage.helpAndExit();
-			}
-
-			// at this point we are going to do the generation
-			if(line.hasOption("v")) {
-				verbose = true;
-			}
-
-			if(line.hasOption("d")) {
-				directory = line.getOptionValue("d");
-			}
-
-			if(line.hasOption("e")) {
-				extension = line.getOptionValue("e");
-				if(extension.startsWith(".")) {
-					extension = extension.substring(0, 1);
-				}
-			}
-
+			parseCommandLineOptions(args);
 		} catch(ParseException ex) {
 			SimpleUsage.usageAndExit(String.format("Could not parse the command line, message was: %s", ex.getMessage()));
 		}

@@ -84,7 +84,7 @@ public class Generator {
 			ConfigurationBean configurationBean = new ConfigurationBean(configurationName);
 			Configuration configuration = configurations.getByName(configurationName);
 			DependencySet dependencySet = configuration.getDependencies();
-			configurationBean.addDependency(dependencySet);
+			configurationBean.addDependencies(dependencySet);
 			configurationBeans.add(configurationBean);
 		}
 

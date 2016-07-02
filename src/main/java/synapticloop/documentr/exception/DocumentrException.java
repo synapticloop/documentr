@@ -19,10 +19,21 @@ package synapticloop.documentr.exception;
 public class DocumentrException extends Exception {
 	private static final long serialVersionUID = 3499859602264427962L;
 
+	/**
+	 * Instantiate a documentr exception
+	 * 
+	 * @param message the message for the exception
+	 */
 	public DocumentrException(String message) {
 		super(message);
 	}
 
+	/**
+	 * Instantiate a documentr exception
+	 * 
+	 * @param message the message for the exception
+	 * @param throwable the root cause of the exception
+	 */
 	public DocumentrException(String message, Throwable throwable) {
 		super(message, throwable);
 	}

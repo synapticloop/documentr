@@ -26,21 +26,37 @@ public class ConfigurationBean {
 	private final String name;
 	private final List<Dependency> dependencies = new ArrayList<Dependency>();
 
+	/**
+	 * THe name of the configuration
+	 * 
+	 * @param name the name of the configuration
+	 */
 	public ConfigurationBean(String name) {
 		this.name = name;
 	}
 
-	public void addDependency(DependencySet dependencySet) {
+	/**
+	 * Add dependencies
+	 * 
+	 * @param dependencySet the set of dependencies to add
+	 */
+	public void addDependencies(DependencySet dependencySet) {
 		for (Dependency dependency : dependencySet) {
 			dependencies.add(dependency);
 		}
 	}
 
-	public String getName() {
-		return this.name;
-	}
+	/**
+	 * Get the name of the configuration
+	 * 
+	 * @return the name of the configuration
+	 */
+	public String getName() { return this.name; }
 
-	public List<Dependency> getDependencies() {
-		return this.dependencies;
-	}
+	/**
+	 * Get the dependencies for this configuration
+	 * 
+	 * @return the dependencies for this configuration
+	 */
+	public List<Dependency> getDependencies() { return this.dependencies; }
 }
