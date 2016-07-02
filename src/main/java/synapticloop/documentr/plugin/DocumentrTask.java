@@ -16,8 +16,6 @@ package synapticloop.documentr.plugin;
  * this source code or binaries.
  */
 
-import java.io.File;
-
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.TaskAction;
 
@@ -34,7 +32,7 @@ public class DocumentrTask extends DefaultTask {
 			extension = new DocumentrPluginExtension();
 		}
 
-		Generator generator = new Generator(getProject(), new File(extension.getDirectory()), extension.getExtension(), extension.getVerbose());
+		Generator generator = new Generator(getProject(), extension);
 		generator.generate();
 	}
 }

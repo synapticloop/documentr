@@ -51,6 +51,7 @@ documentrSetting {{{\n}
 {\t}verbose = 'false'{\n}
 {\t}extension = 'md' // this is the default{\n}
 {\t}// extension = 'adoc' // perhaps you want asciidoc?{\n}
+{\t}documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?{\n}
 }{\n}
 ```{\n}
 {\n}

@@ -18,31 +18,64 @@ package synapticloop.documentr.plugin;
 
 public class DocumentrPluginExtension {
 	private boolean verbose = false;
-
+	private String documentrFile = "documentr.json";
 	private String directory = ".";
 	private String extension = "md";
 
-	public String getDirectory() {
-		return(directory);
-	}
+	/**
+	 * Return the directory that the documentr plugin looks for the 'documentr.json'
+	 * file, by default this is the current working directory
+	 * 
+	 * @return the directory that the 'documentr.json' file resides in
+	 */
+	public String getDirectory() { return(directory); }
 
-	public void setDirectory(String directory) {
-		this.directory = directory;
-	}
+	/**
+	 * Set the directory that the 'documentr.json' file resides in
+	 * 
+	 * @param directory the directory that the 'documentr.json' file resides in
+	 */
+	public void setDirectory(String directory) { this.directory = directory; }
 
-	public boolean getVerbose() {
-		return this.verbose;
-	}
+	/**
+	 * Get whether there should be verbose output
+	 * 
+	 * @return whether documentr should be verbose
+	 */
+	public boolean getVerbose() { return this.verbose; }
 
-	public void setVerbose(boolean verbose) {
-		this.verbose = verbose;
-	}
+	/**
+	 * Set whether to have verbose output from documentr
+	 * 
+	 * @param verbose whether to output verbose information
+	 */
+	public void setVerbose(boolean verbose) { this.verbose = verbose; }
 
-	public String getExtension() {
-		return extension;
-	}
+	/**
+	 * Get the output extension, by default this is .md
+	 * 
+	 * @return get the  extension for the output
+	 */
+	public String getExtension() { return extension; }
 
-	public void setExtension(String extension) {
-		this.extension = extension;
-	}
+	/**
+	 * Set the extension for the output of the file
+	 * 
+	 * @param extension the extension for the output of the file
+	 */
+	public void setExtension(String extension) { this.extension = extension; }
+
+	/**
+	 * Get the documentr file name to be parsed (by default this is 'documentr.json'
+	 * 
+	 * @return the file name to be parsed by documentr
+	 */
+	public String getDocumentrFile() { return documentrFile; }
+
+	/**
+	 * Set the file name to be parsed
+	 * 
+	 * @param documentrFile the file name to be parsed
+	 */
+	public void setDocumentrFile(String documentrFile) { this.documentrFile = documentrFile; }
 }

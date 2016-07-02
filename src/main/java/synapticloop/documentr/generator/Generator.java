@@ -38,6 +38,7 @@ import org.json.JSONObject;
 import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
 import synapticloop.documentr.exception.DocumentrException;
+import synapticloop.documentr.plugin.DocumentrPluginExtension;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
@@ -62,17 +63,19 @@ public class Generator {
 		TYPE_LOOKUP.put("markup", TYPE_MARKUP);
 	}
 
+	private String documentrFile;
 	private final File rootDirectory;
-	private final String extension;
+	private final String fileExtension;
 	private boolean verbose = false;
 
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
 
-	public Generator(Project project, File rootDirectory, String extension, boolean verbose) {
-		this.rootDirectory = rootDirectory;
-		this.verbose = verbose;
-		this.extension = extension;
+	public Generator(Project project, DocumentrPluginExtension extension) {
+		this.documentrFile = extension.getDocumentrFile();
+		this.rootDirectory = new File(extension.getDirectory());
+		this.verbose = extension.getVerbose();
+		this.fileExtension = extension.getExtension();
 
 		// now go through and initialise the templarcontext
 		ConfigurationContainer configurations = project.getConfigurations();
@@ -96,14 +99,14 @@ public class Generator {
 	}
 
 	public Generator(File rootDirectory, String extension, boolean debug) {
-		this.extension = extension;
+		this.fileExtension = extension;
 		this.rootDirectory = rootDirectory;
 		this.verbose = debug;
 	}
 
 	public void generate() throws DocumentrException {
 		//at this point we have a directory - make sure we can find a documentr.json file 
-		File documentrJsonFile = new File(rootDirectory.getAbsolutePath() + "/documentr.json");
+		File documentrJsonFile = new File(rootDirectory.getAbsolutePath() + "/" + documentrFile);
 
 		if(documentrJsonFile.exists() && documentrJsonFile.canRead()) {
 			try {
@@ -164,8 +167,8 @@ public class Generator {
 
 				Parser parser = new Parser(stringBuilder.toString());
 				String renderered = parser.render(templarContext);
-				File outputFile = new File(documentrJsonFile.getParent() + "/README." + extension);
-				if("adoc".equals(extension)) {
+				File outputFile = new File(documentrJsonFile.getParent() + "/README." + fileExtension);
+				if("adoc".equals(fileExtension)) {
 					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(renderered));
 				} else {
 					FileUtils.writeStringToFile(outputFile, renderered);
@@ -181,7 +184,7 @@ public class Generator {
 	private String getInbuiltTemplateName(String template) {
 		InputStream resourceAsStream = null;
 		try {
-			String lookForTemplate = String.format("%s.%s.templar", template, extension);
+			String lookForTemplate = String.format("%s.%s.templar", template, fileExtension);
 			resourceAsStream = Generator.class.getResourceAsStream("/" + lookForTemplate);
 			if(null == resourceAsStream) {
 				return(String.format("%s.md.templar", template));
@@ -197,10 +200,12 @@ public class Generator {
 
 	private void overrideContext(TemplarContext templarContext, JSONObject jsonObject) {
 		JSONObject contextObject = jsonObject.getJSONObject("context");
-		Iterator<String> keys = contextObject.keys();
-		while (keys.hasNext()) {
-			String key = (String) keys.next();
-			templarContext.add(key, contextObject.get(key));
+		if(null != contextObject) {
+			Iterator<String> keys = contextObject.keys();
+			while (keys.hasNext()) {
+				String key = (String) keys.next();
+				templarContext.add(key, contextObject.get(key));
+			}
 		}
 	}
 }
