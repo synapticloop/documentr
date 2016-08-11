@@ -93,7 +93,7 @@ files. All other information is generated from the `documentr.json` file in the 
 
 # Getting Started
 
-  1. Create a `documentr.json` file (if one doesn't exist - we will create on automatically for you)
+  1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you)
   1. Generate the `README` file either through the gradle plugin, or through the command line
   1. ... There is no step 3
 

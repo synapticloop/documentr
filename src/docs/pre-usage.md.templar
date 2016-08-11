@@ -84,7 +84,7 @@ the root of this project.{\n}
 {\n}
 # Getting Started{\n}
 {\n}
-  1. Create a `documentr.json` file (if one doesn't exist - we will create on automatically for you){\n}
+  1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you){\n}
   1. Generate the `README` file either through the gradle plugin, or through the command line{\n}
   1. ... There is no step 3{\n}
 {\n}
