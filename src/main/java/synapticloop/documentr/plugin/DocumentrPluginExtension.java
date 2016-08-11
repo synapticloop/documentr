@@ -17,8 +17,11 @@ package synapticloop.documentr.plugin;
  */
 
 public class DocumentrPluginExtension {
+	public static final String FILE_NAME_DOCUMENTR_JSON = "documentr.json";
+	public static final String FILE_NAME_DOCUMENTR_DEFAULT_JSON = "/documentr-default.json";
+
 	private boolean verbose = false;
-	private String documentrFile = "documentr.json";
+	private String documentrFile = FILE_NAME_DOCUMENTR_JSON;
 	private String directory = ".";
 	private String extension = "md";
 

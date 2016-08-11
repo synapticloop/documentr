@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.SortedSet;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
@@ -45,14 +46,17 @@ import synapticloop.templar.exception.RenderException;
 import synapticloop.templar.utils.TemplarContext;
 
 public class Generator {
-	private static final String VALUE = "value";
-	private static final String TYPE = "type";
+	private static final String KEY_VALUE = "value";
+	private static final String KEY_TYPE = "type";
 
 	private static final int TYPE_FILE = 1;
 	private static final int TYPE_INBUILT = 0;
 	private static final int TYPE_TEMPLAR = 2;
 	private static final int TYPE_TEMPLATE = 3;
 	private static final int TYPE_MARKUP = 4;
+
+	private static final String CONTEXT_CONFIGURATION_BEANS = "configurationBeans";
+	private static final String CONTEXT_CONFIGURATIONS = "configurations";
 
 	private static final Map<String, Integer> TYPE_LOOKUP = new HashMap<String, Integer>();
 	static {
@@ -77,7 +81,7 @@ public class Generator {
 		this.verbose = extension.getVerbose();
 		this.fileExtension = extension.getExtension();
 
-		// now go through and initialise the templarcontext
+		// now go through and initialise the templar context
 		ConfigurationContainer configurations = project.getConfigurations();
 		SortedSet<String> configurationNames = configurations.getNames();
 		for (String configurationName : configurationNames) {
@@ -88,13 +92,27 @@ public class Generator {
 			configurationBeans.add(configurationBean);
 		}
 
-		templarContext.add("configurations", project.getConfigurations());
-		templarContext.add("configurationBeans", configurationBeans);
+		templarContext.add(CONTEXT_CONFIGURATIONS, project.getConfigurations());
+		templarContext.add(CONTEXT_CONFIGURATION_BEANS, configurationBeans);
 
 		Iterator<String> iterator = project.getProperties().keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
 			templarContext.add(key, project.getProperties().get(key));
+		}
+
+		File rootDirectory = new File(extension.getDirectory());
+		File documentrJsonFile = new File(rootDirectory.getAbsolutePath() + "/" + DocumentrPluginExtension.FILE_NAME_DOCUMENTR_JSON);
+
+		// The first thing we are going to do is to see whether there is a documentr.json file
+		if(!documentrJsonFile.exists() && DocumentrPluginExtension.FILE_NAME_DOCUMENTR_JSON.equals(documentrFile)) {
+			// and the file is missing, we are going to create it
+			try {
+				FileUtils.write(documentrJsonFile, IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("/documentr-default.json")));
+				project.getLogger().info("We couldn't find a ");
+			} catch (IOException ex) {
+				// ignore this - couldn't create it
+			}
 		}
 	}
 
@@ -104,6 +122,13 @@ public class Generator {
 		this.verbose = debug;
 	}
 
+	/**
+	 * Generate the documentation.  If we are using the default file location, 
+	 * and it doesn't exist, then we will create the file on the fly
+	 * 
+	 * @throws DocumentrException if there was an error in generating the 
+	 *     documentation
+	 */
 	public void generate() throws DocumentrException {
 		//at this point we have a directory - make sure we can find a documentr.json file 
 		File documentrJsonFile = new File(rootDirectory.getAbsolutePath() + "/" + documentrFile);
@@ -118,12 +143,12 @@ public class Generator {
 				for (Object object : jsonArray) {
 					JSONObject templateObject = (JSONObject)object;
 
-					String type = templateObject.getString(TYPE);
+					String type = templateObject.getString(KEY_TYPE);
 					if(!TYPE_LOOKUP.containsKey(type)) {
 						throw new DocumentrException(String.format("Unknown type of '%s'", type));
 					}
 
-					String value = templateObject.getString(VALUE);
+					String value = templateObject.getString(KEY_VALUE);
 					String pathname = documentrJsonFile.getParent() + "/" + value;
 					switch(TYPE_LOOKUP.get(type)) {
 					case TYPE_FILE:
