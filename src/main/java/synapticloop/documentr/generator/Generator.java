@@ -107,11 +107,15 @@ public class Generator {
 		// The first thing we are going to do is to see whether there is a documentr.json file
 		if(!documentrJsonFile.exists() && DocumentrPluginExtension.FILE_NAME_DOCUMENTR_JSON.equals(documentrFile)) {
 			// and the file is missing, we are going to create it
-			try {
-				FileUtils.write(documentrJsonFile, IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("/documentr-default.json")));
-				project.getLogger().info("We couldn't find a ");
-			} catch (IOException ex) {
-				// ignore this - couldn't create it
+			InputStream resourceAsStream = Generator.class.getResourceAsStream(DocumentrPluginExtension.FILE_NAME_DOCUMENTR_DEFAULT_JSON);
+			if(null != resourceAsStream) {
+				try {
+					FileUtils.write(documentrJsonFile, IOUtils.toString(resourceAsStream));
+					project.getLogger().info(String.format("We couldn't find a the default '%s' file, so we created it for you", DocumentrPluginExtension.FILE_NAME_DOCUMENTR_JSON));
+				} catch (IOException ex) {
+					// ignore this - couldn't create it
+					project.getLogger().error(String.format("Could not create the default documentr.json file, message was '%s'", ex.getMessage()), ex);
+				}
 			}
 		}
 	}
