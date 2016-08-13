@@ -76,8 +76,9 @@ to write, documentation for any project/module/framework/extension helps:
 
 For this `README` file, the only files that are hand-written are:
 
-  - `src/docs/pre-usage.md.templar`,
+  - `src/docs/pre-usage.md`,
   - `src/docs/post-usage.md.templar`
+  - `src/docs/table-of-contents.md`
 
 files. All other information is generated from the `documentr.json` file in 
 the root of this project.
@@ -89,7 +90,7 @@ the root of this project.
   1. ... There is no step 3
 
 
-## Step 1 - create the `documentr.json` file
+## Step 1 - Create the `documentr.json` file
 
 
 This is a simple JSON formatted file:

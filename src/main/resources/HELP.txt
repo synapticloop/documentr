@@ -23,7 +23,7 @@ JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only
 be one of the following:
 
   - template - this is a 'templar' formatted template that will be used and 
-        parsed
+        parsed - the value is a path to a file
   - templar - inline templar format tokens - a useful debugging one is:
         {dumpcontext} - which dumps all available context key/value pairs to
         the output

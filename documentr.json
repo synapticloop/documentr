@@ -14,7 +14,7 @@
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
-		{ "type": "tocbacktotop" },
+		{ "type": "tocbacktotop", "value": " <sup><sup>[top](#)</sup></sup>"},
 
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },

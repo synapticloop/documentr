@@ -20,24 +20,24 @@
    - [Why document anything?](#heading_6)
    - [Do's and Don'ts of documentation](#heading_7)
  - [Getting Started](#heading_10)
-   - [Step 1 - create the documentr.json file](#heading_11)
-   - [Step 2 - generate the README file](#heading_13)
-   - [Step 3 - Generating the table of contents](#heading_19)
- - [Building the Package](#heading_20)
-   - [*NIX/Mac OS X](#heading_21)
-   - [Windows](#heading_22)
- - [Logging - slf4j](#heading_23)
-   - [Log4j](#heading_24)
- - [Artefact Publishing - Github](#heading_29)
- - [Artefact Publishing - Bintray](#heading_30)
-   - [maven setup](#heading_31)
-   - [gradle setup](#heading_32)
-   - [Dependencies - Gradle](#heading_33)
-   - [Dependencies - Maven](#heading_34)
-   - [Dependencies - Downloads](#heading_35)
- - [Artefact Publishing - gradle plugin portal](#heading_38)
- - [All-In-One](#heading_39)
- - [License](#heading_40)
+   - [Step 1 - Create the documentr.json file](#heading_11)
+   - [Step 2 - Generate the README file](#heading_13)
+   - [Generating the table of contents](#heading_19)
+ - [Building the Package](#heading_25)
+   - [*NIX/Mac OS X](#heading_26)
+   - [Windows](#heading_27)
+ - [Logging - slf4j](#heading_28)
+   - [Log4j](#heading_29)
+ - [Artefact Publishing - Github](#heading_34)
+ - [Artefact Publishing - Bintray](#heading_35)
+   - [maven setup](#heading_36)
+   - [gradle setup](#heading_37)
+   - [Dependencies - Gradle](#heading_38)
+   - [Dependencies - Maven](#heading_39)
+   - [Dependencies - Downloads](#heading_40)
+ - [Artefact Publishing - gradle plugin portal](#heading_43)
+ - [All-In-One](#heading_44)
+ - [License](#heading_45)
 
 
 
@@ -70,7 +70,7 @@ Staring at version 2, the `build.gradle` task configuration has changed, from `d
 
 
 ```
-documentr {{
+documentr {
 	directory = '../some/directory/'
 	verbose = 'false'
 	extension = 'md' // this is the default
@@ -89,7 +89,7 @@ documentr {{
 ## OLD <sup><sup>[top](#)</sup></sup>
 
 ```
-documentrSetting {{
+documentrSetting {
 	directory = '../some/directory/'
 	verbose = 'false'
 	extension = 'md' // this is the default
@@ -121,9 +121,9 @@ Ever duckduckgo, google, bing or yahoo searched for an answer to your question? 
 Whilst documentation is seen as the thing that developers love to read, but hate 
 to write, documentation for any project/module/framework/extension helps:
 
-{\  }- Increase adoption - that's right, if you want people to use your project, documentation makes is _so_ much easier
-{\  }- You to understand your code better - if you can explain it in clear English (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
-{\  }- Give an all-round happy feeling - and we all like this, don't we!
+  - Increase adoption - that's right, if you want people to use your project, documentation makes is _so_ much easier
+  - You to understand your code better - if you can explain it in clear English (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
+  - Give an all-round happy feeling - and we all like this, don't we!
 
 
 
@@ -134,20 +134,20 @@ to write, documentation for any project/module/framework/extension helps:
 
 ### Do
 
-{\  }- Give a quick example of how to get up and running
-{\  }- Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do
-{\  }- Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen
-{\  }- Keep it up to date - old, out of date documentation is almost as bad as no documentation
-{\  }- Make it as easy as possible to get your software up and running as quickly as possible
+  - Give a quick example of how to get up and running
+  - Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do
+  - Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen
+  - Keep it up to date - old, out of date documentation is almost as bad as no documentation
+  - Make it as easy as possible to get your software up and running as quickly as possible
 
 
 ### Don't
 
-{\  }- Tell people to read the test cases
-{\    }- People want to use your software, not understand your how you test your code
-{\    }- Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running
-{\    }- If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do
-{\  }- Let your documentation get out of date
+  - Tell people to read the test cases
+    - People want to use your software, not understand your how you test your code
+    - Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running
+    - If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do
+  - Let your documentation get out of date
 
 
 > The above Do's and Don'ts were the basis for why `documentr` was created, minimising the hand created stuff and maximising the information
@@ -176,7 +176,7 @@ the root of this project.
 
 <a name="heading_11"></a>
 
-## Step 1 - create the `documentr.json` file <sup><sup>[top](#)</sup></sup>
+## Step 1 - Create the `documentr.json` file <sup><sup>[top](#)</sup></sup>
 
 
 This is a simple JSON formatted file:
@@ -203,13 +203,13 @@ This is a simple JSON file as show below:
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
-		{ "type": "tocbacktotop" },
+		{ "type": "tocbacktotop", "value": " <sup><sup>[top](#)</sup></sup>"},
 
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
 
-		{ "type":"file", "value":"src/docs/pre-usage.md.templar" },
+		{ "type":"file", "value":"src/docs/pre-usage.md" },
 
 		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
 		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
@@ -256,7 +256,7 @@ The above file generated this complete `README` file, while only requiring 2 fil
 
 <a name="heading_13"></a>
 
-## Step 2 - generate the `README` file <sup><sup>[top](#)</sup></sup>
+## Step 2 - Generate the `README` file <sup><sup>[top](#)</sup></sup>
 ### Gradle plugin usage
 
 
@@ -389,7 +389,7 @@ JSONObjects, __MUST__ have a key of "type" and "value".  The "type" can only
 be one of the following:
 
   - template - this is a 'templar' formatted template that will be used and 
-        parsed
+        parsed - the value is a path to a file
   - templar - inline templar format tokens - a useful debugging one is:
         {dumpcontext} - which dumps all available context key/value pairs to
         the output
@@ -455,9 +455,9 @@ The list of inbuilt templates:
 
 <a name="heading_19"></a>
 
-## Step 3 - Generating the table of contents <sup><sup>[top](#)</sup></sup>
+## Generating the table of contents <sup><sup>[top](#)</sup></sup>
 
-`documentr` can automatically generate the table fo contents for your documentation, 
+`documentr` can automatically generate the table of contents for your documentation, 
 simply by entering the following line into you `documentr.json` file:
 
 ```
@@ -465,16 +465,43 @@ simply by entering the following line into you `documentr.json` file:
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
+{ "type": "tocbacktotop", value: " <sup><sup>[top](#)</sup></sup>"},
+
 ```
+
+### The table of contents title
+
 By default, no title is generated - you will need to include one as simple markup.
 
-This will generate both the table of contents and the links to all of the headers.
+### `{ "type": "toc" }`
 
-The `{ "type": "toc", "value": "2" }` line will generate links up to `h2` elements, by 
-default headers up to level 6 are generated.
+This will generate the table of contents, and depending on any options, will generate 
+links to the headers, and/or 'back to top links'.
 
-The `{ "type": "toclinks", "value": "true" },` line will generate links to the headers,
-and will only work if `"type": "toc"` is also included.
+The `{ "type": "toc", "value": "2" }` line will generate header links up to `h2` 
+elements (i.e. both h1 and h2).
+
+If the `value` attribute is omitted, then the default is to generate a table of 
+contents for headers up to level `h6`.
+
+### `{ "type": "toclinks" }`
+
+This is a post processing command and will generate links to the headers in the 
+page.  This option is only invoked if there is a table of contents generated 
+(i.e. . `{ "type": "toc", "value": "2" }`)
+
+### `{ "type": "tocbacktotop" }`
+
+This is a post processing command and will generate 'back to top' links for all 
+of the included headers.
+
+The line: `{ "type": "tocbacktotop", value: " <sup><sup>[top](#)</sup></sup>"}` 
+will generate a link after every heading (up to the table of content level number 
+set above).
+
+The value is the HTML/Markdown that is appended to the heading.
+
+### Important note:
 
 > By default, links are not generated.  Unfortunately the developer of the markdown  processor that is in use, does not distinguish block quote level elements correctly  such that anything that looks like a header included in a blockquote will also be  incorrectly identified as a header.
 
@@ -483,13 +510,13 @@ and will only work if `"type": "toc"` is also included.
 
 
 
-<a name="heading_20"></a>
+<a name="heading_25"></a>
 
 # Building the Package <sup><sup>[top](#)</sup></sup>
 
 
 
-<a name="heading_21"></a>
+<a name="heading_26"></a>
 
 ## *NIX/Mac OS X <sup><sup>[top](#)</sup></sup>
 
@@ -500,7 +527,7 @@ From the root of the project, simply run
 
 
 
-<a name="heading_22"></a>
+<a name="heading_27"></a>
 
 ## Windows <sup><sup>[top](#)</sup></sup>
 
@@ -513,7 +540,7 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 
 
-<a name="heading_23"></a>
+<a name="heading_28"></a>
 
 # Logging - slf4j <sup><sup>[top](#)</sup></sup>
 
@@ -521,7 +548,7 @@ slf4j is the logging framework used for this project.  In order to set up a logg
 
 
 
-<a name="heading_24"></a>
+<a name="heading_29"></a>
 
 ## Log4j <sup><sup>[top](#)</sup></sup>
 
@@ -590,7 +617,7 @@ A sample `log4j2.xml` is below:
 
 
 
-<a name="heading_29"></a>
+<a name="heading_34"></a>
 
 # Artefact Publishing - Github <sup><sup>[top](#)</sup></sup>
 
@@ -602,7 +629,7 @@ As such, this is not a repository, but a location to download files from.
 
 
 
-<a name="heading_30"></a>
+<a name="heading_35"></a>
 
 # Artefact Publishing - Bintray <sup><sup>[top](#)</sup></sup>
 
@@ -612,7 +639,7 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 
 
 
-<a name="heading_31"></a>
+<a name="heading_36"></a>
 
 ## maven setup <sup><sup>[top](#)</sup></sup>
 
@@ -654,7 +681,7 @@ this comes from the jcenter bintray, to set up your repository:
 
 
 
-<a name="heading_32"></a>
+<a name="heading_37"></a>
 
 ## gradle setup <sup><sup>[top](#)</sup></sup>
 
@@ -678,7 +705,7 @@ repositories {
 
 
 
-<a name="heading_33"></a>
+<a name="heading_38"></a>
 
 ## Dependencies - Gradle <sup><sup>[top](#)</sup></sup>
 
@@ -702,7 +729,7 @@ dependencies {
 
 
 
-<a name="heading_34"></a>
+<a name="heading_39"></a>
 
 ## Dependencies - Maven <sup><sup>[top](#)</sup></sup>
 
@@ -717,7 +744,7 @@ dependencies {
 
 
 
-<a name="heading_35"></a>
+<a name="heading_40"></a>
 
 ## Dependencies - Downloads <sup><sup>[top](#)</sup></sup>
 
@@ -752,7 +779,7 @@ You will also need to download the following dependencies:
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
 
-<a name="heading_38"></a>
+<a name="heading_43"></a>
 
 # Artefact Publishing - gradle plugin portal <sup><sup>[top](#)</sup></sup>
 
@@ -763,7 +790,7 @@ This project publishes artefacts to [the gradle plugin portal](https://plugins.g
 
 
 
-<a name="heading_39"></a>
+<a name="heading_44"></a>
 
 # All-In-One <sup><sup>[top](#)</sup></sup>
 
@@ -780,7 +807,7 @@ For example:
 
 
 
-<a name="heading_40"></a>
+<a name="heading_45"></a>
 
 # License <sup><sup>[top](#)</sup></sup>
 
