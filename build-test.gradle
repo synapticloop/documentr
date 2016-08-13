@@ -34,7 +34,7 @@ apply plugin: 'synapticloop.documentr'
 // textual information for this project
 group = 'synapticloop'
 archivesBaseName = 'documentr'
-description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language"""
+description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents"""
 
 version = '2.2.0'
 

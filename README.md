@@ -49,7 +49,7 @@
 
 
 
-> documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language
+> documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents
 
 
 
@@ -116,8 +116,8 @@ Ever duckduckgo, google, bing or yahoo searched for an answer to your question? 
 
 Whilst documentation is seen as the thing that developers love to read, but hate to write, documentation for any project/module/framework/extension helps:
 
-  - Increase adoption - that's right, if you want people to use your project, documentation makies is _so_ much easier
-  - You to understand your code better - if you can explain it in clear english (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
+  - Increase adoption - that's right, if you want people to use your project, documentation makes is _so_ much easier
+  - You to understand your code better - if you can explain it in clear English (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
   - Give an all-round happy feeling - and we all like this, don't we!
 
 
