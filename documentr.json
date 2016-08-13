@@ -15,8 +15,6 @@
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
 
-		{ "type": "file", "value":"src/docs/table-of-contents.md" },
-
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
@@ -36,6 +34,8 @@
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"file", "value":"src/main/resources/HELP.txt" },
 		{ "type":"markup", "value":"\n```\n" },
+
+		{ "type": "file", "value":"src/docs/table-of-contents.md" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
 
