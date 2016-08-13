@@ -64,7 +64,10 @@ public class Generator {
 	private static final int TYPE_TEMPLAR = 2;
 	private static final int TYPE_TEMPLATE = 3;
 	private static final int TYPE_MARKUP = 4;
-	private static final int TYPE_TOC = 5;
+	private static final int TYPE_MARKDOWN = 5;
+	private static final int TYPE_TOC = 6;
+	private static final int TYPE_TOCBACKTOTOP = 7;
+	private static final int TYPE_TOCLINKS= 8;
 
 	private static final String CONTEXT_CONFIGURATION_BEANS = "configurationBeans";
 	private static final String CONTEXT_CONFIGURATIONS = "configurations";
@@ -78,7 +81,10 @@ public class Generator {
 		TYPE_LOOKUP.put("templar", TYPE_TEMPLAR);
 		TYPE_LOOKUP.put("template", TYPE_TEMPLATE);
 		TYPE_LOOKUP.put("markup", TYPE_MARKUP);
+		TYPE_LOOKUP.put("markdown", TYPE_MARKDOWN);
 		TYPE_LOOKUP.put("toc", TYPE_TOC);
+		TYPE_LOOKUP.put("toclinks", TYPE_TOCLINKS);
+		TYPE_LOOKUP.put("tocbacktop", TYPE_TOCBACKTOTOP);
 
 		SPACING_LOOKUP.put(1, " - ");
 		SPACING_LOOKUP.put(2, "   - ");
@@ -94,8 +100,10 @@ public class Generator {
 	private boolean verbose = false;
 
 	// table of content variables
-	private boolean hasToc = false;
 	private int tocLevel = 6;
+	private boolean hasToc = false;
+	private boolean hasTocBackToTop = false;
+	private boolean hasTocLinks = false;
 
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
@@ -177,7 +185,7 @@ public class Generator {
 						throw new DocumentrException(String.format("Unknown type of '%s'", type));
 					}
 
-					String value = templateObject.getString(KEY_VALUE);
+					String value = templateObject.optString(KEY_VALUE, "");
 					String pathname = documentrJsonFile.getParent() + "/" + value;
 					switch(TYPE_LOOKUP.get(type)) {
 					case TYPE_FILE:
@@ -186,6 +194,7 @@ public class Generator {
 						stringBuilder.append("\npre}\n");
 						break;
 					case TYPE_MARKUP:
+					case TYPE_MARKDOWN:
 						stringBuilder.append("\n");
 						stringBuilder.append(value.replaceAll("\\{", "\\{\\{").replaceAll("\\n", "\\{\\\\n\\}").replaceAll("\\t", "\\{\\\\t\\}"));
 						stringBuilder.append("\n");
@@ -221,6 +230,18 @@ public class Generator {
 							// ignore - will stay at 6
 						}
 						break;
+					case TYPE_TOCBACKTOTOP:
+						if(value.equalsIgnoreCase("true")) {
+							hasTocBackToTop = true;
+							stringBuilder.insert(0, "<a name=\"top\"></a>");
+						}
+						break;
+					case TYPE_TOCLINKS:
+						if(value.equalsIgnoreCase("true")) {
+							hasTocLinks = true;
+						}
+						break;
+
 					default:
 						throw new DocumentrException(String.format("Could not determine type %s", type));
 					}
@@ -258,17 +279,20 @@ public class Generator {
 					}
 
 					// now we need to go through and generate the links to the headers 
-					
-					Iterator<Integer> iterator = HEADER_LOOKUP.keySet().iterator();
-					int start = 0;
-					StringBuilder renderedStringBuilder = new StringBuilder();
+					if(hasTocLinks) {
+						Iterator<Integer> iterator = HEADER_LOOKUP.keySet().iterator();
+						int start = 0;
+						StringBuilder renderedStringBuilder = new StringBuilder();
+	
+						while (iterator.hasNext()) {
+							Integer headerStart = (Integer) iterator.next();
+							Integer headerNum = HEADER_LOOKUP.get(headerStart);
+							renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
+							renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
+							start = headerStart;
+						}
 
-					while (iterator.hasNext()) {
-						Integer headerStart = (Integer) iterator.next();
-						Integer headerNum = HEADER_LOOKUP.get(headerStart);
-						renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
-						renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
-						start = headerStart;
+						rendered = renderedStringBuilder.toString();
 					}
 
 					String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
@@ -278,14 +302,18 @@ public class Generator {
 					Elements headings = document.select("h1, h2, h3, h4, h5, h6");
 					for (Element heading : headings) {
 						int valueOf = Integer.parseInt(heading.nodeName().substring(1));
-						if(valueOf <= tocLevel)
-							headerStringBuilder.append( SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
+						if(valueOf <= tocLevel) {
+							if(hasTocLinks) {
+								headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
+							} else {
+								headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + heading.text() + "\n");
+							}
+						}
 						numHeader++;
 					}
 
 					headerStringBuilder.append("\n\n");
 
-					rendered = renderedStringBuilder.toString();
 					rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
 				}
 
