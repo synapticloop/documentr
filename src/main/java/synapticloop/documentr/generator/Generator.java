@@ -48,6 +48,7 @@ import org.pegdown.ast.RootNode;
 
 import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
+import synapticloop.documentr.bean.StartEndBean;
 import synapticloop.documentr.exception.DocumentrException;
 import synapticloop.documentr.plugin.DocumentrPluginExtension;
 import synapticloop.templar.Parser;
@@ -72,7 +73,7 @@ public class Generator {
 	private static final String CONTEXT_CONFIGURATION_BEANS = "configurationBeans";
 	private static final String CONTEXT_CONFIGURATIONS = "configurations";
 
-	private static final Map<Integer, Integer> HEADER_LOOKUP = new LinkedHashMap<Integer, Integer>();
+	private static final Map<StartEndBean, Integer> HEADER_LOOKUP = new LinkedHashMap<StartEndBean, Integer>();
 	private static final Map<Integer, String> SPACING_LOOKUP = new HashMap<Integer, String>();
 	private static final Map<String, Integer> TYPE_LOOKUP = new HashMap<String, Integer>();
 	static {
@@ -84,7 +85,7 @@ public class Generator {
 		TYPE_LOOKUP.put("markdown", TYPE_MARKDOWN);
 		TYPE_LOOKUP.put("toc", TYPE_TOC);
 		TYPE_LOOKUP.put("toclinks", TYPE_TOCLINKS);
-		TYPE_LOOKUP.put("tocbacktop", TYPE_TOCBACKTOTOP);
+		TYPE_LOOKUP.put("tocbacktotop", TYPE_TOCBACKTOTOP);
 
 		SPACING_LOOKUP.put(1, " - ");
 		SPACING_LOOKUP.put(2, "   - ");
@@ -103,6 +104,7 @@ public class Generator {
 	private int tocLevel = 6;
 	private boolean hasToc = false;
 	private boolean hasTocBackToTop = false;
+	private String tocBackToTop = " <sup><sup>[top](#)</sup></sup>";
 	private boolean hasTocLinks = false;
 
 	private final TemplarContext templarContext = new TemplarContext();
@@ -231,9 +233,9 @@ public class Generator {
 						}
 						break;
 					case TYPE_TOCBACKTOTOP:
-						if(value.equalsIgnoreCase("true")) {
-							hasTocBackToTop = true;
-							stringBuilder.insert(0, "<a name=\"top\"></a>");
+						hasTocBackToTop = true;
+						if(!value.equalsIgnoreCase("")) {
+							tocBackToTop = value;
 						}
 						break;
 					case TYPE_TOCLINKS:
@@ -262,59 +264,7 @@ public class Generator {
 
 
 				if(hasToc) {
-					int numHeader = 0;
-					StringBuilder headerStringBuilder = new StringBuilder();
-					// go through and parse the markdown, replace the table of contents
-					PegDownProcessor pegDownProcessor = new PegDownProcessor();
-					char[] charArray = rendered.toCharArray();
-					RootNode rootNode = pegDownProcessor.parseMarkdown(charArray);
-					List<Node> children = rootNode.getChildren();
-
-					for (Node node : children) {
-						if(node instanceof HeaderNode) {
-							HeaderNode headerNode = (HeaderNode)node;
-							HEADER_LOOKUP.put(headerNode.getStartIndex(), numHeader);
-							numHeader++;
-						}
-					}
-
-					// now we need to go through and generate the links to the headers 
-					if(hasTocLinks) {
-						Iterator<Integer> iterator = HEADER_LOOKUP.keySet().iterator();
-						int start = 0;
-						StringBuilder renderedStringBuilder = new StringBuilder();
-	
-						while (iterator.hasNext()) {
-							Integer headerStart = (Integer) iterator.next();
-							Integer headerNum = HEADER_LOOKUP.get(headerStart);
-							renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
-							renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
-							start = headerStart;
-						}
-
-						rendered = renderedStringBuilder.toString();
-					}
-
-					String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
-
-					numHeader = 0;
-					Document document = Jsoup.parse(markdownToHtml);
-					Elements headings = document.select("h1, h2, h3, h4, h5, h6");
-					for (Element heading : headings) {
-						int valueOf = Integer.parseInt(heading.nodeName().substring(1));
-						if(valueOf <= tocLevel) {
-							if(hasTocLinks) {
-								headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
-							} else {
-								headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + heading.text() + "\n");
-							}
-						}
-						numHeader++;
-					}
-
-					headerStringBuilder.append("\n\n");
-
-					rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
+					rendered = renderTableOfContents(rendered);
 				}
 
 				if("adoc".equals(fileExtension)) {
@@ -328,6 +278,80 @@ public class Generator {
 		} else {
 			throw new DocumentrException(String.format("Cannot find the '%s' file.", documentrJsonFile));
 		}
+	}
+
+	private String renderTableOfContents(String rendered) {
+		int numHeader = 0;
+		StringBuilder headerStringBuilder = new StringBuilder();
+		// go through and parse the markdown, replace the table of contents
+		PegDownProcessor pegDownProcessor = new PegDownProcessor();
+
+		String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
+
+		numHeader = 0;
+		Document document = Jsoup.parse(markdownToHtml);
+		Elements headings = document.select("h1, h2, h3, h4, h5, h6");
+		for (Element heading : headings) {
+			int valueOf = Integer.parseInt(heading.nodeName().substring(1));
+			if(valueOf <= tocLevel) {
+				if(hasTocLinks) {
+					headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
+				} else {
+					headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + heading.text() + "\n");
+				}
+			}
+			numHeader++;
+		}
+
+		headerStringBuilder.append("\n\n");
+
+		System.out.println(headerStringBuilder);
+		rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
+
+		numHeader = 0;
+		// now we need to go through and generate the links to the headers 
+		char[] charArray = rendered.toCharArray();
+		RootNode rootNode = pegDownProcessor.parseMarkdown(charArray);
+		List<Node> children = rootNode.getChildren();
+
+		for (Node node : children) {
+			if(node instanceof HeaderNode) {
+				HeaderNode headerNode = (HeaderNode)node;
+				int level = headerNode.getLevel();
+				if(level <= tocLevel) {
+					HEADER_LOOKUP.put(new StartEndBean(headerNode.getStartIndex(), headerNode.getEndIndex()), numHeader);
+				}
+				numHeader++;
+			}
+		}
+
+		if(hasTocLinks) {
+			Iterator<StartEndBean> iterator = HEADER_LOOKUP.keySet().iterator();
+			int start = 0;
+			StringBuilder renderedStringBuilder = new StringBuilder();
+
+			while (iterator.hasNext()) {
+				StartEndBean startEndBean = (StartEndBean) iterator.next();
+				int headerStart = startEndBean.getStart();
+				int headerEnd = startEndBean.getEnd();
+				Integer headerNum = HEADER_LOOKUP.get(startEndBean);
+				renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
+				renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
+
+				if(hasTocBackToTop) {
+					renderedStringBuilder.append(Arrays.copyOfRange(charArray, headerStart, headerEnd -1));
+					renderedStringBuilder.append(tocBackToTop);
+					start = headerEnd -1;
+				} else {
+					start = headerStart;
+				}
+			}
+
+			renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, charArray.length));
+			rendered = renderedStringBuilder.toString();
+		}
+
+		return rendered;
 	}
 
 	private String getInbuiltTemplateName(String template) {

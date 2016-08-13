@@ -37,7 +37,7 @@ be one of the following:
         will be out put. e.g.: value="1" only h1, value="2" only h1 and h2.
   - toclinks - whether to display the table of contents as links, and insert
         links into the headers (default false)
-  - backtotop - this will generate a back to top link for each of the 
+  - tocbacktotop - this will generate a back to top link for each of the 
         headers (e.g. h1, h2, h3 etc), the value is the text link (default 
         'top')
 

@@ -14,12 +14,13 @@
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
+		{ "type": "tocbacktotop" },
 
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
 
-		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
+		{ "type":"file", "value":"src/docs/pre-usage.md" },
 
 		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
 		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },

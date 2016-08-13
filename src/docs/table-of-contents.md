@@ -1,7 +1,7 @@
 
-## Step 3 - Generating the table of contents
+## Generating the table of contents
 
-`documentr` can automatically generate the table fo contents for your documentation, 
+`documentr` can automatically generate the table of contents for your documentation, 
 simply by entering the following line into you `documentr.json` file:
 
 ```
@@ -10,6 +10,7 @@ simply by entering the following line into you `documentr.json` file:
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
 ```
+
 By default, no title is generated - you will need to include one as simple markup.
 
 This will generate both the table of contents and the links to all of the headers.

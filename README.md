@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.3.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.4.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -9,7 +9,7 @@
 
 <a name="heading_0"></a>
 
-# Table of Contents
+# Table of Contents <sup><sup>[top](#)</sup></sup>
 
  - [Table of Contents](#heading_0)
  - [documentr](#heading_1)
@@ -37,6 +37,7 @@
    - [Dependencies - Downloads](#heading_35)
  - [Artefact Publishing - gradle plugin portal](#heading_38)
  - [All-In-One](#heading_39)
+ - [License](#heading_40)
 
 
 
@@ -45,7 +46,7 @@
 
 <a name="heading_1"></a>
 
-# documentr
+# documentr <sup><sup>[top](#)</sup></sup>
 
 
 
@@ -56,7 +57,7 @@
 
 <a name="heading_2"></a>
 
-# IMPORTANT
+# IMPORTANT <sup><sup>[top](#)</sup></sup>
 
 
 Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`
@@ -65,11 +66,11 @@ Staring at version 2, the `build.gradle` task configuration has changed, from `d
 
 <a name="heading_3"></a>
 
-## NEW
+## NEW <sup><sup>[top](#)</sup></sup>
 
 
 ```
-documentr {
+documentr {{
 	directory = '../some/directory/'
 	verbose = 'false'
 	extension = 'md' // this is the default
@@ -77,16 +78,18 @@ documentr {
 	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
 }
 ```
+
+
 
 
 
 
 <a name="heading_4"></a>
 
-## OLD
+## OLD <sup><sup>[top](#)</sup></sup>
 
 ```
-documentrSetting {
+documentrSetting {{
 	directory = '../some/directory/'
 	verbose = 'false'
 	extension = 'md' // this is the default
@@ -94,6 +97,7 @@ documentrSetting {
 	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
 }
 ```
+
 
 
 
@@ -102,55 +106,48 @@ documentrSetting {
 
 <a name="heading_5"></a>
 
-# Overview
+# Overview <sup><sup>[top](#)</sup></sup>
 
 
 
 
 <a name="heading_6"></a>
 
-## Why document anything?
+## Why document anything? <sup><sup>[top](#)</sup></sup>
 
 Ever duckduckgo, google, bing or yahoo searched for an answer to your question? You are searching the world's largest index of documentation - all of which was written by somebody else (or maybe you)
 
 
-Whilst documentation is seen as the thing that developers love to read, but hate to write, documentation for any project/module/framework/extension helps:
+Whilst documentation is seen as the thing that developers love to read, but hate 
+to write, documentation for any project/module/framework/extension helps:
 
-  - Increase adoption - that's right, if you want people to use your project, documentation makes is _so_ much easier
-  - You to understand your code better - if you can explain it in clear English (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
-  - Give an all-round happy feeling - and we all like this, don't we!
+{\  }- Increase adoption - that's right, if you want people to use your project, documentation makes is _so_ much easier
+{\  }- You to understand your code better - if you can explain it in clear English (or whatever your language of preference is), then it is probably well-thought out code. Furthermore, when documenting, you will inevitably come across things that would be good to add to the code-base
+{\  }- Give an all-round happy feeling - and we all like this, don't we!
 
 
 
 
 <a name="heading_7"></a>
 
-## Do's and Don'ts of documentation
-
-
-
-<a name="heading_8"></a>
+## Do's and Don'ts of documentation <sup><sup>[top](#)</sup></sup>
 
 ### Do
 
-  - Give a quick example of how to get up and running
-  - Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do
-  - Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen
-  - Keep it up to date - old, out of date documentation is almost as bad as no documentation
-  - Make it as easy as possible to get your software up and running as quickly as possible
+{\  }- Give a quick example of how to get up and running
+{\  }- Provide a cut and paste-able example (including import statements if applicable) - This is what your users will do
+{\  }- Provide examples for integration points with other libraries - not everybody knows how to use a technology that you have chosen
+{\  }- Keep it up to date - old, out of date documentation is almost as bad as no documentation
+{\  }- Make it as easy as possible to get your software up and running as quickly as possible
 
-
-
-
-<a name="heading_9"></a>
 
 ### Don't
 
-  - Tell people to read the test cases
-    - People want to use your software, not understand your how you test your code
-    - Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running
-    - If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do
-  - Let your documentation get out of date
+{\  }- Tell people to read the test cases
+{\    }- People want to use your software, not understand your how you test your code
+{\    }- Yes, your audience is technical - but you are probably mocking so many things that they will have to delve through so many test cases just to find the one that they want - just to get up and running
+{\    }- If you are using a BDD framework like JBehave or Cucumber, then your audience will have to go through so many levels of indirection just to attempt to figure out what to do
+{\  }- Let your documentation get out of date
 
 
 > The above Do's and Don'ts were the basis for why `documentr` was created, minimising the hand created stuff and maximising the information
@@ -161,13 +158,14 @@ For this `README` file, the only files that are hand-written are:
   - `src/docs/pre-usage.md.templar`,
   - `src/docs/post-usage.md.templar`
 
-files. All other information is generated from the `documentr.json` file in the root of this project.
+files. All other information is generated from the `documentr.json` file in 
+the root of this project.
 
 
 
 <a name="heading_10"></a>
 
-# Getting Started
+# Getting Started <sup><sup>[top](#)</sup></sup>
 
   1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you)
   1. Generate the `README` file either through the gradle plugin, or through the command line
@@ -178,14 +176,10 @@ files. All other information is generated from the `documentr.json` file in the 
 
 <a name="heading_11"></a>
 
-## Step 1 - create the `documentr.json` file
+## Step 1 - create the `documentr.json` file <sup><sup>[top](#)</sup></sup>
 
 
 This is a simple JSON formatted file:
-
-
-
-<a name="heading_12"></a>
 
 ### The `documentr.json` file
 
@@ -209,12 +203,13 @@ This is a simple JSON file as show below:
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
+		{ "type": "tocbacktotop" },
 
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
 
-		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
+		{ "type":"file", "value":"src/docs/pre-usage.md.templar" },
 
 		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
 		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
@@ -261,11 +256,7 @@ The above file generated this complete `README` file, while only requiring 2 fil
 
 <a name="heading_13"></a>
 
-## Step 2 - generate the `README` file
-
-
-<a name="heading_14"></a>
-
+## Step 2 - generate the `README` file <sup><sup>[top](#)</sup></sup>
 ### Gradle plugin usage
 
 
@@ -274,10 +265,6 @@ Include the plugin and simply run:
 `gradle documentr`
 
 This will also parse the build file and place various objects into the context that are then available to use in the templar templates.
-
-
-
-<a name="heading_15"></a>
 
 ### For all versions of gradle - you may use the following to apply the plugin
 
@@ -289,28 +276,20 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.3.0"
+		classpath "gradle.plugin.synapticloop:documentr:2.4.0"
 	}
 }
 
 apply plugin: "synapticloop.documentr"
 
 ```
-
-
-<a name="heading_16"></a>
-
 ### if you are using gradle >= 2.1 - you may use the shorthand format to apply the plugin
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.3.0'
+	id 'synapticloop.documentr' version '2.4.0'
 }
 ```
-
-
-
-<a name="heading_17"></a>
 
 ### Defaults
 
@@ -331,17 +310,13 @@ Note that this will generate the `README` file in the same directory (i.e. `../s
 
 The `verbose` setting will output the pre-parsed and rendered templar template to the console
 
-
-
-<a name="heading_18"></a>
-
 ### Java command line usage
 
 simply run
 
 
 ```
-java -jar documentr-2.3.0-all.jar
+java -jar documentr-2.4.0-all.jar
 ```
 
 By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
@@ -353,7 +328,7 @@ By default this will generate the `README` file looking at the current directory
 Running:
 
 ```
-java -jar documentr-2.3.0-all.jar --help
+java -jar documentr-2.4.0-all.jar --help
 ```
 
 Will yield the following information:
@@ -428,7 +403,7 @@ be one of the following:
         will be out put. e.g.: value="1" only h1, value="2" only h1 and h2.
   - toclinks - whether to display the table of contents as links, and insert
         links into the headers (default false)
-  - backtotop - this will generate a back to top link for each of the 
+  - tocbacktotop - this will generate a back to top link for each of the 
         headers (e.g. h1, h2, h3 etc), the value is the text link (default 
         'top')
 
@@ -480,7 +455,7 @@ The list of inbuilt templates:
 
 <a name="heading_19"></a>
 
-## Step 3 - Generating the table of contents
+## Step 3 - Generating the table of contents <sup><sup>[top](#)</sup></sup>
 
 `documentr` can automatically generate the table fo contents for your documentation, 
 simply by entering the following line into you `documentr.json` file:
@@ -510,13 +485,13 @@ and will only work if `"type": "toc"` is also included.
 
 <a name="heading_20"></a>
 
-# Building the Package
+# Building the Package <sup><sup>[top](#)</sup></sup>
 
 
 
 <a name="heading_21"></a>
 
-## *NIX/Mac OS X
+## *NIX/Mac OS X <sup><sup>[top](#)</sup></sup>
 
 From the root of the project, simply run
 
@@ -527,7 +502,7 @@ From the root of the project, simply run
 
 <a name="heading_22"></a>
 
-## Windows
+## Windows <sup><sup>[top](#)</sup></sup>
 
 `./gradlew.bat build`
 
@@ -540,7 +515,7 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 <a name="heading_23"></a>
 
-# Logging - slf4j
+# Logging - slf4j <sup><sup>[top](#)</sup></sup>
 
 slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
 
@@ -548,14 +523,10 @@ slf4j is the logging framework used for this project.  In order to set up a logg
 
 <a name="heading_24"></a>
 
-## Log4j
+## Log4j <sup><sup>[top](#)</sup></sup>
 
 
 You will need to include dependencies for this - note that the versions may need to be updated.
-
-
-
-<a name="heading_25"></a>
 
 ### Maven
 
@@ -576,10 +547,6 @@ You will need to include dependencies for this - note that the versions may need
 
 ```
 
-
-
-<a name="heading_26"></a>
-
 ### Gradle &lt; 2.1
 
 ```
@@ -590,10 +557,6 @@ dependencies {
 	...
 }
 ```
-
-
-<a name="heading_27"></a>
-
 ### Gradle &gt;= 2.1
 
 ```
@@ -605,10 +568,6 @@ dependencies {
 }
 ```
 
-
-
-
-<a name="heading_28"></a>
 
 ### Setting up the logging:
 
@@ -633,7 +592,7 @@ A sample `log4j2.xml` is below:
 
 <a name="heading_29"></a>
 
-# Artefact Publishing - Github
+# Artefact Publishing - Github <sup><sup>[top](#)</sup></sup>
 
 This project publishes artefacts to [GitHib](https://github.com/)
 
@@ -645,7 +604,7 @@ As such, this is not a repository, but a location to download files from.
 
 <a name="heading_30"></a>
 
-# Artefact Publishing - Bintray
+# Artefact Publishing - Bintray <sup><sup>[top](#)</sup></sup>
 
 This project publishes artefacts to [bintray](https://bintray.com/)
 
@@ -655,7 +614,7 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 
 <a name="heading_31"></a>
 
-## maven setup
+## maven setup <sup><sup>[top](#)</sup></sup>
 
 this comes from the jcenter bintray, to set up your repository:
 
@@ -697,7 +656,7 @@ this comes from the jcenter bintray, to set up your repository:
 
 <a name="heading_32"></a>
 
-## gradle setup
+## gradle setup <sup><sup>[top](#)</sup></sup>
 
 Repository
 
@@ -721,13 +680,13 @@ repositories {
 
 <a name="heading_33"></a>
 
-## Dependencies - Gradle
+## Dependencies - Gradle <sup><sup>[top](#)</sup></sup>
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.3.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.4.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.3.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.4.0', ext: 'jar')
 }
 ```
 
@@ -735,9 +694,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.3.0'
+	runtime 'synapticloop:documentr:2.4.0'
 
-	compile 'synapticloop:documentr:2.3.0'
+	compile 'synapticloop:documentr:2.4.0'
 }
 ```
 
@@ -745,13 +704,13 @@ dependencies {
 
 <a name="heading_34"></a>
 
-## Dependencies - Maven
+## Dependencies - Maven <sup><sup>[top](#)</sup></sup>
 
 ```
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.3.0</version>
+	<version>2.4.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -760,16 +719,12 @@ dependencies {
 
 <a name="heading_35"></a>
 
-## Dependencies - Downloads
+## Dependencies - Downloads <sup><sup>[top](#)</sup></sup>
 
 
 You will also need to download the following dependencies:
 
 
-
-
-
-<a name="heading_36"></a>
 
 ### compile dependencies
 
@@ -782,10 +737,6 @@ You will also need to download the following dependencies:
   - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
   - org.pegdown:pegdown:1.6.0: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
 
-
-
-
-<a name="heading_37"></a>
 
 ### runtime dependencies
 
@@ -803,7 +754,7 @@ You will also need to download the following dependencies:
 
 <a name="heading_38"></a>
 
-# Artefact Publishing - gradle plugin portal
+# Artefact Publishing - gradle plugin portal <sup><sup>[top](#)</sup></sup>
 
 This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
 
@@ -814,7 +765,7 @@ This project publishes artefacts to [the gradle plugin portal](https://plugins.g
 
 <a name="heading_39"></a>
 
-# All-In-One
+# All-In-One <sup><sup>[top](#)</sup></sup>
 
 This project's artefact output is an 'all in one' jar which includes all runtime dependencies.
 
@@ -822,7 +773,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.3.0.jar -> documentr-2.3.0-all.jar`
+`documentr-2.4.0.jar -> documentr-2.4.0-all.jar`
 
 
 
@@ -830,4 +781,37 @@ For example:
 
 
 <a name="heading_40"></a>
+
+# License <sup><sup>[top](#)</sup></sup>
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2016 synapticloop
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+
+--
+
+> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
+
+--
 
