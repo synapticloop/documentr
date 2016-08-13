@@ -305,7 +305,6 @@ public class Generator {
 
 		headerStringBuilder.append("\n\n");
 
-		System.out.println(headerStringBuilder);
 		rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
 
 		numHeader = 0;

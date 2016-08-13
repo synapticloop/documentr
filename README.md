@@ -155,8 +155,9 @@ to write, documentation for any project/module/framework/extension helps:
 
 For this `README` file, the only files that are hand-written are:
 
-  - `src/docs/pre-usage.md.templar`,
+  - `src/docs/pre-usage.md`,
   - `src/docs/post-usage.md.templar`
+  - `src/docs/table-of-contents.md`
 
 files. All other information is generated from the `documentr.json` file in 
 the root of this project.
