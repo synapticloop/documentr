@@ -32,6 +32,8 @@ be one of the following:
         character.  No templar parsing is done on this.
   - inbuilt - one of the in-built templates (see below for a list of the 
         inbuilt templates).
+  - toc - build up a table of contents, the value set the level of headers that
+        will be out put. e.g.: value="1" only h1, value="2" only h1 and h2.
 
 The list of inbuilt templates:
 

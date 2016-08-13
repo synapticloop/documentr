@@ -1,9 +1,49 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.1.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.2.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
 
 
+
+
+
+<a name="heading_0"></a>
+
+# Table of Contents
+
+ - [Table of Contents](#heading_0)
+ - [documentr](#heading_1)
+ - [IMPORTANT](#heading_2)
+   - [NEW](#heading_3)
+   - [OLD](#heading_4)
+ - [Overview](#heading_5)
+   - [Why document anything?](#heading_6)
+   - [Do's and Don'ts of documentation](#heading_7)
+ - [Getting Started](#heading_10)
+   - [Step 1 - create the documentr.json file](#heading_11)
+   - [Step 2 - generate the README file](#heading_13)
+ - [Building the Package](#heading_19)
+   - [*NIX/Mac OS X](#heading_20)
+   - [Windows](#heading_21)
+ - [Logging - slf4j](#heading_22)
+   - [Log4j](#heading_23)
+ - [Artefact Publishing - Github](#heading_28)
+ - [Artefact Publishing - Bintray](#heading_29)
+   - [maven setup](#heading_30)
+   - [gradle setup](#heading_31)
+   - [Dependencies - Gradle](#heading_32)
+   - [Dependencies - Maven](#heading_33)
+   - [Dependencies - Downloads](#heading_34)
+ - [Artefact Publishing - gradle plugin portal](#heading_37)
+ - [All-In-One](#heading_38)
+ - [License](#heading_39)
+
+
+
+
+
+
+<a name="heading_1"></a>
 
 # documentr
 
@@ -12,10 +52,18 @@
 > documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language
 
 
+
+
+<a name="heading_2"></a>
+
 # IMPORTANT
 
 
 Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`
+
+
+
+<a name="heading_3"></a>
 
 ## NEW
 
@@ -30,6 +78,10 @@ documentr {
 }
 ```
 
+
+
+
+<a name="heading_4"></a>
 
 ## OLD
 
@@ -46,8 +98,16 @@ documentrSetting {
 
 
 
+
+
+<a name="heading_5"></a>
+
 # Overview
 
+
+
+
+<a name="heading_6"></a>
 
 ## Why document anything?
 
@@ -61,7 +121,15 @@ Whilst documentation is seen as the thing that developers love to read, but hate
   - Give an all-round happy feeling - and we all like this, don't we!
 
 
+
+
+<a name="heading_7"></a>
+
 ## Do's and Don'ts of documentation
+
+
+
+<a name="heading_8"></a>
 
 ### Do
 
@@ -71,6 +139,10 @@ Whilst documentation is seen as the thing that developers love to read, but hate
   - Keep it up to date - old, out of date documentation is almost as bad as no documentation
   - Make it as easy as possible to get your software up and running as quickly as possible
 
+
+
+
+<a name="heading_9"></a>
 
 ### Don't
 
@@ -91,6 +163,10 @@ For this `README` file, the only files that are hand-written are:
 
 files. All other information is generated from the `documentr.json` file in the root of this project.
 
+
+
+<a name="heading_10"></a>
+
 # Getting Started
 
   1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you)
@@ -98,10 +174,18 @@ files. All other information is generated from the `documentr.json` file in the 
   1. ... There is no step 3
 
 
+
+
+<a name="heading_11"></a>
+
 ## Step 1 - create the `documentr.json` file
 
 
 This is a simple JSON formatted file:
+
+
+
+<a name="heading_12"></a>
 
 ### The `documentr.json` file
 
@@ -120,8 +204,14 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"badge-shield-io-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"jvm-compatability" },
+
+		{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+
+		{ "type": "toc", "value": "2" },
+
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
+
 
 		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
 
@@ -164,7 +254,15 @@ This is a simple JSON file as show below:
 The above file generated this complete `README` file, while only requiring 2 files to be created by hand.
 
 
+
+
+<a name="heading_13"></a>
+
 ## Step 2 - generate the `README` file
+
+
+<a name="heading_14"></a>
+
 ### Gradle plugin usage
 
 
@@ -173,6 +271,10 @@ Include the plugin and simply run:
 `gradle documentr`
 
 This will also parse the build file and place various objects into the context that are then available to use in the templar templates.
+
+
+
+<a name="heading_15"></a>
 
 ### For all versions of gradle - you may use the following to apply the plugin
 
@@ -184,20 +286,28 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.1.1"
+		classpath "gradle.plugin.synapticloop:documentr:2.2.0"
 	}
 }
 
 apply plugin: "synapticloop.documentr"
 
 ```
+
+
+<a name="heading_16"></a>
+
 ### if you are using gradle >= 2.1 - you may use the shorthand format to apply the plugin
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.1.1'
+	id 'synapticloop.documentr' version '2.2.0'
 }
 ```
+
+
+
+<a name="heading_17"></a>
 
 ### Defaults
 
@@ -218,13 +328,17 @@ Note that this will generate the `README` file in the same directory (i.e. `../s
 
 The `verbose` setting will output the pre-parsed and rendered templar template to the console
 
+
+
+<a name="heading_18"></a>
+
 ### Java command line usage
 
 simply run
 
 
 ```
-java -jar documentr-2.1.1-all.jar
+java -jar documentr-2.2.0-all.jar
 ```
 
 By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
@@ -236,7 +350,7 @@ By default this will generate the `README` file looking at the current directory
 Running:
 
 ```
-java -jar documentr-2.1.1-all.jar --help
+java -jar documentr-2.2.0-all.jar --help
 ```
 
 Will yield the following information:
@@ -306,6 +420,8 @@ be one of the following:
         character.  No templar parsing is done on this.
   - inbuilt - one of the in-built templates (see below for a list of the 
         inbuilt templates).
+  - toc - build up a table of contents, the value set the level of headers that
+        will be out put. e.g.: value="1" only h1, value="2" only h1 and h2.
 
 The list of inbuilt templates:
 
@@ -351,7 +467,15 @@ The list of inbuilt templates:
 ```
 
 
+
+
+<a name="heading_19"></a>
+
 # Building the Package
+
+
+
+<a name="heading_20"></a>
 
 ## *NIX/Mac OS X
 
@@ -359,6 +483,10 @@ From the root of the project, simply run
 
 `./gradlew build`
 
+
+
+
+<a name="heading_21"></a>
 
 ## Windows
 
@@ -369,14 +497,26 @@ This will compile and assemble the artefacts into the `build/libs/` directory.
 
 Note that this may also run tests (if applicable see the Testing notes)
 
+
+
+<a name="heading_22"></a>
+
 # Logging - slf4j
 
 slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
+
+
+
+<a name="heading_23"></a>
 
 ## Log4j
 
 
 You will need to include dependencies for this - note that the versions may need to be updated.
+
+
+
+<a name="heading_24"></a>
 
 ### Maven
 
@@ -397,6 +537,10 @@ You will need to include dependencies for this - note that the versions may need
 
 ```
 
+
+
+<a name="heading_25"></a>
+
 ### Gradle &lt; 2.1
 
 ```
@@ -407,6 +551,10 @@ dependencies {
 	...
 }
 ```
+
+
+<a name="heading_26"></a>
+
 ### Gradle &gt;= 2.1
 
 ```
@@ -418,6 +566,10 @@ dependencies {
 }
 ```
 
+
+
+
+<a name="heading_27"></a>
 
 ### Setting up the logging:
 
@@ -438,6 +590,10 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
+
+
+<a name="heading_28"></a>
+
 # Artefact Publishing - Github
 
 This project publishes artefacts to [GitHib](https://github.com/)
@@ -446,11 +602,19 @@ This project publishes artefacts to [GitHib](https://github.com/)
 
 As such, this is not a repository, but a location to download files from.
 
+
+
+<a name="heading_29"></a>
+
 # Artefact Publishing - Bintray
 
 This project publishes artefacts to [bintray](https://bintray.com/)
 
 > Note that the latest version can be found [https://bintray.com/synapticloop/maven/documentr/view](https://bintray.com/synapticloop/maven/documentr/view)
+
+
+
+<a name="heading_30"></a>
 
 ## maven setup
 
@@ -490,6 +654,10 @@ this comes from the jcenter bintray, to set up your repository:
 </settings>
 ```
 
+
+
+<a name="heading_31"></a>
+
 ## gradle setup
 
 Repository
@@ -510,13 +678,17 @@ repositories {
 }
 ```
 
+
+
+<a name="heading_32"></a>
+
 ## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.1.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.2.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.1.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.2.0', ext: 'jar')
 }
 ```
 
@@ -524,11 +696,15 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.1.1'
+	runtime 'synapticloop:documentr:2.2.0'
 
-	compile 'synapticloop:documentr:2.1.1'
+	compile 'synapticloop:documentr:2.2.0'
 }
 ```
+
+
+
+<a name="heading_33"></a>
 
 ## Dependencies - Maven
 
@@ -536,10 +712,14 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.1.1</version>
+	<version>2.2.0</version>
 	<type>jar</type>
 </dependency>
 ```
+
+
+
+<a name="heading_34"></a>
 
 ## Dependencies - Downloads
 
@@ -548,34 +728,52 @@ You will also need to download the following dependencies:
 
 
 
+
+
+<a name="heading_35"></a>
+
 ### compile dependencies
 
   - synapticloop:simpleusage:1.1.2: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
   - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar))
-  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar))
+  - synapticloop:templar:1.3.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
   - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar))
   - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar))
   - commons-cli:commons-cli:1.3.1: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
   - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
+  - org.pegdown:pegdown:1.6.0: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
 
+
+
+
+<a name="heading_36"></a>
 
 ### runtime dependencies
 
   - synapticloop:simpleusage:1.1.2: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
   - synapticloop:simplelogger:1.1.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.0/view#files/synapticloop/simplelogger/1.1.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.0|jar))
-  - synapticloop:templar:1.2.1: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.2.1/view#files/synapticloop/templar/1.2.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.2.1|jar))
+  - synapticloop:templar:1.3.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
   - commons-io:commons-io:2.4: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.4/view#files/commons-io/commons-io/2.4) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.4|jar))
   - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar))
   - commons-cli:commons-cli:1.3.1: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
   - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
+  - org.pegdown:pegdown:1.6.0: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
 
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
+
+
+<a name="heading_37"></a>
+
 # Artefact Publishing - gradle plugin portal
 
 This project publishes artefacts to [the gradle plugin portal](https://plugins.gradle.org/)
 
 > Note that the latest version can be found [https://plugins.gradle.org/plugin/synapticloop.documentr](https://plugins.gradle.org/plugin/synapticloop.documentr)
 
+
+
+
+<a name="heading_38"></a>
 
 # All-In-One
 
@@ -585,41 +783,12 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.1.1.jar -> documentr-2.1.1-all.jar`
+`documentr-2.2.0.jar -> documentr-2.2.0-all.jar`
 
 
 
 
-# License
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2016 synapticloop
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
 
 
---
-
-> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
-
---
+<a name="heading_39"></a>
 

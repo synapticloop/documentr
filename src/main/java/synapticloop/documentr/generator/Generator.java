@@ -20,9 +20,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -35,6 +37,14 @@ import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.DependencySet;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.pegdown.PegDownProcessor;
+import org.pegdown.ast.HeaderNode;
+import org.pegdown.ast.Node;
+import org.pegdown.ast.RootNode;
 
 import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
@@ -54,10 +64,13 @@ public class Generator {
 	private static final int TYPE_TEMPLAR = 2;
 	private static final int TYPE_TEMPLATE = 3;
 	private static final int TYPE_MARKUP = 4;
+	private static final int TYPE_TOC = 5;
 
 	private static final String CONTEXT_CONFIGURATION_BEANS = "configurationBeans";
 	private static final String CONTEXT_CONFIGURATIONS = "configurations";
 
+	private static final Map<Integer, Integer> HEADER_LOOKUP = new LinkedHashMap<Integer, Integer>();
+	private static final Map<Integer, String> SPACING_LOOKUP = new HashMap<Integer, String>();
 	private static final Map<String, Integer> TYPE_LOOKUP = new HashMap<String, Integer>();
 	static {
 		TYPE_LOOKUP.put("inbuilt", TYPE_INBUILT);
@@ -65,12 +78,24 @@ public class Generator {
 		TYPE_LOOKUP.put("templar", TYPE_TEMPLAR);
 		TYPE_LOOKUP.put("template", TYPE_TEMPLATE);
 		TYPE_LOOKUP.put("markup", TYPE_MARKUP);
+		TYPE_LOOKUP.put("toc", TYPE_TOC);
+
+		SPACING_LOOKUP.put(1, " - ");
+		SPACING_LOOKUP.put(2, "   - ");
+		SPACING_LOOKUP.put(3, "     - ");
+		SPACING_LOOKUP.put(4, "       - ");
+		SPACING_LOOKUP.put(5, "         - ");
+		SPACING_LOOKUP.put(6, "           - ");
 	}
 
 	private String documentrFile;
 	private final File rootDirectory;
 	private final String fileExtension;
 	private boolean verbose = false;
+
+	// table of content variables
+	private boolean hasToc = false;
+	private int tocLevel = 6;
 
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
@@ -180,6 +205,22 @@ public class Generator {
 						stringBuilder.append(getInbuiltTemplateName(value));
 						stringBuilder.append("}\n");
 						break;
+					case TYPE_TOC:
+						hasToc = true;
+						stringBuilder.append("\n\n§§TABLE_OF_CONTENTS§§\n\n");
+						try {
+							tocLevel = Integer.parseInt(value);
+							if(tocLevel > 6) {
+								tocLevel = 6;
+							}
+
+							if(tocLevel <= 0) {
+								tocLevel = 1;
+							}
+						} catch(NumberFormatException ex) {
+							// ignore - will stay at 6
+						}
+						break;
 					default:
 						throw new DocumentrException(String.format("Could not determine type %s", type));
 					}
@@ -195,12 +236,63 @@ public class Generator {
 				}
 
 				Parser parser = new Parser(stringBuilder.toString());
-				String renderered = parser.render(templarContext);
+				String rendered = parser.render(templarContext);
 				File outputFile = new File(documentrJsonFile.getParent() + "/README." + fileExtension);
+
+
+				if(hasToc) {
+					int numHeader = 0;
+					StringBuilder headerStringBuilder = new StringBuilder();
+					// go through and parse the markdown, replace the table of contents
+					PegDownProcessor pegDownProcessor = new PegDownProcessor();
+					char[] charArray = rendered.toCharArray();
+					RootNode rootNode = pegDownProcessor.parseMarkdown(charArray);
+					List<Node> children = rootNode.getChildren();
+
+					for (Node node : children) {
+						if(node instanceof HeaderNode) {
+							HeaderNode headerNode = (HeaderNode)node;
+							HEADER_LOOKUP.put(headerNode.getStartIndex(), numHeader);
+							numHeader++;
+						}
+					}
+
+					// now we need to go through and generate the links to the headers 
+					
+					Iterator<Integer> iterator = HEADER_LOOKUP.keySet().iterator();
+					int start = 0;
+					StringBuilder renderedStringBuilder = new StringBuilder();
+
+					while (iterator.hasNext()) {
+						Integer headerStart = (Integer) iterator.next();
+						Integer headerNum = HEADER_LOOKUP.get(headerStart);
+						renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
+						renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
+						start = headerStart;
+					}
+
+					String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
+
+					numHeader = 0;
+					Document document = Jsoup.parse(markdownToHtml);
+					Elements headings = document.select("h1, h2, h3, h4, h5, h6");
+					for (Element heading : headings) {
+						int valueOf = Integer.parseInt(heading.nodeName().substring(1));
+						if(valueOf <= tocLevel)
+							headerStringBuilder.append( SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
+						numHeader++;
+					}
+
+					headerStringBuilder.append("\n\n");
+
+					rendered = renderedStringBuilder.toString();
+					rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
+				}
+
 				if("adoc".equals(fileExtension)) {
-					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(renderered));
+					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(rendered));
 				} else {
-					FileUtils.writeStringToFile(outputFile, renderered);
+					FileUtils.writeStringToFile(outputFile, rendered);
 				}
 			} catch (IOException | ParseException | RenderException ex) {
 				throw new DocumentrException(String.format("Cannot parse/render the '%s' file, message was: %s", documentrJsonFile, ex.getMessage()), ex);

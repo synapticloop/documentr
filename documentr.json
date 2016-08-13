@@ -9,8 +9,14 @@
 		{ "type":"inbuilt", "value":"badge-shield-io-gradle-plugin" },
 
 		{ "type":"inbuilt", "value":"jvm-compatability" },
+
+		{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+
+		{ "type": "toc", "value": "2" },
+
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
+
 
 		{ "type":"template", "value":"src/docs/pre-usage.md.templar" },
 

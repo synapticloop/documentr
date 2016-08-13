@@ -13,7 +13,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:2.0.0'
+		classpath 'synapticloop:documentr:2.2.0'
 	}
 }
 
@@ -36,7 +36,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language"""
 
-version = '2.1.1'
+version = '2.2.0'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -56,26 +56,29 @@ configurations {
 dependencies {
 	runtime 'synapticloop:simpleusage:1.1.2'
 	runtime 'synapticloop:simplelogger:1.1.0'
-	runtime 'synapticloop:templar:1.2.1'
+	runtime 'synapticloop:templar:1.3.0'
 	runtime 'commons-io:commons-io:2.4'
 	runtime 'org.json:json:20160212'
 	runtime 'commons-cli:commons-cli:1.3.1'
 	runtime 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0'
+	runtime 'org.pegdown:pegdown:1.6.0'
 
 	compile gradleApi()
 	compile 'synapticloop:simpleusage:1.1.2'
 	compile 'synapticloop:simplelogger:1.1.0'
-	compile 'synapticloop:templar:1.2.1'
+	compile 'synapticloop:templar:1.3.0'
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.json:json:20160212'
 	compile 'commons-cli:commons-cli:1.3.1'
 	compile 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0'
+	compile 'org.pegdown:pegdown:1.6.0'
 }
 
 // we always want to fail on version conflict
 configurations.all {
 	resolutionStrategy {
 		failOnVersionConflict()
+		force 'org.pegdown:pegdown:1.6.0'
 	}
 }
 
