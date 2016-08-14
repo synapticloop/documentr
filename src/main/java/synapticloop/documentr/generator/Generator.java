@@ -50,6 +50,7 @@ import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
 import synapticloop.documentr.bean.StartEndBean;
 import synapticloop.documentr.exception.DocumentrException;
+import synapticloop.documentr.generator.plugin.ExtendedParser;
 import synapticloop.documentr.plugin.DocumentrPluginExtension;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
@@ -110,6 +111,13 @@ public class Generator {
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
 
+	/**
+	 * Instantiate a generator which will generate the README file from the
+	 * documentr.json file.
+	 * 
+	 * @param project The gradle project to use
+	 * @param extension the plugin extension which contains all of the options.
+	 */
 	public Generator(Project project, DocumentrPluginExtension extension) {
 		this.documentrFile = extension.getDocumentrFile();
 		this.rootDirectory = new File(extension.getDirectory());
@@ -155,6 +163,13 @@ public class Generator {
 		}
 	}
 
+	/**
+	 * Instantiate a generator, without being attached to a gradle build project
+	 * 
+	 * @param rootDirectory The root directory (for both input and output)
+	 * @param extension The output extension
+	 * @param debug whether to debug the output
+	 */
 	public Generator(File rootDirectory, String extension, boolean debug) {
 		this.fileExtension = extension;
 		this.rootDirectory = rootDirectory;
@@ -280,11 +295,19 @@ public class Generator {
 		}
 	}
 
+	/**
+	 * Render the table of contents.  This will also render links to the
+	 * headers, and back to top links - if the options are enabled.
+	 * 
+	 * @param rendered The previously rendered string
+	 * 
+	 * @return the rendered content, with the table of contents inserted
+	 */
 	private String renderTableOfContents(String rendered) {
 		int numHeader = 0;
-		StringBuilder headerStringBuilder = new StringBuilder();
+		StringBuilder headerStringBuilder = new StringBuilder("\n\n");
 		// go through and parse the markdown, replace the table of contents
-		PegDownProcessor pegDownProcessor = new PegDownProcessor();
+		PegDownProcessor pegDownProcessor = new PegDownProcessor(new ExtendedParser());
 
 		String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
 
@@ -353,6 +376,13 @@ public class Generator {
 		return rendered;
 	}
 
+	/**
+	 * Get the string contents from an inbuilt template
+	 * 
+	 * @param template the name of the template
+	 * 
+	 * @return the contents of the template as a string
+	 */
 	private String getInbuiltTemplateName(String template) {
 		InputStream resourceAsStream = null;
 		try {
@@ -370,6 +400,12 @@ public class Generator {
 		}
 	}
 
+	/**
+	 * Override the context
+	 * 
+	 * @param templarContext The templar context to override
+	 * @param jsonObject the json object that contains the context items
+	 */
 	private void overrideContext(TemplarContext templarContext, JSONObject jsonObject) {
 		JSONObject contextObject = jsonObject.getJSONObject("context");
 		if(null != contextObject) {

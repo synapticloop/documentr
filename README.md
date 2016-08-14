@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.4.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.4.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -10,6 +10,8 @@
 <a name="heading_0"></a>
 
 # Table of Contents <sup><sup>[top](#)</sup></sup>
+
+
 
  - [Table of Contents](#heading_0)
  - [documentr](#heading_1)
@@ -277,7 +279,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.4.0"
+		classpath "gradle.plugin.synapticloop:documentr:2.4.1"
 	}
 }
 
@@ -288,7 +290,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.4.0'
+	id 'synapticloop.documentr' version '2.4.1'
 }
 ```
 
@@ -317,7 +319,7 @@ simply run
 
 
 ```
-java -jar documentr-2.4.0-all.jar
+java -jar documentr-2.4.1-all.jar
 ```
 
 By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
@@ -329,7 +331,7 @@ By default this will generate the `README` file looking at the current directory
 Running:
 
 ```
-java -jar documentr-2.4.0-all.jar --help
+java -jar documentr-2.4.1-all.jar --help
 ```
 
 Will yield the following information:
@@ -712,9 +714,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.4.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.4.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.4.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.4.1', ext: 'jar')
 }
 ```
 
@@ -722,9 +724,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.4.0'
+	runtime 'synapticloop:documentr:2.4.1'
 
-	compile 'synapticloop:documentr:2.4.0'
+	compile 'synapticloop:documentr:2.4.1'
 }
 ```
 
@@ -738,7 +740,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.4.0</version>
+	<version>2.4.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -801,7 +803,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.4.0.jar -> documentr-2.4.0-all.jar`
+`documentr-2.4.1.jar -> documentr-2.4.1-all.jar`
 
 
 
