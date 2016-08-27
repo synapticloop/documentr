@@ -13,7 +13,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:2.5.0'
+		classpath 'synapticloop:documentr:2.5.1'
 	}
 }
 
@@ -36,7 +36,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents"""
 
-version = '2.5.0'
+version = '2.5.1'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7

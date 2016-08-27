@@ -10,7 +10,7 @@
 {else}
 	# Artefact Publishing - Github{\n}
 	{\n}
-	This project publishes artefacts to [GitHib](https://github.com/){\n}
+	This project publishes artefacts to [GitHub](https://github.com/){\n}
 	{\n}
 	> Note that the latest version can be found [https://github.com/{group}/{archivesBaseName}/releases](https://github.com/{group}/{archivesBaseName}/releases){\n}
 	{\n}

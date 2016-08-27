@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.5.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.5.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -302,7 +302,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.5.0"
+		classpath "gradle.plugin.synapticloop:documentr:2.5.1"
 	}
 }
 
@@ -317,7 +317,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.5.0'
+	id 'synapticloop.documentr' version '2.5.1'
 }
 ```
 
@@ -354,7 +354,7 @@ simply run
 
 
 ```
-java -jar documentr-2.5.0-all.jar
+java -jar documentr-2.5.1-all.jar
 ```
 
 
@@ -370,7 +370,7 @@ Running:
 
 
 ```
-java -jar documentr-2.5.0-all.jar --help
+java -jar documentr-2.5.1-all.jar --help
 ```
 
 
@@ -689,7 +689,7 @@ A sample `log4j2.xml` is below:
 
 # Artefact Publishing - Github <sup><sup>[top](#)</sup></sup>
 
-This project publishes artefacts to [GitHib](https://github.com/)
+This project publishes artefacts to [GitHub](https://github.com/)
 
 > Note that the latest version can be found [https://github.com/synapticloop/documentr/releases](https://github.com/synapticloop/documentr/releases)
 
@@ -793,9 +793,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.5.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.5.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.5.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.5.1', ext: 'jar')
 }
 ```
 
@@ -807,9 +807,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.5.0'
+	runtime 'synapticloop:documentr:2.5.1'
 
-	compile 'synapticloop:documentr:2.5.0'
+	compile 'synapticloop:documentr:2.5.1'
 }
 ```
 
@@ -827,7 +827,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.5.0</version>
+	<version>2.5.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -892,7 +892,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.5.0.jar -> documentr-2.5.0-all.jar`
+`documentr-2.5.1.jar -> documentr-2.5.1-all.jar`
 
 
 
