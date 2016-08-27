@@ -28,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -50,7 +51,6 @@ import nl.jworks.markdown_to_asciidoc.Converter;
 import synapticloop.documentr.bean.ConfigurationBean;
 import synapticloop.documentr.bean.StartEndBean;
 import synapticloop.documentr.exception.DocumentrException;
-import synapticloop.documentr.generator.plugin.ExtendedParser;
 import synapticloop.documentr.plugin.DocumentrPluginExtension;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
@@ -58,6 +58,12 @@ import synapticloop.templar.exception.RenderException;
 import synapticloop.templar.utils.TemplarContext;
 
 public class Generator {
+	private static final String DOCUMENTR_DELIMETER = "§§";
+	private static final String DOCUMENTR_TABLE_OF_CONTENTS = DOCUMENTR_DELIMETER + "DOCUMENTR_TABLE_OF_CONTENTS" + DOCUMENTR_DELIMETER;
+	private static final String DOCUMENTR_CODE_FENCE_PREFIX = DOCUMENTR_DELIMETER + "DOCUMENTR_CODE_FENCE_";
+
+	private static final String EXTENSIONE_ADOC = "adoc";
+
 	private static final String KEY_VALUE = "value";
 	private static final String KEY_TYPE = "type";
 
@@ -110,6 +116,7 @@ public class Generator {
 
 	private final TemplarContext templarContext = new TemplarContext();
 	private List<ConfigurationBean> configurationBeans = new ArrayList<ConfigurationBean>();
+	private Map<Integer, StringBuilder> codeFenceBlocks = new ConcurrentHashMap<Integer, StringBuilder>();
 
 	/**
 	 * Instantiate a generator which will generate the README file from the
@@ -233,7 +240,7 @@ public class Generator {
 						break;
 					case TYPE_TOC:
 						hasToc = true;
-						stringBuilder.append("\n\n§§TABLE_OF_CONTENTS§§\n\n");
+						stringBuilder.append("\n\n" + DOCUMENTR_TABLE_OF_CONTENTS + "\n\n");
 						try {
 							tocLevel = Integer.parseInt(value);
 							if(tocLevel > 6) {
@@ -282,7 +289,7 @@ public class Generator {
 					rendered = renderTableOfContents(rendered);
 				}
 
-				if("adoc".equals(fileExtension)) {
+				if(EXTENSIONE_ADOC.equals(fileExtension)) {
 					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(rendered));
 				} else {
 					FileUtils.writeStringToFile(outputFile, rendered);
@@ -296,20 +303,32 @@ public class Generator {
 	}
 
 	/**
-	 * Render the table of contents.  This will also render links to the
-	 * headers, and back to top links - if the options are enabled.
+	 * Render the table of contents.  This will also render links to the headers, 
+	 * and back to top links - if the options are enabled.  The first thing that 
+	 * we do is to remove any of the code fence blocks, we then convert the 
+	 * markdown to HTML to extract the headers to generate the table of context.
+	 * Then we go through the actual markdown and add in the links (if 
+	 * applicable), finally we put in the table of contents and re-insert the 
+	 * code fence blocks.
 	 * 
 	 * @param rendered The previously rendered string
 	 * 
 	 * @return the rendered content, with the table of contents inserted
 	 */
 	private String renderTableOfContents(String rendered) {
-		int numHeader = 0;
-		StringBuilder headerStringBuilder = new StringBuilder("\n\n");
-		// go through and parse the markdown, replace the table of contents
-		PegDownProcessor pegDownProcessor = new PegDownProcessor(new ExtendedParser());
 
-		String markdownToHtml = pegDownProcessor.markdownToHtml(rendered);
+		// the first thing we are going to do is to remove code fences...
+		String renderedClean = removeCodeFenceBlocks(rendered);
+
+		int numHeader = 0;
+
+		// here we are going to render the markdown to HTML and then get all of the
+		// header items to build the table of contents.
+		StringBuilder headerStringBuilder = new StringBuilder("\n\n");
+
+		PegDownProcessor pegDownProcessor = new PegDownProcessor();
+
+		String markdownToHtml = pegDownProcessor.markdownToHtml(renderedClean);
 
 		numHeader = 0;
 		Document document = Jsoup.parse(markdownToHtml);
@@ -328,11 +347,11 @@ public class Generator {
 
 		headerStringBuilder.append("\n\n");
 
-		rendered = rendered.replace("§§TABLE_OF_CONTENTS§§", headerStringBuilder.toString());
+		// Now we have the header all set up
 
 		numHeader = 0;
-		// now we need to go through and generate the links to the headers 
-		char[] charArray = rendered.toCharArray();
+		// go through and parse the markdown, get all of the headers 
+		char[] charArray = renderedClean.toCharArray();
 		RootNode rootNode = pegDownProcessor.parseMarkdown(charArray);
 		List<Node> children = rootNode.getChildren();
 
@@ -370,10 +389,70 @@ public class Generator {
 			}
 
 			renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, charArray.length));
-			rendered = renderedStringBuilder.toString();
+			renderedClean = renderedStringBuilder.toString();
 		}
 
-		return rendered;
+		renderedClean = renderedClean.replace(DOCUMENTR_TABLE_OF_CONTENTS, headerStringBuilder.toString());
+
+		// last but not least, we need to put back in the code fences
+		Iterator<Integer> codeFenceBlocksIterator = codeFenceBlocks.keySet().iterator();
+		while (codeFenceBlocksIterator.hasNext()) {
+			Integer integer = (Integer) codeFenceBlocksIterator.next();
+			renderedClean = renderedClean.replaceAll(String.format("%s%d%s", DOCUMENTR_CODE_FENCE_PREFIX, integer, DOCUMENTR_DELIMETER), codeFenceBlocks.get(integer).toString());
+		}
+
+		return renderedClean;
+	}
+
+	private String removeCodeFenceBlocks(String rendered) {
+		// code blocks start with either ``` or ~~~  go through and strip them out
+		StringBuilder stringBuilder = new StringBuilder();
+
+		boolean isInCodeFence = false;
+		int codeFenceNumber = 0;
+
+		String[] lines = rendered.split("\\n");
+		for (String line : lines) {
+			//			System.out.println(codeFenceNumber + ":" + (line.contains("```") || line.contains("~~~")) + ":");
+			if(line.contains("```") || line.contains("~~~")) {
+				// are we starting the code fence?
+				isInCodeFence = !isInCodeFence;
+
+				// if we are in a code fence continue to consume it
+				StringBuilder lineStringBuilder = codeFenceBlocks.get(codeFenceNumber);
+				if(null == lineStringBuilder) {
+					lineStringBuilder = new StringBuilder();
+				}
+
+				lineStringBuilder.append(line);
+				lineStringBuilder.append("\n");
+
+				codeFenceBlocks.put(codeFenceNumber, lineStringBuilder);
+
+				if(!isInCodeFence) {
+					stringBuilder.append("\n\n" + DOCUMENTR_CODE_FENCE_PREFIX + codeFenceNumber + DOCUMENTR_DELIMETER + "\n\n");
+
+					codeFenceNumber++;
+				}
+			} else {
+				if(!isInCodeFence) {
+					stringBuilder.append(line);
+					stringBuilder.append("\n");
+				} else {
+					StringBuilder lineStringBuilder = codeFenceBlocks.get(codeFenceNumber);
+					if(null == lineStringBuilder) {
+						lineStringBuilder = new StringBuilder();
+					}
+
+					lineStringBuilder.append(line);
+					lineStringBuilder.append("\n");
+
+					codeFenceBlocks.put(codeFenceNumber, lineStringBuilder);
+				}
+			}
+		}
+
+		return(stringBuilder.toString());
 	}
 
 	/**

@@ -47,6 +47,6 @@ The value is the HTML/Markdown that is appended to the heading.
 
 ### Important note:
 
-> By default, links are not generated.  Unfortunately the developer of the markdown  processor that is in use, does not distinguish block quote level elements correctly  such that anything that looks like a header included in a blockquote will also be  incorrectly identified as a header.
+> Unfortunately the developer of the markdown  processor that is in use, does not distinguish block quote level elements correctly such that anything that looks like a header included in a blockquote will also be  incorrectly identified as a header.  However, `documentr` will attempt to pre-process the code fence blocks and remove them before parsing.
 
 

@@ -54,5 +54,6 @@
 		{ "type":"inbuilt", "value":"license-mit" },
 
 		{ "type":"inbuilt", "value":"attribution" }
+
 	]
 }

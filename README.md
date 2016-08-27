@@ -71,6 +71,8 @@ Staring at version 2, the `build.gradle` task configuration has changed, from `d
 ## NEW <sup><sup>[top](#)</sup></sup>
 
 
+
+
 ```
 documentr {
 	directory = '../some/directory/'
@@ -86,9 +88,13 @@ documentr {
 
 
 
+
+
 <a name="heading_4"></a>
 
 ## OLD <sup><sup>[top](#)</sup></sup>
+
+
 
 ```
 documentrSetting {
@@ -99,6 +105,8 @@ documentrSetting {
 	documentrFile = 'documentr.json' // perhaps you want to use a different JSON file?
 }
 ```
+
+
 
 
 
@@ -189,6 +197,8 @@ This is a simple JSON formatted file:
 This is a simple JSON file as show below:
 
 
+
+
 ```
 {
 	"context": {
@@ -202,7 +212,7 @@ This is a simple JSON file as show below:
 
 		{ "type":"inbuilt", "value":"jvm-compatability" },
 
-		{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+		{ "type": "markup", "value": "nn# Table of Contentsnn" },
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
@@ -214,19 +224,27 @@ This is a simple JSON file as show below:
 
 		{ "type":"file", "value":"src/docs/pre-usage.md" },
 
-		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
-		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
-		{ "type": "markup", "value":"\n```\n" },
+		{ "type": "markup", "value": "### The `documentr.json` filenn" },
+		{ "type": "markup", "value": "This is a simple JSON file as show below:nn" },
+		{ "type": "markup", "value":"n```n" },
+
+
 		{ "type": "file", "value":"documentr.json" },
-		{ "type": "markup", "value":"\n```\n" },
-		{ "type": "markup", "value":"> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*\n\n" },
+
+
+		{ "type": "markup", "value":"n```n" },
+		{ "type": "markup", "value":"> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*nn" },
 
 		{ "type":"template", "value":"src/docs/post-usage.md.templar" },
 
-		{ "type":"markup", "value":"\n\n```\n" },
+		{ "type":"markup", "value":"nn```n" },
+
+
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"file", "value":"src/main/resources/HELP.txt" },
-		{ "type":"markup", "value":"\n```\n" },
+
+
+		{ "type":"markup", "value":"n```n" },
 
 		{ "type": "file", "value":"src/docs/table-of-contents.md" },
 
@@ -246,9 +264,12 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"license-mit" },
 
 		{ "type":"inbuilt", "value":"attribution" }
+
 	]
 }
 ```
+
+
 > *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*
 
 
@@ -271,6 +292,8 @@ This will also parse the build file and place various objects into the context t
 
 ### For all versions of gradle - you may use the following to apply the plugin
 
+
+
 ```
 buildscript {
 	repositories {
@@ -286,7 +309,11 @@ buildscript {
 apply plugin: "synapticloop.documentr"
 
 ```
+
+
 ### if you are using gradle >= 2.1 - you may use the shorthand format to apply the plugin
+
+
 
 ```
 plugins {
@@ -294,9 +321,13 @@ plugins {
 }
 ```
 
+
+
 ### Defaults
 
 By default the plugin looks for a `documentr.json` file in the current directory, you may override this by doing the following:
+
+
 
 ```
 documentr {
@@ -309,6 +340,8 @@ documentr {
 ```
 
 
+
+
 Note that this will generate the `README` file in the same directory (i.e. `../some/directory/README.md` or `../some/directory/README.adoc`)
 
 The `verbose` setting will output the pre-parsed and rendered templar template to the console
@@ -318,9 +351,13 @@ The `verbose` setting will output the pre-parsed and rendered templar template t
 simply run
 
 
+
+
 ```
 java -jar documentr-2.4.1-all.jar
 ```
+
+
 
 By default this will generate the `README` file looking at the current directory for a `documentr.json` file.
 
@@ -330,11 +367,17 @@ By default this will generate the `README` file looking at the current directory
 
 Running:
 
+
+
 ```
 java -jar documentr-2.4.1-all.jar --help
 ```
 
+
+
 Will yield the following information:
+
+
 
 
 
@@ -397,7 +440,7 @@ be one of the following:
         {dumpcontext} - which dumps all available context key/value pairs to
         the output
   - file - the file will be included as is with no parsing done on it
-  - markup - any valid markdown, with '\n' being replaced with a new line 
+  - markup - any valid markdown, with 'n' being replaced with a new line 
         character.  No templar parsing is done on this.
   - markdown - an alias for markup
   - inbuilt - one of the in-built templates (see below for a list of the 
@@ -456,6 +499,8 @@ The list of inbuilt templates:
 
 
 
+
+
 <a name="heading_19"></a>
 
 ## Generating the table of contents <sup><sup>[top](#)</sup></sup>
@@ -463,14 +508,18 @@ The list of inbuilt templates:
 `documentr` can automatically generate the table of contents for your documentation, 
 simply by entering the following line into you `documentr.json` file:
 
+
+
 ```
-{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+{ "type": "markup", "value": "nn# Table of Contentsnn" },
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
 { "type": "tocbacktotop", value: " <sup><sup>[top](#)</sup></sup>"},
 
 ```
+
+
 
 ### The table of contents title
 
@@ -506,7 +555,7 @@ The value is the HTML/Markdown that is appended to the heading.
 
 ### Important note:
 
-> By default, links are not generated.  Unfortunately the developer of the markdown  processor that is in use, does not distinguish block quote level elements correctly  such that anything that looks like a header included in a blockquote will also be  incorrectly identified as a header.
+> Unfortunately the developer of the markdown  processor that is in use, does not distinguish block quote level elements correctly such that anything that looks like a header included in a blockquote will also be  incorrectly identified as a header.  However, `documentr` will attempt to pre-process the code fence blocks and remove them before parsing.
 
 
 
@@ -560,6 +609,8 @@ You will need to include dependencies for this - note that the versions may need
 
 ### Maven
 
+
+
 ```
 <dependency>
 	<groupId>org.apache.logging.log4j</groupId>
@@ -577,7 +628,11 @@ You will need to include dependencies for this - note that the versions may need
 
 ```
 
+
+
 ### Gradle &lt; 2.1
+
+
 
 ```
 dependencies {
@@ -587,7 +642,11 @@ dependencies {
 	...
 }
 ```
+
+
 ### Gradle &gt;= 2.1
+
+
 
 ```
 dependencies {
@@ -599,9 +658,13 @@ dependencies {
 ```
 
 
+
+
 ### Setting up the logging:
 
 A sample `log4j2.xml` is below:
+
+
 
 ```
 <Configuration status="WARN">
@@ -617,6 +680,8 @@ A sample `log4j2.xml` is below:
 	</Loggers>
 </Configuration>
 ```
+
+
 
 
 
@@ -647,6 +712,8 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 ## maven setup <sup><sup>[top](#)</sup></sup>
 
 this comes from the jcenter bintray, to set up your repository:
+
+
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -684,11 +751,15 @@ this comes from the jcenter bintray, to set up your repository:
 
 
 
+
+
 <a name="heading_37"></a>
 
 ## gradle setup <sup><sup>[top](#)</sup></sup>
 
 Repository
+
+
 
 ```
 repositories {
@@ -698,7 +769,11 @@ repositories {
 }
 ```
 
+
+
 or just
+
+
 
 ```
 repositories {
@@ -708,9 +783,13 @@ repositories {
 
 
 
+
+
 <a name="heading_38"></a>
 
 ## Dependencies - Gradle <sup><sup>[top](#)</sup></sup>
+
+
 
 ```
 dependencies {
@@ -720,7 +799,11 @@ dependencies {
 }
 ```
 
+
+
 or, more simply for versions of gradle greater than 2.1
+
+
 
 ```
 dependencies {
@@ -732,9 +815,13 @@ dependencies {
 
 
 
+
+
 <a name="heading_39"></a>
 
 ## Dependencies - Maven <sup><sup>[top](#)</sup></sup>
+
+
 
 ```
 <dependency>
@@ -744,6 +831,8 @@ dependencies {
 	<type>jar</type>
 </dependency>
 ```
+
+
 
 
 
@@ -814,6 +903,8 @@ For example:
 
 # License <sup><sup>[top](#)</sup></sup>
 
+
+
 ```
 The MIT License (MIT)
 
@@ -839,9 +930,10 @@ SOFTWARE.
 ```
 
 
+
+
 --
 
 > `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
-
