@@ -23,6 +23,13 @@ import synapticloop.documentr.exception.DocumentrException;
 import synapticloop.documentr.generator.Generator;
 
 public class DocumentrTask extends DefaultTask {
+	/**
+	 * Instantiate the task, setting the group and description
+	 */
+	public DocumentrTask() {
+		super.setGroup("Documentation");
+		super.setDescription("Generates a README file for your project");
+	}
 
 	/**
 	 * Generate the README file from the documentr.json input file

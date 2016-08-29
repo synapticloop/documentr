@@ -26,6 +26,7 @@ public class DocumentrPlugin implements Plugin<Project> {
 	public void apply(Project project) {
 		project.getExtensions().create(DOCUMENTR, DocumentrPluginExtension.class);
 		project.getTasks().create(DOCUMENTR, DocumentrTask.class);
+
 	}
 
 }

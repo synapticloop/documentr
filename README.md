@@ -1,4 +1,4 @@
-<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.6.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.6.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -37,9 +37,9 @@
    - [Dependencies - Gradle](#documentr_heading_39)
    - [Dependencies - Maven](#documentr_heading_40)
    - [Dependencies - Downloads](#documentr_heading_41)
- - [Artefact Publishing - gradle plugin portal](#documentr_heading_44)
- - [All-In-One](#documentr_heading_45)
- - [License](#documentr_heading_46)
+ - [Artefact Publishing - gradle plugin portal](#documentr_heading_46)
+ - [All-In-One](#documentr_heading_47)
+ - [License](#documentr_heading_48)
 
 
 
@@ -302,7 +302,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.6.0"
+		classpath "gradle.plugin.synapticloop:documentr:2.6.1"
 	}
 }
 
@@ -317,7 +317,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.6.0'
+	id 'synapticloop.documentr' version '2.6.1'
 }
 ```
 
@@ -354,7 +354,7 @@ simply run
 
 
 ```
-java -jar documentr-2.6.0-all.jar
+java -jar documentr-2.6.1-all.jar
 ```
 
 
@@ -370,7 +370,7 @@ Running:
 
 
 ```
-java -jar documentr-2.6.0-all.jar --help
+java -jar documentr-2.6.1-all.jar --help
 ```
 
 
@@ -803,9 +803,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.6.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.6.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.6.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.6.1', ext: 'jar')
 }
 ```
 
@@ -817,9 +817,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.6.0'
+	runtime 'synapticloop:documentr:2.6.1'
 
-	compile 'synapticloop:documentr:2.6.0'
+	compile 'synapticloop:documentr:2.6.1'
 }
 ```
 
@@ -837,7 +837,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.6.0</version>
+	<version>2.6.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -878,10 +878,18 @@ You will also need to download the following dependencies:
   - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
   - org.pegdown:pegdown:1.6.0: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
 
+
+### testCompile dependencies
+
+
+
+### testRuntime dependencies
+
+
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
 
-<a name="documentr_heading_44"></a>
+<a name="documentr_heading_46"></a>
 
 # Artefact Publishing - gradle plugin portal <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -892,7 +900,7 @@ This project publishes artefacts to [the gradle plugin portal](https://plugins.g
 
 
 
-<a name="documentr_heading_45"></a>
+<a name="documentr_heading_47"></a>
 
 # All-In-One <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -902,14 +910,14 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.6.0.jar -> documentr-2.6.0-all.jar`
+`documentr-2.6.1.jar -> documentr-2.6.1-all.jar`
 
 
 
 
 
 
-<a name="documentr_heading_46"></a>
+<a name="documentr_heading_48"></a>
 
 # License <sup><sup>[top](#documentr_top)</sup></sup>
 
