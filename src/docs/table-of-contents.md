@@ -5,12 +5,12 @@
 simply by entering the following line into you `documentr.json` file:
 
 ```
-{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+{ "type": "markup", "value": "\\n\\n# Table of Contents\\n\\n" },
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
-{ "type": "tocbacktotop", value: " <sup><sup>[top](#)</sup></sup>"},
-
+{ "type": "toplink", "value": " <a name=\"#documentr_top\"></a>" },
+{ "type": "tocbacktotop", "value": " <sup><sup>[top](#documentr_top)</sup></sup>" },
 ```
 
 ### The table of contents title
@@ -28,6 +28,13 @@ elements (i.e. both h1 and h2).
 If the `value` attribute is omitted, then the default is to generate a table of 
 contents for headers up to level `h6`.
 
+### `{ "type": "toplink" }`
+
+This is the anchor name to go back to the top of the README file (rather than 
+the top of the page.  By default this is always set to `<a name=\"#documentr_top\"></a>` 
+if you wish to change the `tocbacktotop`, then you will need to change this as 
+well.
+
 ### `{ "type": "toclinks" }`
 
 This is a post processing command and will generate links to the headers in the 
@@ -39,11 +46,14 @@ page.  This option is only invoked if there is a table of contents generated
 This is a post processing command and will generate 'back to top' links for all 
 of the included headers.
 
-The line: `{ "type": "tocbacktotop", value: " <sup><sup>[top](#)</sup></sup>"}` 
+The line: `{ "type": "tocbacktotop", value: " <sup><sup>[top](#documentr_top)</sup></sup>"}` 
 will generate a link after every heading (up to the table of content level number 
 set above).
 
 The value is the HTML/Markdown that is appended to the heading.
+
+If you change the anchor link from `#documentr_top`, you *MUST* also include and 
+update the `toplink` entry above.
 
 ### Important note:
 

@@ -24,6 +24,12 @@ import synapticloop.documentr.generator.Generator;
 
 public class DocumentrTask extends DefaultTask {
 
+	/**
+	 * Generate the README file from the documentr.json input file
+	 * 
+	 * @throws DocumentrException If there was an error parsing/rendering the 
+	 *     README file
+	 */
 	@TaskAction
 	public void generate() throws DocumentrException {
 		DocumentrPluginExtension extension = getProject().getExtensions().findByType(DocumentrPluginExtension.class);

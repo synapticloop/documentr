@@ -57,6 +57,14 @@ import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
 import synapticloop.templar.utils.TemplarContext;
 
+/**
+ * The Generator generates the markdown/adoc file from the documentr.json file.
+ * If requested, the Table of contents will also be generated with links to the
+ * headings and the back to top links.
+ * 
+ * @author synapticloop
+ *
+ */
 public class Generator {
 	private static final String DOCUMENTR_DELIMETER = "§§";
 	private static final String DOCUMENTR_TABLE_OF_CONTENTS = DOCUMENTR_DELIMETER + "DOCUMENTR_TABLE_OF_CONTENTS" + DOCUMENTR_DELIMETER;
@@ -76,6 +84,7 @@ public class Generator {
 	private static final int TYPE_TOC = 6;
 	private static final int TYPE_TOCBACKTOTOP = 7;
 	private static final int TYPE_TOCLINKS= 8;
+	private static final int TYPE_TOPLINK= 9;
 
 	private static final String CONTEXT_CONFIGURATION_BEANS = "configurationBeans";
 	private static final String CONTEXT_CONFIGURATIONS = "configurations";
@@ -93,6 +102,7 @@ public class Generator {
 		TYPE_LOOKUP.put("toc", TYPE_TOC);
 		TYPE_LOOKUP.put("toclinks", TYPE_TOCLINKS);
 		TYPE_LOOKUP.put("tocbacktotop", TYPE_TOCBACKTOTOP);
+		TYPE_LOOKUP.put("toplink", TYPE_TOPLINK);
 
 		SPACING_LOOKUP.put(1, " - ");
 		SPACING_LOOKUP.put(2, "   - ");
@@ -111,7 +121,8 @@ public class Generator {
 	private int tocLevel = 6;
 	private boolean hasToc = false;
 	private boolean hasTocBackToTop = false;
-	private String tocBackToTop = " <sup><sup>[top](#)</sup></sup>";
+	private String topLink = "<a name=\"documentr_top\"></a>";
+	private String tocBackToTop = " <sup><sup>[top](#documentr_top)</sup></sup>";
 	private boolean hasTocLinks = false;
 
 	private final TemplarContext templarContext = new TemplarContext();
@@ -265,6 +276,11 @@ public class Generator {
 							hasTocLinks = true;
 						}
 						break;
+					case TYPE_TOPLINK:
+						if(!value.equalsIgnoreCase("")) {
+							topLink = value;
+						}
+						break;
 
 					default:
 						throw new DocumentrException(String.format("Could not determine type %s", type));
@@ -280,7 +296,7 @@ public class Generator {
 					System.out.println(stringBuilder.toString());
 				}
 
-				Parser parser = new Parser(stringBuilder.toString());
+				Parser parser = new Parser(topLink + stringBuilder.toString());
 				String rendered = parser.render(templarContext);
 				File outputFile = new File(documentrJsonFile.getParent() + "/README." + fileExtension);
 
@@ -337,7 +353,7 @@ public class Generator {
 			int valueOf = Integer.parseInt(heading.nodeName().substring(1));
 			if(valueOf <= tocLevel) {
 				if(hasTocLinks) {
-					headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#heading_" + numHeader + ")\n");
+					headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + "[" + heading.text() + "](#documentr_heading_" + numHeader + ")\n");
 				} else {
 					headerStringBuilder.append(SPACING_LOOKUP.get(valueOf) + heading.text() + "\n");
 				}
@@ -377,7 +393,7 @@ public class Generator {
 				int headerEnd = startEndBean.getEnd();
 				Integer headerNum = HEADER_LOOKUP.get(startEndBean);
 				renderedStringBuilder.append(Arrays.copyOfRange(charArray, start, headerStart));
-				renderedStringBuilder.append("\n\n<a name=\"heading_" + headerNum + "\"></a>\n\n");
+				renderedStringBuilder.append("\n\n<a name=\"documentr_heading_" + headerNum + "\"></a>\n\n");
 
 				if(hasTocBackToTop) {
 					renderedStringBuilder.append(Arrays.copyOfRange(charArray, headerStart, headerEnd -1));

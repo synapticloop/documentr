@@ -20,11 +20,12 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
 public class DocumentrPlugin implements Plugin<Project> {
+	private static final String DOCUMENTR = "documentr";
 
 	@Override
 	public void apply(Project project) {
-		project.getExtensions().create("documentr", DocumentrPluginExtension.class);
-		project.getTasks().create("documentr", DocumentrTask.class);
+		project.getExtensions().create(DOCUMENTR, DocumentrPluginExtension.class);
+		project.getTasks().create(DOCUMENTR, DocumentrTask.class);
 	}
 
 }

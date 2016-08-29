@@ -22,12 +22,19 @@ import java.util.List;
 import org.gradle.api.artifacts.Dependency;
 import org.gradle.api.artifacts.DependencySet;
 
+/**
+ * This is a simple POJO which holds a named configuration and all of the
+ * dependencies for the configuration.
+ * 
+ * @author synapticloop
+ *
+ */
 public class ConfigurationBean {
 	private final String name;
 	private final List<Dependency> dependencies = new ArrayList<Dependency>();
 
 	/**
-	 * THe name of the configuration
+	 * The name of the configuration for the dependencies
 	 * 
 	 * @param name the name of the configuration
 	 */
@@ -36,7 +43,7 @@ public class ConfigurationBean {
 	}
 
 	/**
-	 * Add dependencies
+	 * Add dependencies to this specific configuration
 	 * 
 	 * @param dependencySet the set of dependencies to add
 	 */
