@@ -28,7 +28,7 @@ public class DocumentrTask extends DefaultTask {
 	 */
 	public DocumentrTask() {
 		super.setGroup("Documentation");
-		super.setDescription("Generates a README file for your project");
+		super.setDescription("Generates a README file for your project.");
 	}
 
 	/**
