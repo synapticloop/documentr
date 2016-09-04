@@ -74,6 +74,7 @@ public class Generator {
 
 	private static final String KEY_VALUE = "value";
 	private static final String KEY_TYPE = "type";
+	private static final String KEY_CONTEXT = "context";
 
 	private static final int TYPE_FILE = 1;
 	private static final int TYPE_INBUILT = 0;
@@ -225,7 +226,7 @@ public class Generator {
 					switch(TYPE_LOOKUP.get(type)) {
 					case TYPE_FILE:
 						stringBuilder.append("{pre\n");
-						stringBuilder.append(FileUtils.readFileToString(new File(pathname)));
+						stringBuilder.append(FileUtils.readFileToString(new File(pathname)).replace("\\", "\\\\"));
 						stringBuilder.append("\npre}\n");
 						break;
 					case TYPE_MARKUP:
@@ -502,7 +503,7 @@ public class Generator {
 	 * @param jsonObject the json object that contains the context items
 	 */
 	private void overrideContext(TemplarContext templarContext, JSONObject jsonObject) {
-		JSONObject contextObject = jsonObject.getJSONObject("context");
+		JSONObject contextObject = jsonObject.getJSONObject(KEY_CONTEXT);
 		if(null != contextObject) {
 			Iterator<String> keys = contextObject.keys();
 			while (keys.hasNext()) {
