@@ -12,7 +12,11 @@
 	{\n}
 	This project publishes artefacts to [bintray](https://bintray.com/){\n}
 	{\n}
-	> Note that the latest version can be found [https://bintray.com/{group}/maven/{archivesBaseName}/view](https://bintray.com/{group}/maven/{archivesBaseName}/view){\n}
+	> Note that the latest version can be found [https://bintray.com/
+		{if fn:notNull[bintrayGroup]}{bintrayGroup}{else}{group}{endif}
+	/maven/{archivesBaseName}/view](https://bintray.com/
+		{if fn:notNull[bintrayGroup]}{bintrayGroup}{else}{group}{endif}
+	/maven/{archivesBaseName}/view){\n}
 	{\n}
 	## maven setup{\n}
 	{\n}
