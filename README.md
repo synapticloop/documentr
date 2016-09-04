@@ -1,4 +1,4 @@
-<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.6.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.6.2-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -18,28 +18,29 @@
  - [IMPORTANT](#documentr_heading_2)
    - [NEW](#documentr_heading_3)
    - [OLD](#documentr_heading_4)
- - [Overview](#documentr_heading_5)
-   - [Why document anything?](#documentr_heading_6)
-   - [Do's and Don'ts of documentation](#documentr_heading_7)
- - [Getting Started](#documentr_heading_10)
-   - [Step 1 - Create the documentr.json file](#documentr_heading_11)
-   - [Step 2 - Generate the README file](#documentr_heading_13)
-   - [Generating the table of contents](#documentr_heading_19)
- - [Building the Package](#documentr_heading_26)
-   - [*NIX/Mac OS X](#documentr_heading_27)
-   - [Windows](#documentr_heading_28)
- - [Logging - slf4j](#documentr_heading_29)
-   - [Log4j](#documentr_heading_30)
- - [Artefact Publishing - Github](#documentr_heading_35)
- - [Artefact Publishing - Bintray](#documentr_heading_36)
-   - [maven setup](#documentr_heading_37)
-   - [gradle setup](#documentr_heading_38)
-   - [Dependencies - Gradle](#documentr_heading_39)
-   - [Dependencies - Maven](#documentr_heading_40)
-   - [Dependencies - Downloads](#documentr_heading_41)
- - [Artefact Publishing - gradle plugin portal](#documentr_heading_46)
- - [All-In-One](#documentr_heading_47)
- - [License](#documentr_heading_48)
+   - [ERRORS Running documentr](#documentr_heading_5)
+ - [Overview](#documentr_heading_6)
+   - [Why document anything?](#documentr_heading_7)
+   - [Do's and Don'ts of documentation](#documentr_heading_8)
+ - [Getting Started](#documentr_heading_11)
+   - [Step 1 - Create the documentr.json file](#documentr_heading_12)
+   - [Step 2 - Generate the README file](#documentr_heading_14)
+   - [Generating the table of contents](#documentr_heading_20)
+ - [Building the Package](#documentr_heading_27)
+   - [*NIX/Mac OS X](#documentr_heading_28)
+   - [Windows](#documentr_heading_29)
+ - [Logging - slf4j](#documentr_heading_30)
+   - [Log4j](#documentr_heading_31)
+ - [Artefact Publishing - Github](#documentr_heading_36)
+ - [Artefact Publishing - Bintray](#documentr_heading_37)
+   - [maven setup](#documentr_heading_38)
+   - [gradle setup](#documentr_heading_39)
+   - [Dependencies - Gradle](#documentr_heading_40)
+   - [Dependencies - Maven](#documentr_heading_41)
+   - [Dependencies - Downloads](#documentr_heading_42)
+ - [Artefact Publishing - gradle plugin portal](#documentr_heading_45)
+ - [All-In-One](#documentr_heading_46)
+ - [License](#documentr_heading_47)
 
 
 
@@ -60,7 +61,6 @@
 <a name="documentr_heading_2"></a>
 
 # IMPORTANT <sup><sup>[top](#documentr_top)</sup></sup>
-
 
 Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`
 
@@ -111,17 +111,39 @@ documentrSetting {
 
 
 
-
-
-
 <a name="documentr_heading_5"></a>
+
+## ERRORS Running `documentr` <sup><sup>[top](#documentr_top)</sup></sup>
+
+If you get an error along the following lines:
+
+
+
+```
+* What went wrong:
+Execution failed for task ':documentr'.
+> 14961 > 664
+
+```
+
+
+
+This may intermittently occur if you run it in `--daemon` mode as the documentr process alters files on the filesystem which are cached.
+
+You will need to run this without the `--daemon` flag.
+
+
+
+
+
+<a name="documentr_heading_6"></a>
 
 # Overview <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
 
-<a name="documentr_heading_6"></a>
+<a name="documentr_heading_7"></a>
 
 ## Why document anything? <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -138,7 +160,7 @@ to write, documentation for any project/module/framework/extension helps:
 
 
 
-<a name="documentr_heading_7"></a>
+<a name="documentr_heading_8"></a>
 
 ## Do's and Don'ts of documentation <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -174,7 +196,7 @@ the root of this project.
 
 
 
-<a name="documentr_heading_10"></a>
+<a name="documentr_heading_11"></a>
 
 # Getting Started <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -185,7 +207,7 @@ the root of this project.
 
 
 
-<a name="documentr_heading_11"></a>
+<a name="documentr_heading_12"></a>
 
 ## Step 1 - Create the `documentr.json` file <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -278,7 +300,7 @@ The above file generated this complete `README` file, while only requiring 2 fil
 
 
 
-<a name="documentr_heading_13"></a>
+<a name="documentr_heading_14"></a>
 
 ## Step 2 - Generate the `README` file <sup><sup>[top](#documentr_top)</sup></sup>
 ### Gradle plugin usage
@@ -302,7 +324,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.6.1"
+		classpath "gradle.plugin.synapticloop:documentr:2.6.2"
 	}
 }
 
@@ -317,7 +339,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.6.1'
+	id 'synapticloop.documentr' version '2.6.2'
 }
 ```
 
@@ -354,7 +376,7 @@ simply run
 
 
 ```
-java -jar documentr-2.6.1-all.jar
+java -jar documentr-2.6.2-all.jar
 ```
 
 
@@ -370,7 +392,7 @@ Running:
 
 
 ```
-java -jar documentr-2.6.1-all.jar --help
+java -jar documentr-2.6.2-all.jar --help
 ```
 
 
@@ -501,7 +523,7 @@ The list of inbuilt templates:
 
 
 
-<a name="documentr_heading_19"></a>
+<a name="documentr_heading_20"></a>
 
 ## Generating the table of contents <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -515,7 +537,7 @@ simply by entering the following line into you `documentr.json` file:
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
-{ "type": "toplink", "value": " <a name="#documentr_top"></a>" },
+{ "type": "toplink", "value": " <a name="documentr_top"></a>" },
 { "type": "tocbacktotop", "value": " <sup><sup>[top](#documentr_top)</sup></sup>" },
 ```
 
@@ -572,13 +594,13 @@ update the `toplink` entry above.
 
 
 
-<a name="documentr_heading_26"></a>
+<a name="documentr_heading_27"></a>
 
 # Building the Package <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
-<a name="documentr_heading_27"></a>
+<a name="documentr_heading_28"></a>
 
 ## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -589,7 +611,7 @@ From the root of the project, simply run
 
 
 
-<a name="documentr_heading_28"></a>
+<a name="documentr_heading_29"></a>
 
 ## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -602,7 +624,7 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 
 
-<a name="documentr_heading_29"></a>
+<a name="documentr_heading_30"></a>
 
 # Logging - slf4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -610,7 +632,7 @@ slf4j is the logging framework used for this project.  In order to set up a logg
 
 
 
-<a name="documentr_heading_30"></a>
+<a name="documentr_heading_31"></a>
 
 ## Log4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -695,7 +717,7 @@ A sample `log4j2.xml` is below:
 
 
 
-<a name="documentr_heading_35"></a>
+<a name="documentr_heading_36"></a>
 
 # Artefact Publishing - Github <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -707,7 +729,7 @@ As such, this is not a repository, but a location to download files from.
 
 
 
-<a name="documentr_heading_36"></a>
+<a name="documentr_heading_37"></a>
 
 # Artefact Publishing - Bintray <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -717,7 +739,7 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 
 
 
-<a name="documentr_heading_37"></a>
+<a name="documentr_heading_38"></a>
 
 ## maven setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -763,7 +785,7 @@ this comes from the jcenter bintray, to set up your repository:
 
 
 
-<a name="documentr_heading_38"></a>
+<a name="documentr_heading_39"></a>
 
 ## gradle setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -795,7 +817,7 @@ repositories {
 
 
 
-<a name="documentr_heading_39"></a>
+<a name="documentr_heading_40"></a>
 
 ## Dependencies - Gradle <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -803,9 +825,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.6.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.6.2', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.6.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.6.2', ext: 'jar')
 }
 ```
 
@@ -817,9 +839,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.6.1'
+	runtime 'synapticloop:documentr:2.6.2'
 
-	compile 'synapticloop:documentr:2.6.1'
+	compile 'synapticloop:documentr:2.6.2'
 }
 ```
 
@@ -827,7 +849,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_40"></a>
+<a name="documentr_heading_41"></a>
 
 ## Dependencies - Maven <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -837,7 +859,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.6.1</version>
+	<version>2.6.2</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -846,7 +868,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_41"></a>
+<a name="documentr_heading_42"></a>
 
 ## Dependencies - Downloads <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -878,18 +900,10 @@ You will also need to download the following dependencies:
   - nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
   - org.pegdown:pegdown:1.6.0: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
 
-
-### testCompile dependencies
-
-
-
-### testRuntime dependencies
-
-
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
 
-<a name="documentr_heading_46"></a>
+<a name="documentr_heading_45"></a>
 
 # Artefact Publishing - gradle plugin portal <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -900,7 +914,7 @@ This project publishes artefacts to [the gradle plugin portal](https://plugins.g
 
 
 
-<a name="documentr_heading_47"></a>
+<a name="documentr_heading_46"></a>
 
 # All-In-One <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -910,14 +924,14 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.6.1.jar -> documentr-2.6.1-all.jar`
+`documentr-2.6.2.jar -> documentr-2.6.2-all.jar`
 
 
 
 
 
 
-<a name="documentr_heading_48"></a>
+<a name="documentr_heading_47"></a>
 
 # License <sup><sup>[top](#documentr_top)</sup></sup>
 

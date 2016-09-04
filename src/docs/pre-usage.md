@@ -1,6 +1,5 @@
 # IMPORTANT
 
-
 Staring at version 2, the `build.gradle` task configuration has changed, from `documentrSetting` to just plain `documentr`
 
 ## NEW
@@ -32,6 +31,20 @@ documentrSetting {
 ```
 
 
+## ERRORS Running `documentr`
+
+If you get an error along the following lines:
+
+```
+* What went wrong:
+Execution failed for task ':documentr'.
+> 14961 > 664
+
+```
+
+This may intermittently occur if you run it in `--daemon` mode as the documentr process alters files on the filesystem which are cached.
+
+You will need to run this without the `--daemon` flag.
 
 
 

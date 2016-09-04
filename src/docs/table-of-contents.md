@@ -9,7 +9,7 @@ simply by entering the following line into you `documentr.json` file:
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
-{ "type": "toplink", "value": " <a name=\"#documentr_top\"></a>" },
+{ "type": "toplink", "value": " <a name=\"documentr_top\"></a>" },
 { "type": "tocbacktotop", "value": " <sup><sup>[top](#documentr_top)</sup></sup>" },
 ```
 
