@@ -1,4 +1,4 @@
-<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.7.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.7.1-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -234,7 +234,7 @@ This is a simple JSON file as show below:
 
 		{ "type":"inbuilt", "value":"jvm-compatability" },
 
-		{ "type": "markup", "value": "\n\n# Table of Contents\n\n" },
+		{ "type": "markup", "value": "\\n\\n# Table of Contents\\n\\n" },
 
 		{ "type": "toc", "value": "2" },
 		{ "type": "toclinks", "value": "true" },
@@ -246,27 +246,27 @@ This is a simple JSON file as show below:
 
 		{ "type":"file", "value":"src/docs/pre-usage.md" },
 
-		{ "type": "markup", "value": "### The `documentr.json` file\n\n" },
-		{ "type": "markup", "value": "This is a simple JSON file as show below:\n\n" },
-		{ "type": "markup", "value":"\n```\n" },
+		{ "type": "markup", "value": "### The `documentr.json` file\\n\\n" },
+		{ "type": "markup", "value": "This is a simple JSON file as show below:\\n\\n" },
+		{ "type": "markup", "value":"\\n```\\n" },
 
 
 		{ "type": "file", "value":"documentr.json" },
 
 
-		{ "type": "markup", "value":"\n```\n" },
-		{ "type": "markup", "value":"> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*\n\n" },
+		{ "type": "markup", "value":"\\n```\\n" },
+		{ "type": "markup", "value":"> *in fact - the above file is included from the file system `documentr.json`, so that it is always up-to-date with the correct information...*\\n\\n" },
 
 		{ "type":"template", "value":"src/docs/post-usage.md.templar" },
 
-		{ "type":"markup", "value":"\n\n```\n" },
+		{ "type":"markup", "value":"\\n\\n```\\n" },
 
 
 		{ "type":"file", "value":"src/main/resources/USAGE.txt" },
 		{ "type":"file", "value":"src/main/resources/HELP.txt" },
 
 
-		{ "type":"markup", "value":"\n```\n" },
+		{ "type":"markup", "value":"\\n```\\n" },
 
 		{ "type": "file", "value":"src/docs/table-of-contents.md" },
 
@@ -286,7 +286,6 @@ This is a simple JSON file as show below:
 		{ "type":"inbuilt", "value":"license-mit" },
 
 		{ "type":"inbuilt", "value":"attribution" }
-
 	]
 }
 ```
@@ -324,7 +323,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.7.0"
+		classpath "gradle.plugin.synapticloop:documentr:2.7.1"
 	}
 }
 
@@ -339,7 +338,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.7.0'
+	id 'synapticloop.documentr' version '2.7.1'
 }
 ```
 
@@ -376,7 +375,7 @@ simply run
 
 
 ```
-java -jar documentr-2.7.0-all.jar
+java -jar documentr-2.7.1-all.jar
 ```
 
 
@@ -392,7 +391,7 @@ Running:
 
 
 ```
-java -jar documentr-2.7.0-all.jar --help
+java -jar documentr-2.7.1-all.jar --help
 ```
 
 
@@ -462,7 +461,7 @@ be one of the following:
         {dumpcontext} - which dumps all available context key/value pairs to
         the output
   - file - the file will be included as is with no parsing done on it
-  - markup - any valid markdown, with '\n' being replaced with a new line 
+  - markup - any valid markdown, with '\\n' being replaced with a new line 
         character.  No templar parsing is done on this.
   - markdown - an alias for markup
   - inbuilt - one of the in-built templates (see below for a list of the 
@@ -533,11 +532,11 @@ simply by entering the following line into you `documentr.json` file:
 
 
 ```
-{ "type": "markup", "value": "\\n\\n# Table of Contents\\n\\n" },
+{ "type": "markup", "value": "\\\\n\\\\n# Table of Contents\\\\n\\\\n" },
 
 { "type": "toc", "value": "2" },
 { "type": "toclinks", "value": "true" },
-{ "type": "toplink", "value": " <a name=\"documentr_top\"></a>" },
+{ "type": "toplink", "value": " <a name=\\"documentr_top\\"></a>" },
 { "type": "tocbacktotop", "value": " <sup><sup>[top](#documentr_top)</sup></sup>" },
 ```
 
@@ -825,9 +824,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.7.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.7.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.7.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.7.1', ext: 'jar')
 }
 ```
 
@@ -839,9 +838,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.7.0'
+	runtime 'synapticloop:documentr:2.7.1'
 
-	compile 'synapticloop:documentr:2.7.0'
+	compile 'synapticloop:documentr:2.7.1'
 }
 ```
 
@@ -859,7 +858,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.7.0</version>
+	<version>2.7.1</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -924,7 +923,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.7.0.jar -> documentr-2.7.0-all.jar`
+`documentr-2.7.1.jar -> documentr-2.7.1-all.jar`
 
 
 

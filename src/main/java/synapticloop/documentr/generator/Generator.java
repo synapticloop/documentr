@@ -415,7 +415,12 @@ public class Generator {
 		Iterator<Integer> codeFenceBlocksIterator = codeFenceBlocks.keySet().iterator();
 		while (codeFenceBlocksIterator.hasNext()) {
 			Integer integer = (Integer) codeFenceBlocksIterator.next();
-			renderedClean = renderedClean.replaceAll(String.format("%s%d%s", DOCUMENTR_CODE_FENCE_PREFIX, integer, DOCUMENTR_DELIMETER), codeFenceBlocks.get(integer).toString());
+			renderedClean = renderedClean.replace(
+					String.format("%s%d%s", 
+							DOCUMENTR_CODE_FENCE_PREFIX, 
+							integer, 
+							DOCUMENTR_DELIMETER), 
+					codeFenceBlocks.get(integer).toString());
 		}
 
 		return renderedClean;
