@@ -57,7 +57,7 @@
 					{endif}
 
 					{if !fn:=[dependency.name, 'unspecified']}
-						{\  }- {dependency.group}:{dependency.name}:{dependency.version}: (It may be available on one of: 
+						{\  }- `{dependency.group}:{dependency.name}:{dependency.version}`: (It may be available on one of: 
 						[bintray](https://bintray.com/{dependency.group}/maven/{dependency.name}/{dependency.version}/view#files/{dependency.group}/{dependency.name}/{dependency.version}) 
 						[mvn central](http://search.maven.org/#artifactdetails|{dependency.group}|{dependency.name}|{dependency.version}|jar)){\n}
 					{endif}
