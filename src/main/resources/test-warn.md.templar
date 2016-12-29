@@ -1,5 +1,7 @@
 {\n}
-**WARNING:** These tests make calls against resources (either API calls to a 
+# !!IMPORTANT!! WARNING ABOUT RUNNING THE TESTS{\n}
+{\n}
+> **WARNING:** These tests make calls against resources (either API calls to a 
 service provider, or consumption of resources from a service provider) which 
 may contribute to your limits, which may lead to a cost.{\n}
 {\n}
