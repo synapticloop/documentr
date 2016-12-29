@@ -38,7 +38,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents"""
 
-version = '2.7.2'
+version = '2.7.3'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
