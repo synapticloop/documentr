@@ -47,7 +47,6 @@ public class DocumentrHelpTask extends DefaultTask {
 		logger.lifecycle("Found the following in-built templates:");
 
 		logger.lifecycle("  attribution");
-		logger.lifecycle("  attribution");
 		logger.lifecycle("  badge-bintray");
 		logger.lifecycle("  badge-shield-io-github-release");
 		logger.lifecycle("  badge-shield-io-gradle-plugin");

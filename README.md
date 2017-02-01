@@ -23,24 +23,25 @@
    - [Why document anything?](#documentr_heading_7)
    - [Do's and Don'ts of documentation](#documentr_heading_8)
  - [Getting Started](#documentr_heading_11)
-   - [Step 1 - Create the documentr.json file](#documentr_heading_12)
-   - [Step 2 - Generate the README file](#documentr_heading_14)
-   - [Generating the table of contents](#documentr_heading_20)
- - [Building the Package](#documentr_heading_27)
-   - [*NIX/Mac OS X](#documentr_heading_28)
-   - [Windows](#documentr_heading_29)
- - [Logging - slf4j](#documentr_heading_30)
-   - [Log4j](#documentr_heading_31)
- - [Artefact Publishing - Github](#documentr_heading_36)
- - [Artefact Publishing - Bintray](#documentr_heading_37)
-   - [maven setup](#documentr_heading_38)
-   - [gradle setup](#documentr_heading_39)
-   - [Dependencies - Gradle](#documentr_heading_40)
-   - [Dependencies - Maven](#documentr_heading_41)
-   - [Dependencies - Downloads](#documentr_heading_42)
- - [Artefact Publishing - gradle plugin portal](#documentr_heading_45)
- - [All-In-One](#documentr_heading_46)
- - [License](#documentr_heading_47)
+   - [Gradle Plugin tasks](#documentr_heading_12)
+   - [Step 1 - Create the documentr.json file](#documentr_heading_13)
+   - [Step 2 - Generate the README file](#documentr_heading_15)
+   - [Generating the table of contents](#documentr_heading_21)
+ - [Building the Package](#documentr_heading_28)
+   - [*NIX/Mac OS X](#documentr_heading_29)
+   - [Windows](#documentr_heading_30)
+ - [Logging - slf4j](#documentr_heading_31)
+   - [Log4j](#documentr_heading_32)
+ - [Artefact Publishing - Github](#documentr_heading_37)
+ - [Artefact Publishing - Bintray](#documentr_heading_38)
+   - [maven setup](#documentr_heading_39)
+   - [gradle setup](#documentr_heading_40)
+   - [Dependencies - Gradle](#documentr_heading_41)
+   - [Dependencies - Maven](#documentr_heading_42)
+   - [Dependencies - Downloads](#documentr_heading_43)
+ - [Artefact Publishing - gradle plugin portal](#documentr_heading_46)
+ - [All-In-One](#documentr_heading_47)
+ - [License](#documentr_heading_48)
 
 
 
@@ -200,14 +201,28 @@ the root of this project.
 
 # Getting Started <sup><sup>[top](#documentr_top)</sup></sup>
 
+
   1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you)
   1. Generate the `README` file either through the gradle plugin, or through the command line
   1. ... There is no step 3
 
 
 
-
 <a name="documentr_heading_12"></a>
+
+## Gradle Plugin tasks <sup><sup>[top](#documentr_top)</sup></sup>
+
+There are two tasks that come with this plugin (a simple `gradle tasks` will list them for you):
+
+    Documentation tasks
+    -------------------
+    documentr - Generates a README file for your project.
+    documentrHelp - Documentr - prints out a help message
+
+
+
+
+<a name="documentr_heading_13"></a>
 
 ## Step 1 - Create the `documentr.json` file <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -299,7 +314,7 @@ The above file generated this complete `README` file, while only requiring 2 fil
 
 
 
-<a name="documentr_heading_14"></a>
+<a name="documentr_heading_15"></a>
 
 ## Step 2 - Generate the `README` file <sup><sup>[top](#documentr_top)</sup></sup>
 ### Gradle plugin usage
@@ -522,7 +537,7 @@ The list of inbuilt templates:
 
 
 
-<a name="documentr_heading_20"></a>
+<a name="documentr_heading_21"></a>
 
 ## Generating the table of contents <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -593,13 +608,13 @@ update the `toplink` entry above.
 
 
 
-<a name="documentr_heading_27"></a>
+<a name="documentr_heading_28"></a>
 
 # Building the Package <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
-<a name="documentr_heading_28"></a>
+<a name="documentr_heading_29"></a>
 
 ## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -610,7 +625,7 @@ From the root of the project, simply run
 
 
 
-<a name="documentr_heading_29"></a>
+<a name="documentr_heading_30"></a>
 
 ## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -623,7 +638,7 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 
 
-<a name="documentr_heading_30"></a>
+<a name="documentr_heading_31"></a>
 
 # Logging - slf4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -631,7 +646,7 @@ slf4j is the logging framework used for this project.  In order to set up a logg
 
 
 
-<a name="documentr_heading_31"></a>
+<a name="documentr_heading_32"></a>
 
 ## Log4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -716,7 +731,7 @@ A sample `log4j2.xml` is below:
 
 
 
-<a name="documentr_heading_36"></a>
+<a name="documentr_heading_37"></a>
 
 # Artefact Publishing - Github <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -728,7 +743,7 @@ As such, this is not a repository, but a location to download files from.
 
 
 
-<a name="documentr_heading_37"></a>
+<a name="documentr_heading_38"></a>
 
 # Artefact Publishing - Bintray <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -738,7 +753,7 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 
 
 
-<a name="documentr_heading_38"></a>
+<a name="documentr_heading_39"></a>
 
 ## maven setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -784,7 +799,7 @@ this comes from the jcenter bintray, to set up your repository:
 
 
 
-<a name="documentr_heading_39"></a>
+<a name="documentr_heading_40"></a>
 
 ## gradle setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -816,7 +831,7 @@ repositories {
 
 
 
-<a name="documentr_heading_40"></a>
+<a name="documentr_heading_41"></a>
 
 ## Dependencies - Gradle <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -848,7 +863,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_41"></a>
+<a name="documentr_heading_42"></a>
 
 ## Dependencies - Maven <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -867,7 +882,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_42"></a>
+<a name="documentr_heading_43"></a>
 
 ## Dependencies - Downloads <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -902,7 +917,7 @@ You will also need to download the following dependencies:
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
 
-<a name="documentr_heading_45"></a>
+<a name="documentr_heading_46"></a>
 
 # Artefact Publishing - gradle plugin portal <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -913,7 +928,7 @@ This project publishes artefacts to [the gradle plugin portal](https://plugins.g
 
 
 
-<a name="documentr_heading_46"></a>
+<a name="documentr_heading_47"></a>
 
 # All-In-One <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -930,7 +945,7 @@ For example:
 
 
 
-<a name="documentr_heading_47"></a>
+<a name="documentr_heading_48"></a>
 
 # License <sup><sup>[top](#documentr_top)</sup></sup>
 

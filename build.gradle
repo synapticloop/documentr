@@ -34,7 +34,7 @@ plugins {
 // the following is un-commented for faster builds as the JavaDoc process can 
 // take quite a bit of time
 
-tasks.withType(Javadoc).all { enabled = false }
+// tasks.withType(Javadoc).all { enabled = false }
 
 
 apply plugin: 'synapticloop.documentr'

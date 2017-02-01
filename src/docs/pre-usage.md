@@ -98,9 +98,19 @@ the root of this project.
 
 # Getting Started
 
+
   1. Create a `documentr.json` file (if one doesn't exist - we will create one automatically for you)
   1. Generate the `README` file either through the gradle plugin, or through the command line
   1. ... There is no step 3
+
+## Gradle Plugin tasks
+
+There are two tasks that come with this plugin (a simple `gradle tasks` will list them for you):
+
+    Documentation tasks
+    -------------------
+    documentr - Generates a README file for your project.
+    documentrHelp - Documentr - prints out a help message
 
 
 ## Step 1 - Create the `documentr.json` file
