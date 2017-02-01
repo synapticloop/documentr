@@ -32,10 +32,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.DependencySet;
+import org.gradle.api.plugins.PluginContainer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -143,6 +145,14 @@ public class Generator {
 		this.verbose = extension.getVerbose();
 		this.fileExtension = extension.getExtension();
 
+		
+		PluginContainer plugins = project.getPlugins();
+		Iterator<Plugin> pluginIterator = plugins.iterator();
+		while (pluginIterator.hasNext()) {
+			Plugin plugin = pluginIterator.next();
+			System.out.println(plugin.getClass().getSimpleName());
+		}
+
 		// now go through and initialise the templar context
 		ConfigurationContainer configurations = project.getConfigurations();
 		SortedSet<String> configurationNames = configurations.getNames();
@@ -159,7 +169,7 @@ public class Generator {
 
 		Iterator<String> iterator = project.getProperties().keySet().iterator();
 		while (iterator.hasNext()) {
-			String key = (String) iterator.next();
+			String key = iterator.next();
 			templarContext.add(key, project.getProperties().get(key));
 		}
 
@@ -389,7 +399,7 @@ public class Generator {
 			StringBuilder renderedStringBuilder = new StringBuilder();
 
 			while (iterator.hasNext()) {
-				StartEndBean startEndBean = (StartEndBean) iterator.next();
+				StartEndBean startEndBean = iterator.next();
 				int headerStart = startEndBean.getStart();
 				int headerEnd = startEndBean.getEnd();
 				Integer headerNum = HEADER_LOOKUP.get(startEndBean);
@@ -414,7 +424,7 @@ public class Generator {
 		// last but not least, we need to put back in the code fences
 		Iterator<Integer> codeFenceBlocksIterator = codeFenceBlocks.keySet().iterator();
 		while (codeFenceBlocksIterator.hasNext()) {
-			Integer integer = (Integer) codeFenceBlocksIterator.next();
+			Integer integer = codeFenceBlocksIterator.next();
 			renderedClean = renderedClean.replace(
 					String.format("%s%d%s", 
 							DOCUMENTR_CODE_FENCE_PREFIX, 
@@ -512,7 +522,7 @@ public class Generator {
 		if(null != contextObject) {
 			Iterator<String> keys = contextObject.keys();
 			while (keys.hasNext()) {
-				String key = (String) keys.next();
+				String key = keys.next();
 				templarContext.add(key, contextObject.get(key));
 			}
 		}

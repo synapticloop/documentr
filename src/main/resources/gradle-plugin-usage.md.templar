@@ -1,7 +1,7 @@
 {set "true" as allOk}
 
 {if fn:null[archivesBaseName]}{set "false" as allOk}{\n}{\n}MISSING variable `archivesBaseName` in the context{\n}{\n}{endif}
-{if fn:null[group]}{set "false" as allOk}{\n}{\n}MISSING variable `group` in the context{\n}{\n}{endif}
+{if fn:null[pluginId]}{set "false" as allOk}{\n}{\n}MISSING variable `pluginId` in the context{\n}{\n}{endif}
 {if fn:null[version]}{set "false" as allOk}{\n}{\n}MISSING variable `version` in the context{\n}{\n}{endif}
 
 {if fn:=[allOk, "false"]}
@@ -22,7 +22,7 @@
 	{\    }}{\n}
 	{\  }}{\n}
 	{\  }dependencies {{{\n}
-	{\    }classpath "gradle.plugin.{group}:{archivesBaseName}:{version}"{\n}
+	{\    }classpath "gradle.plugin.{group}:{pluginId}:{version}"{\n}
 	{\  }}{\n}
 	}{\n}
 	{\n}
