@@ -32,12 +32,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.DependencySet;
-import org.gradle.api.plugins.PluginContainer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -144,14 +142,6 @@ public class Generator {
 		this.rootDirectory = new File(extension.getDirectory());
 		this.verbose = extension.getVerbose();
 		this.fileExtension = extension.getExtension();
-
-		
-		PluginContainer plugins = project.getPlugins();
-		Iterator<Plugin> pluginIterator = plugins.iterator();
-		while (pluginIterator.hasNext()) {
-			Plugin plugin = pluginIterator.next();
-			System.out.println(plugin.getClass().getSimpleName());
-		}
 
 		// now go through and initialise the templar context
 		ConfigurationContainer configurations = project.getConfigurations();
