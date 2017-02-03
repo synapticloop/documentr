@@ -12,7 +12,11 @@
 	{\n}
 	This project publishes artefacts to [GitHub](https://github.com/){\n}
 	{\n}
-	> Note that the latest version can be found [https://github.com/{group}/{archivesBaseName}/releases](https://github.com/{group}/{archivesBaseName}/releases){\n}
+	> Note that the latest version can be found [https://github.com/
+			{if fn:notNull[githubGroup]}{githubGroup}{else}{group}{endif}
+			/{archivesBaseName}/releases](https://github.com/
+			{if fn:notNull[githubGroup]}{githubGroup}{else}{group}{endif}
+			/{archivesBaseName}/releases){\n}
 	{\n}
 	As such, this is not a repository, but a location to download files from.{\n}
 	{\n}
