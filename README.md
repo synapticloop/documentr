@@ -1,4 +1,4 @@
-<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.8.2-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.9.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
 
 > **This project requires JVM version of at least 1.7**
 
@@ -338,7 +338,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.8.2"
+		classpath "gradle.plugin.synapticloop:documentr:2.9.0"
 	}
 }
 
@@ -353,7 +353,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.8.2'
+	id 'synapticloop.documentr' version '2.9.0'
 }
 ```
 
@@ -390,7 +390,7 @@ simply run
 
 
 ```
-java -jar documentr-2.8.2-all.jar
+java -jar documentr-2.9.0-all.jar
 ```
 
 
@@ -406,7 +406,7 @@ Running:
 
 
 ```
-java -jar documentr-2.8.2-all.jar --help
+java -jar documentr-2.9.0-all.jar --help
 ```
 
 
@@ -839,9 +839,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.8.2', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '2.9.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.8.2', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '2.9.0', ext: 'jar')
 }
 ```
 
@@ -853,9 +853,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.8.2'
+	runtime 'synapticloop:documentr:2.9.0'
 
-	compile 'synapticloop:documentr:2.8.2'
+	compile 'synapticloop:documentr:2.9.0'
 }
 ```
 
@@ -873,7 +873,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.8.2</version>
+	<version>2.9.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -895,7 +895,7 @@ You will also need to download the following dependencies:
 
   - `synapticloop:simpleusage:1.1.2`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
   - `synapticloop:simplelogger:1.1.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.1/view#files/synapticloop/simplelogger/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.1|jar))
-  - `synapticloop:templar:1.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
+  - `synapticloop:templar:1.4.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.4.1/view#files/synapticloop/templar/1.4.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.4.1|jar))
   - `commons-io:commons-io:2.5`: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.5/view#files/commons-io/commons-io/2.5) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.5|jar))
   - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
   - `commons-cli:commons-cli:1.3.1`: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
@@ -907,7 +907,7 @@ You will also need to download the following dependencies:
 
   - `synapticloop:simpleusage:1.1.2`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
   - `synapticloop:simplelogger:1.1.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.1/view#files/synapticloop/simplelogger/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.1|jar))
-  - `synapticloop:templar:1.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
+  - `synapticloop:templar:1.4.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.4.1/view#files/synapticloop/templar/1.4.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.4.1|jar))
   - `commons-io:commons-io:2.5`: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.5/view#files/commons-io/commons-io/2.5) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.5|jar))
   - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
   - `commons-cli:commons-cli:1.3.1`: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
@@ -938,7 +938,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.8.2.jar -> documentr-2.8.2-all.jar`
+`documentr-2.9.0.jar -> documentr-2.9.0-all.jar`
 
 
 
