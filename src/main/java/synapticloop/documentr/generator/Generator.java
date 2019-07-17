@@ -19,6 +19,7 @@ package synapticloop.documentr.generator;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -172,7 +173,7 @@ public class Generator {
 			InputStream resourceAsStream = Generator.class.getResourceAsStream(DocumentrPluginExtension.FILE_NAME_DOCUMENTR_DEFAULT_JSON);
 			if(null != resourceAsStream) {
 				try {
-					FileUtils.write(documentrJsonFile, IOUtils.toString(resourceAsStream));
+					FileUtils.write(documentrJsonFile, IOUtils.toString(resourceAsStream, Charset.defaultCharset()), Charset.defaultCharset());
 					project.getLogger().info(String.format("We couldn't find a the default '%s' file, so we created it for you", DocumentrPluginExtension.FILE_NAME_DOCUMENTR_JSON));
 				} catch (IOException ex) {
 					// ignore this - couldn't create it
@@ -210,7 +211,7 @@ public class Generator {
 			try {
 				StringBuilder stringBuilder = new StringBuilder();
 
-				JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(documentrJsonFile));
+				JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(documentrJsonFile, Charset.defaultCharset()));
 				JSONArray jsonArray = jsonObject.getJSONArray("templates");
 
 				for (Object object : jsonArray) {
@@ -226,7 +227,7 @@ public class Generator {
 					switch(TYPE_LOOKUP.get(type)) {
 					case TYPE_FILE:
 						stringBuilder.append("{pre\n");
-						stringBuilder.append(FileUtils.readFileToString(new File(pathname)).replace("\\", "\\\\"));
+						stringBuilder.append(FileUtils.readFileToString(new File(pathname), Charset.defaultCharset()).replace("\\", "\\\\"));
 						stringBuilder.append("\npre}\n");
 						break;
 					case TYPE_MARKUP:
@@ -307,9 +308,9 @@ public class Generator {
 				}
 
 				if(EXTENSIONE_ADOC.equals(fileExtension)) {
-					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(rendered));
+					FileUtils.writeStringToFile(outputFile, Converter.convertMarkdownToAsciiDoc(rendered), Charset.defaultCharset());
 				} else {
-					FileUtils.writeStringToFile(outputFile, rendered);
+					FileUtils.writeStringToFile(outputFile, rendered, Charset.defaultCharset());
 				}
 			} catch (IOException | ParseException | RenderException ex) {
 				throw new DocumentrException(String.format("Cannot parse/render the '%s' file, message was: %s", documentrJsonFile, ex.getMessage()), ex);
