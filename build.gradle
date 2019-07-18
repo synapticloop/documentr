@@ -14,7 +14,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'synapticloop:documentr:3.0.0'
+//		classpath 'synapticloop:documentr:3.0.0'
 	}
 }
 
@@ -40,7 +40,7 @@ plugins {
 // tasks.withType(Javadoc).all { enabled = false }
 
 
-apply plugin: 'synapticloop.documentr'
+//apply plugin: 'synapticloop.documentr'
 
 // textual information for this project
 group = 'synapticloop'
@@ -106,12 +106,12 @@ copyrightr {
 	yearSeparator = " - "
 }
 
-documentr {
-	directory = '.'
-	verbose = 'true'
-	extension = 'md' // this is the default
+//documentr {
+//	directory = '.'
+//	verbose = 'true'
+//	extension = 'md' // this is the default
 //	extension = 'adoc' // perhaps you want asciidoc?
-}
+//}
 
 def locateJar(lib) {
 	configurations.runtime.findAll {it.getName().contains(lib)}.collect { it.isDirectory() ? it : zipTree(it) }
