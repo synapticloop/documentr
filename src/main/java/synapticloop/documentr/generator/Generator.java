@@ -118,6 +118,7 @@ public class Generator {
 	private final File rootDirectory;
 	private final String fileExtension;
 	private boolean verbose = false;
+	private Project project = null;
 
 	// table of content variables
 	private int tocLevel = 6;
@@ -139,6 +140,7 @@ public class Generator {
 	 * @param extension the plugin extension which contains all of the options.
 	 */
 	public Generator(Project project, DocumentrPluginExtension extension) {
+		this.project = project;
 		this.documentrFile = extension.getDocumentrFile();
 		this.rootDirectory = new File(extension.getDirectory());
 		this.verbose = extension.getVerbose();
@@ -204,14 +206,20 @@ public class Generator {
 	 *     documentation
 	 */
 	public void generate() throws DocumentrException {
-		//at this point we have a directory - make sure we can find a documentr.json file 
-		File documentrJsonFile = new File(rootDirectory.getAbsolutePath() + "/" + documentrFile);
+		//at this point we have a directory - make sure we can find a documentr.json file
+		String documentrJsonFileLocation = project.getProjectDir().getAbsolutePath() + "/" + rootDirectory + "/" + documentrFile;
+		File documentrJsonFile = new File(documentrJsonFileLocation);
 
 		if(documentrJsonFile.exists() && documentrJsonFile.canRead()) {
 			try {
 				StringBuilder stringBuilder = new StringBuilder();
 
-				JSONObject jsonObject = new JSONObject(FileUtils.readFileToString(documentrJsonFile, Charset.defaultCharset()));
+				String documentrJsonFileRead = FileUtils.readFileToString(documentrJsonFile, Charset.defaultCharset());
+				if(verbose) {
+					project.getLogger().info("Read documentr file '{}' with value:\n{}", documentrJsonFileLocation, documentrJsonFileRead);
+				}
+				
+				JSONObject jsonObject = new JSONObject(documentrJsonFileRead);
 				JSONArray jsonArray = jsonObject.getJSONArray("templates");
 
 				for (Object object : jsonArray) {

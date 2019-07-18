@@ -1,6 +1,11 @@
-<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-2.9.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+<a name="documentr_top"></a>
 
-> **This project requires JVM version of at least 1.7**
+
+
+TemplarContext[{parent:null}, {classLoaderScope:org.gradle.api.internal.initialization.DefaultClassLoaderScope@3d259152}, {configurationBeans:[synapticloop.documentr.bean.ConfigurationBean@752a070d, synapticloop.documentr.bean.ConfigurationBean@7a1985cf, synapticloop.documentr.bean.ConfigurationBean@47482128, synapticloop.documentr.bean.ConfigurationBean@56768792, synapticloop.documentr.bean.ConfigurationBean@7341e03e, synapticloop.documentr.bean.ConfigurationBean@45c03464, synapticloop.documentr.bean.ConfigurationBean@43871c95, synapticloop.documentr.bean.ConfigurationBean@21af4960, synapticloop.documentr.bean.ConfigurationBean@5d131d7b, synapticloop.documentr.bean.ConfigurationBean@193471a9, synapticloop.documentr.bean.ConfigurationBean@622cb5ae, synapticloop.documentr.bean.ConfigurationBean@399304c2, synapticloop.documentr.bean.ConfigurationBean@7c2e2e4e, synapticloop.documentr.bean.ConfigurationBean@46adb15b, synapticloop.documentr.bean.ConfigurationBean@41abede5, synapticloop.documentr.bean.ConfigurationBean@603f4406, synapticloop.documentr.bean.ConfigurationBean@6dee4a11, synapticloop.documentr.bean.ConfigurationBean@4662199e, synapticloop.documentr.bean.ConfigurationBean@58b81072, synapticloop.documentr.bean.ConfigurationBean@423d7017, synapticloop.documentr.bean.ConfigurationBean@5d1c1483]}, {configurations:configuration container}, {plugins:[org.gradle.buildinit.plugins.BuildInitPlugin@be45857, org.gradle.buildinit.plugins.WrapperPlugin@1347e2d9, org.gradle.api.plugins.HelpTasksPlugin@3ad3856e, org.gradle.language.base.plugins.LifecycleBasePlugin@7d626bb, org.gradle.api.plugins.BasePlugin@2ed9e0f6, org.gradle.api.plugins.ReportingBasePlugin@2249ede, org.gradle.api.plugins.JavaBasePlugin@24fa8301, org.gradle.api.plugins.JavaPlugin@12af8adb, com.gradle.publish.PublishPlugin@73900628, co.riiid.gradle.GithubPlugin@55e4a4ea, com.jfrog.bintray.gradle.BintrayPlugin@2576c7dc, synapticloop.copyrightr.plugin.CopyrightrPlugin@4be168fb, com.github.benmanes.gradle.versions.VersionsPlugin@383386e9, org.gradle.plugins.ide.eclipse.EclipsePlugin@4880b6f1, org.gradle.api.plugins.MavenPlugin@5b5bd01a, org.gradle.api.publish.plugins.PublishingPlugin@1bbddd3a, org.gradle.api.publish.maven.plugins.MavenPublishPlugin@3f1d046a, synapticloop.documentr.plugin.DocumentrPlugin@72670a46]}, {objects:org.gradle.api.internal.model.DefaultObjectFactory@77b9df10}, {logger:org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@29888d0}, {rootDir:/Users/osmanj/projects/documentr}, {publishPlugins:task ':publishPlugins'}, {projectRegistry:org.gradle.api.internal.project.DefaultProjectRegistry@5571e2bd}, {path::}, {testResultsDirName:test-results}, {targetCompatibility:1.8}, {java:org.gradle.api.plugins.internal.DefaultJavaPluginExtension_Decorated@1f0ef76f}, {generateMetadataFileForSynapticloopPublication:task ':generateMetadataFileForSynapticloopPublication'}, {normalization:org.gradle.normalization.internal.DefaultInputNormalizationHandler_Decorated@26f6fac1}, {childProjects:{}}, {jar:task ':jar'}, {githubRelease:task ':githubRelease'}, {state:project state 'EXECUTED'}, {publishing:org.gradle.api.publish.internal.DefaultPublishingExtension_Decorated@60ee28c7}, {serviceRegistryFactory:org.gradle.internal.service.scopes.ProjectScopeServices$4@3ad05a6d}, {tasks:task set}, {ext:org.gradle.internal.extensibility.DefaultExtraPropertiesExtension@528d77d7}, {projectDir:/Users/osmanj/projects/documentr}, {github:co.riiid.gradle.GithubExtension_Decorated@433cafb5}, {dependencyLocking:org.gradle.internal.locking.DefaultDependencyLockingHandler_Decorated@52050f05}, {projectEvaluationBroadcaster:ProjectEvaluationListener broadcast}, {projectPath::}, {module:org.gradle.api.internal.artifacts.ProjectBackedModule@60bc26fb}, {inheritedScope:org.gradle.internal.extensibility.ExtensibleDynamicObject$InheritedDynamicObject@6a3e341a}, {javadocJar:task ':javadocJar'}, {bintray:com.jfrog.bintray.gradle.BintrayExtension_Decorated@5334c545}, {version:3.0.0}, {script:false}, {dependencies:org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler_Decorated@75538991}, {extensions:org.gradle.api.internal.plugins.DefaultConvention@f54dd19}, {modelRegistry:org.gradle.model.internal.registry.DefaultModelRegistry@1451a60d}, {install:task ':install'}, {projectEvaluator:org.gradle.configuration.project.LifecycleProjectEvaluator@61ba472f}, {projectConfigurator:org.gradle.api.internal.project.BuildOperationCrossProjectConfigurator@84c5588}, {archivesBaseName:documentr}, {logging:org.gradle.internal.logging.services.DefaultLoggingManager@2159ed8d}, {configurationActions:org.gradle.configuration.project.DefaultProjectConfigurationActionContainer@38214665}, {sourceCompatibility:1.8}, {status:integration}, {subprojects:[]}, {components:SoftwareComponentInternal set}, {displayName:root project 'documentr'}, {parentIdentifier:null}, {login:task ':login'}, {bintrayPublish:task ':bintrayPublish'}, {antBuilderFactory:org.gradle.api.internal.project.DefaultAntBuilderFactory@b11fd71}, {pluginBundle:PluginBundleExtension{, website='https://github.com/synapticloop/documentr', description='documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language', vcsUrl='https://github.com/synapticloop/documentr', tags='[README, documentation, generator]'}}, {javadoc:task ':javadoc'}, {standardOutputCapture:org.gradle.internal.logging.services.DefaultLoggingManager@2159ed8d}, {docsDir:/Users/osmanj/projects/documentr/build/docs}, {defaultTasks:[]}, {buildScriptSource:org.gradle.groovy.scripts.TextResourceScriptSource@611b198e}, {copyrightr:synapticloop.copyrightr.plugin.CopyrightrPluginExtension_Decorated@fc0a5a5}, {autoTargetJvmDisabled:false}, {reportsDir:/Users/osmanj/projects/documentr/build/reports}, {baseClassLoaderScope:org.gradle.api.internal.initialization.DefaultClassLoaderScope@3de0c856}, {services:ProjectScopeServices}, {gradle:build 'documentr'}, {distsDirName:distributions}, {buildFile:/Users/osmanj/projects/documentr/build.gradle}, {depth:0}, {mutationState:project :}, {docsDirName:docs}, {testResultsDir:/Users/osmanj/projects/documentr/build/test-results}, {buildDir:/Users/osmanj/projects/documentr/build}, {scriptHandlerFactory:org.gradle.api.internal.initialization.DefaultScriptHandlerFactory@391e50ee}, {pluginId:synapticloop.documentr}, {generatePomFileForSynapticloopPublication:task ':generatePomFileForSynapticloopPublication'}, {deferredProjectConfiguration:org.gradle.api.internal.project.DeferredProjectConfiguration@70f92a}, {bintrayUpload:task ':bintrayUpload'}, {project:root project 'documentr'}, {documentr:synapticloop.documentr.plugin.DocumentrPluginExtension_Decorated@a17990c}, {conf2ScopeMappings:org.gradle.api.publication.maven.internal.pom.DefaultConf2ScopeMappingContainer@46766a6f}, {sourcesJar:task ':sourcesJar'}, {repositories:repository container}, {publishPluginJar:task ':publishPluginJar'}, {scriptPluginFactory:org.gradle.configuration.ScriptPluginFactorySelector@310e5260}, {resourceLoader:org.gradle.internal.resource.transfer.DefaultUriTextResourceLoader@7adced8f}, {testReportDir:/Users/osmanj/projects/documentr/build/reports/tests}, {mavenPomDir:/Users/osmanj/projects/documentr/build/poms}, {group:synapticloop}, {artifacts:org.gradle.api.internal.artifacts.dsl.DefaultArtifactHandler_Decorated@7de2f257}, {publishPluginJavaDocsJar:task ':publishPluginJavaDocsJar'}, {configurationTargetIdentifier:org.gradle.configuration.ConfigurationTargetIdentifier$1@4b0bcb1e}, {eclipse:org.gradle.plugins.ide.eclipse.model.EclipseModel_Decorated@8d51d4d}, {yearTo:2019}, {fileResolver:org.gradle.api.internal.file.BaseDirFileResolver@15f8294d}, {name:documentr}, {testReportDirName:tests}, {buildscript:org.gradle.api.internal.initialization.DefaultScriptHandler@7f6211ef}, {processOperations:org.gradle.process.internal.DefaultExecActionFactory$DecoratingExecActionFactory@6aa46626}, {asDynamicObject:DynamicObject for root project 'documentr'}, {publicType:org.gradle.api.plugins.BasePluginConvention}, {identityPath::}, {description:documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents}, {sourceSets:SourceSet container}, {buildPath::}, {fileOperations:org.gradle.api.internal.file.DefaultFileOperations@4abb214a}, {pluginManager:org.gradle.api.internal.plugins.DefaultPluginManager_Decorated@1edddb11}, {defaultArtifacts:org.gradle.api.internal.plugins.DefaultArtifactPublicationSet_Decorated@71df4c4c}, {fatJar:task ':fatJar'}, {class:class org.gradle.api.internal.project.DefaultProject_Decorated}, {modelSchemaStore:org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore@38038107}, {reporting:org.gradle.api.reporting.ReportingExtension_Decorated@2b21463c}, {convention:org.gradle.api.internal.plugins.DefaultConvention@f54dd19}, {allprojects:[root project 'documentr']}, {documentrHelp:task ':documentrHelp'}, {ant:org.gradle.api.internal.project.DefaultAntBuilder@5b54051a}, {resources:org.gradle.api.internal.resources.DefaultResourceHandler@50628f10}, {layout:org.gradle.api.internal.file.DefaultProjectLayout@744d37a2}, {build:task ':build'}, {listenerBuildOperationDecorator:org.gradle.configuration.internal.DefaultListenerBuildOperationDecorator@55fc8fb1}, {libsDir:/Users/osmanj/projects/documentr/build/libs}, {distsDir:/Users/osmanj/projects/documentr/build/distributions}, {rootProject:root project 'documentr'}, {libsDirName:libs}, {properties:{parent=null, classLoaderScope=org.gradle.api.internal.initialization.DefaultClassLoaderScope@3d259152, configurations=configuration container, plugins=[org.gradle.buildinit.plugins.BuildInitPlugin@be45857, org.gradle.buildinit.plugins.WrapperPlugin@1347e2d9, org.gradle.api.plugins.HelpTasksPlugin@3ad3856e, org.gradle.language.base.plugins.LifecycleBasePlugin@7d626bb, org.gradle.api.plugins.BasePlugin@2ed9e0f6, org.gradle.api.plugins.ReportingBasePlugin@2249ede, org.gradle.api.plugins.JavaBasePlugin@24fa8301, org.gradle.api.plugins.JavaPlugin@12af8adb, com.gradle.publish.PublishPlugin@73900628, co.riiid.gradle.GithubPlugin@55e4a4ea, com.jfrog.bintray.gradle.BintrayPlugin@2576c7dc, synapticloop.copyrightr.plugin.CopyrightrPlugin@4be168fb, com.github.benmanes.gradle.versions.VersionsPlugin@383386e9, org.gradle.plugins.ide.eclipse.EclipsePlugin@4880b6f1, org.gradle.api.plugins.MavenPlugin@5b5bd01a, org.gradle.api.publish.plugins.PublishingPlugin@1bbddd3a, org.gradle.api.publish.maven.plugins.MavenPublishPlugin@3f1d046a, synapticloop.documentr.plugin.DocumentrPlugin@72670a46], objects=org.gradle.api.internal.model.DefaultObjectFactory@77b9df10, logger=org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@29888d0, rootDir=/Users/osmanj/projects/documentr, publishPlugins=task ':publishPlugins', projectRegistry=org.gradle.api.internal.project.DefaultProjectRegistry@5571e2bd, path=:, testResultsDirName=test-results, targetCompatibility=1.8, java=org.gradle.api.plugins.internal.DefaultJavaPluginExtension_Decorated@1f0ef76f, generateMetadataFileForSynapticloopPublication=task ':generateMetadataFileForSynapticloopPublication', normalization=org.gradle.normalization.internal.DefaultInputNormalizationHandler_Decorated@26f6fac1, childProjects={}, jar=task ':jar', githubRelease=task ':githubRelease', state=project state 'EXECUTED', publishing=org.gradle.api.publish.internal.DefaultPublishingExtension_Decorated@60ee28c7, serviceRegistryFactory=org.gradle.internal.service.scopes.ProjectScopeServices$4@3ad05a6d, tasks=task set, ext=org.gradle.internal.extensibility.DefaultExtraPropertiesExtension@528d77d7, projectDir=/Users/osmanj/projects/documentr, github=co.riiid.gradle.GithubExtension_Decorated@433cafb5, dependencyLocking=org.gradle.internal.locking.DefaultDependencyLockingHandler_Decorated@52050f05, projectEvaluationBroadcaster=ProjectEvaluationListener broadcast, projectPath=:, module=org.gradle.api.internal.artifacts.ProjectBackedModule@60bc26fb, inheritedScope=org.gradle.internal.extensibility.ExtensibleDynamicObject$InheritedDynamicObject@2efb3cc1, javadocJar=task ':javadocJar', bintray=com.jfrog.bintray.gradle.BintrayExtension_Decorated@5334c545, version=3.0.0, script=false, dependencies=org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler_Decorated@75538991, extensions=org.gradle.api.internal.plugins.DefaultConvention@f54dd19, modelRegistry=org.gradle.model.internal.registry.DefaultModelRegistry@1451a60d, install=task ':install', projectEvaluator=org.gradle.configuration.project.LifecycleProjectEvaluator@61ba472f, projectConfigurator=org.gradle.api.internal.project.BuildOperationCrossProjectConfigurator@84c5588, archivesBaseName=documentr, logging=org.gradle.internal.logging.services.DefaultLoggingManager@2159ed8d, configurationActions=org.gradle.configuration.project.DefaultProjectConfigurationActionContainer@38214665, sourceCompatibility=1.8, status=integration, subprojects=[], components=SoftwareComponentInternal set, displayName=root project 'documentr', parentIdentifier=null, login=task ':login', bintrayPublish=task ':bintrayPublish', antBuilderFactory=org.gradle.api.internal.project.DefaultAntBuilderFactory@b11fd71, pluginBundle=PluginBundleExtension{, website='https://github.com/synapticloop/documentr', description='documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language', vcsUrl='https://github.com/synapticloop/documentr', tags='[README, documentation, generator]'}, javadoc=task ':javadoc', standardOutputCapture=org.gradle.internal.logging.services.DefaultLoggingManager@2159ed8d, docsDir=/Users/osmanj/projects/documentr/build/docs, defaultTasks=[], buildScriptSource=org.gradle.groovy.scripts.TextResourceScriptSource@611b198e, copyrightr=synapticloop.copyrightr.plugin.CopyrightrPluginExtension_Decorated@fc0a5a5, autoTargetJvmDisabled=false, reportsDir=/Users/osmanj/projects/documentr/build/reports, baseClassLoaderScope=org.gradle.api.internal.initialization.DefaultClassLoaderScope@3de0c856, services=ProjectScopeServices, gradle=build 'documentr', distsDirName=distributions, buildFile=/Users/osmanj/projects/documentr/build.gradle, depth=0, mutationState=project :, docsDirName=docs, testResultsDir=/Users/osmanj/projects/documentr/build/test-results, buildDir=/Users/osmanj/projects/documentr/build, scriptHandlerFactory=org.gradle.api.internal.initialization.DefaultScriptHandlerFactory@391e50ee, generatePomFileForSynapticloopPublication=task ':generatePomFileForSynapticloopPublication', deferredProjectConfiguration=org.gradle.api.internal.project.DeferredProjectConfiguration@70f92a, bintrayUpload=task ':bintrayUpload', project=root project 'documentr', documentr=synapticloop.documentr.plugin.DocumentrPluginExtension_Decorated@a17990c, conf2ScopeMappings=org.gradle.api.publication.maven.internal.pom.DefaultConf2ScopeMappingContainer@46766a6f, sourcesJar=task ':sourcesJar', repositories=repository container, publishPluginJar=task ':publishPluginJar', scriptPluginFactory=org.gradle.configuration.ScriptPluginFactorySelector@310e5260, resourceLoader=org.gradle.internal.resource.transfer.DefaultUriTextResourceLoader@7adced8f, testReportDir=/Users/osmanj/projects/documentr/build/reports/tests, mavenPomDir=/Users/osmanj/projects/documentr/build/poms, group=synapticloop, artifacts=org.gradle.api.internal.artifacts.dsl.DefaultArtifactHandler_Decorated@7de2f257, publishPluginJavaDocsJar=task ':publishPluginJavaDocsJar', configurationTargetIdentifier=org.gradle.configuration.ConfigurationTargetIdentifier$1@4b0bcb1e, eclipse=org.gradle.plugins.ide.eclipse.model.EclipseModel_Decorated@8d51d4d, fileResolver=org.gradle.api.internal.file.BaseDirFileResolver@15f8294d, name=documentr, testReportDirName=tests, buildscript=org.gradle.api.internal.initialization.DefaultScriptHandler@7f6211ef, processOperations=org.gradle.process.internal.DefaultExecActionFactory$DecoratingExecActionFactory@6aa46626, asDynamicObject=DynamicObject for root project 'documentr', publicType=org.gradle.api.plugins.BasePluginConvention, identityPath=:, description=documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents, sourceSets=SourceSet container, buildPath=:, fileOperations=org.gradle.api.internal.file.DefaultFileOperations@4abb214a, pluginManager=org.gradle.api.internal.plugins.DefaultPluginManager_Decorated@1edddb11, defaultArtifacts=org.gradle.api.internal.plugins.DefaultArtifactPublicationSet_Decorated@71df4c4c, fatJar=task ':fatJar', class=class org.gradle.api.internal.project.DefaultProject_Decorated, modelSchemaStore=org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore@38038107, reporting=org.gradle.api.reporting.ReportingExtension_Decorated@2b21463c, convention=org.gradle.api.internal.plugins.DefaultConvention@f54dd19, allprojects=[root project 'documentr'], documentrHelp=task ':documentrHelp', ant=org.gradle.api.internal.project.DefaultAntBuilder@5b54051a, resources=org.gradle.api.internal.resources.DefaultResourceHandler@50628f10, layout=org.gradle.api.internal.file.DefaultProjectLayout@744d37a2, build=task ':build', listenerBuildOperationDecorator=org.gradle.configuration.internal.DefaultListenerBuildOperationDecorator@55fc8fb1, libsDir=/Users/osmanj/projects/documentr/build/libs, distsDir=/Users/osmanj/projects/documentr/build/distributions, rootProject=root project 'documentr', libsDirName=libs, properties=(this Map), providers=org.gradle.api.internal.provider.DefaultProviderFactory@6aa53c01}}, {providers:org.gradle.api.internal.provider.DefaultProviderFactory@6aa53c01}]
+[![Build Status](https://travis-ci.org/synapticloop/documentr.svg?branch=master)](https://travis-ci.org/synapticloop/documentr) [![Download](https://api.bintray.com/packages/synapticloop/maven/documentr/images/download.svg)](https://bintray.com/synapticloop/maven/documentr/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/documentr.svg)](https://github.com/synapticloop/documentr/releases) [![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-3.0.0-blue.svg)](https://plugins.gradle.org/plugin/synapticloop.documentr) 
+
+> **This project requires JVM version of at least 1.8**
 
 
 
@@ -242,6 +247,7 @@ This is a simple JSON file as show below:
 		"pluginId": "synapticloop.documentr"
 	},
 	"templates": [
+		{ "type":"inbuilt", "value":"dumpcontext" },
 		{ "type":"inbuilt", "value":"badge-travis-ci" },
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
@@ -338,7 +344,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.synapticloop:documentr:2.9.0"
+		classpath "gradle.plugin.synapticloop:documentr:3.0.0"
 	}
 }
 
@@ -353,7 +359,7 @@ apply plugin: "synapticloop.documentr"
 
 ```
 plugins {
-	id 'synapticloop.documentr' version '2.9.0'
+	id 'synapticloop.documentr' version '3.0.0'
 }
 ```
 
@@ -390,7 +396,7 @@ simply run
 
 
 ```
-java -jar documentr-2.9.0-all.jar
+java -jar documentr-3.0.0-all.jar
 ```
 
 
@@ -406,7 +412,7 @@ Running:
 
 
 ```
-java -jar documentr-2.9.0-all.jar --help
+java -jar documentr-3.0.0-all.jar --help
 ```
 
 
@@ -839,9 +845,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'documentr', version: '2.9.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'documentr', version: '3.0.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'documentr', version: '2.9.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'documentr', version: '3.0.0', ext: 'jar')
 }
 ```
 
@@ -853,9 +859,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:documentr:2.9.0'
+	runtime 'synapticloop:documentr:3.0.0'
 
-	compile 'synapticloop:documentr:2.9.0'
+	compile 'synapticloop:documentr:3.0.0'
 }
 ```
 
@@ -873,7 +879,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>documentr</artifactId>
-	<version>2.9.0</version>
+	<version>3.0.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -891,28 +897,21 @@ You will also need to download the following dependencies:
 
 
 
-### compile dependencies
+### compileOnly dependencies
 
-  - `synapticloop:simpleusage:1.1.2`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
-  - `synapticloop:simplelogger:1.1.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.1/view#files/synapticloop/simplelogger/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.1|jar))
-  - `synapticloop:templar:1.4.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.4.1/view#files/synapticloop/templar/1.4.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.4.1|jar))
-  - `commons-io:commons-io:2.5`: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.5/view#files/commons-io/commons-io/2.5) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.5|jar))
+
+
+### implementation dependencies
+
+  - `commons-cli:commons-cli:1.4`: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.4/view#files/commons-cli/commons-cli/1.4) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.4|jar))
+  - `commons-io:commons-io:2.6`: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.6/view#files/commons-io/commons-io/2.6) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.6|jar))
+  - `nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.1`: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.1/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.1) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.1|jar))
   - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
-  - `commons-cli:commons-cli:1.3.1`: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
-  - `nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0`: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
+  - `org.jsoup:jsoup:1.12.1`: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.12.1/view#files/org.jsoup/jsoup/1.12.1) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.12.1|jar))
   - `org.pegdown:pegdown:1.6.0`: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
-
-
-### runtime dependencies
-
   - `synapticloop:simpleusage:1.1.2`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simpleusage/1.1.2/view#files/synapticloop/simpleusage/1.1.2) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simpleusage|1.1.2|jar))
-  - `synapticloop:simplelogger:1.1.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/1.1.1/view#files/synapticloop/simplelogger/1.1.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|1.1.1|jar))
-  - `synapticloop:templar:1.4.1`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.4.1/view#files/synapticloop/templar/1.4.1) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.4.1|jar))
-  - `commons-io:commons-io:2.5`: (It may be available on one of: [bintray](https://bintray.com/commons-io/maven/commons-io/2.5/view#files/commons-io/commons-io/2.5) [mvn central](http://search.maven.org/#artifactdetails|commons-io|commons-io|2.5|jar))
-  - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
-  - `commons-cli:commons-cli:1.3.1`: (It may be available on one of: [bintray](https://bintray.com/commons-cli/maven/commons-cli/1.3.1/view#files/commons-cli/commons-cli/1.3.1) [mvn central](http://search.maven.org/#artifactdetails|commons-cli|commons-cli|1.3.1|jar))
-  - `nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0`: (It may be available on one of: [bintray](https://bintray.com/nl.jworks.markdown_to_asciidoc/maven/markdown_to_asciidoc/1.0/view#files/nl.jworks.markdown_to_asciidoc/markdown_to_asciidoc/1.0) [mvn central](http://search.maven.org/#artifactdetails|nl.jworks.markdown_to_asciidoc|markdown_to_asciidoc|1.0|jar))
-  - `org.pegdown:pegdown:1.6.0`: (It may be available on one of: [bintray](https://bintray.com/org.pegdown/maven/pegdown/1.6.0/view#files/org.pegdown/pegdown/1.6.0) [mvn central](http://search.maven.org/#artifactdetails|org.pegdown|pegdown|1.6.0|jar))
+  - `synapticloop:simplelogger:2.0.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/simplelogger/2.0.0/view#files/synapticloop/simplelogger/2.0.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|simplelogger|2.0.0|jar))
+  - `synapticloop:templar:1.4.4`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.4.4/view#files/synapticloop/templar/1.4.4) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.4.4|jar))
 
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
@@ -938,7 +937,7 @@ This should appear in the artefact repository along with the compiled code, as a
 
 For example:
 
-`documentr-2.9.0.jar -> documentr-2.9.0-all.jar`
+`documentr-3.0.0.jar -> documentr-3.0.0-all.jar`
 
 
 
@@ -954,7 +953,7 @@ For example:
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017 synapticloop
+Copyright (c) 2019 synapticloop
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
