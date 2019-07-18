@@ -1,7 +1,5 @@
 package synapticloop.documentr.plugin;
 
-import java.io.IOException;
-
 /*
  * Copyright (c) 2016 - 2017 Synapticloop.
  * 
@@ -43,7 +41,7 @@ public class DocumentrHelpTask extends DefaultTask {
 	 * 
 	 */
 	@TaskAction
-	public void help() throws IOException {
+	public void help() {
 		logger.lifecycle("Found the following in-built templates:");
 
 		logger.lifecycle("  attribution");
