@@ -1,7 +1,7 @@
 package synapticloop.documentr;
 
 /*
- * Copyright (c) 2016 - 2017 Synapticloop.
+ * Copyright (c) 2016 - 2019 Synapticloop.
  * 
  * All rights reserved.
  * 
