@@ -3,7 +3,6 @@
 		"pluginId": "synapticloop.documentr"
 	},
 	"templates": [
-		{ "type":"inbuilt", "value":"dumpcontext" },
 		{ "type":"inbuilt", "value":"badge-travis-ci" },
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },

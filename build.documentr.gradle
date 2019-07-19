@@ -1,0 +1,46 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		jcenter()
+		mavenLocal()
+		maven {
+			url "https://plugins.gradle.org/"
+		}
+	}
+
+	dependencies {
+		classpath 'synapticloop:documentr:3.0.0'
+	}
+}
+
+plugins {
+	id 'java'
+	id 'eclipse'
+}
+
+apply plugin: 'synapticloop.documentr'
+
+// textual information for this project
+group = 'synapticloop'
+archivesBaseName = 'documentr'
+description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents"""
+
+version = '3.0.0'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+documentr {
+	// where to generate the README file
+	directory = '.'
+
+	// wnether to be verbose and output more
+	verbose = 'true'
+
+	// extension - can be either md or adoc
+	extension = 'md' // this is the default
+// 	extension = 'adoc' // perhaps you want asciidoc?
+}
