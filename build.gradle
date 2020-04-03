@@ -46,7 +46,7 @@ group = 'synapticloop'
 archivesBaseName = 'documentr'
 description = """documentation (README) generator for projects in both markdown and asciidoc - this utilises the templar templating language - including generation of table of contents"""
 
-version = '3.0.0'
+version = '3.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -66,18 +66,18 @@ configurations {
 dependencies {
 	compileOnly gradleApi()
 
-	implementation 'commons-cli:commons-cli:1.4'
-	implementation 'commons-io:commons-io:2.6'
+	compile 'commons-cli:commons-cli:1.4'
+	compile 'commons-io:commons-io:2.6'
 
-	implementation 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.1'
+	compile 'nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.1'
 
-	implementation 'org.json:json:20160810'
-	implementation 'org.jsoup:jsoup:1.12.1'
-	implementation 'org.pegdown:pegdown:1.6.0'
+	compile 'org.json:json:20160810'
+	compile 'org.jsoup:jsoup:1.12.1'
+	compile 'org.pegdown:pegdown:1.6.0'
 
-	implementation 'synapticloop:simpleusage:1.1.2'
-	implementation 'synapticloop:simplelogger:2.0.0'
-	implementation 'synapticloop:templar:1.4.4'
+	compile 'synapticloop:simpleusage:1.1.2'
+	compile 'synapticloop:simplelogger:2.0.0'
+	compile 'synapticloop:templar:1.4.4'
 }
 
 // we always want to fail on version conflict
